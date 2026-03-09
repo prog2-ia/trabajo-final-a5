@@ -1,6 +1,6 @@
 # Importar clases y funciones necesarias
 
-from clases import ItemLaboratorio, Consumible, Equipo
+from clases import Item, Consumible, Equipo
 
 if __name__ == '__main__':
     
