@@ -14,7 +14,3 @@ class Consumible(Item):
     def __str__(self):
 
         pass
-
-    @property   # Getter del lote del consumible
-    def lote(self):
-        return self.__lote
