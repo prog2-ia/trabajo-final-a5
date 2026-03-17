@@ -1,0 +1,14 @@
+Este fichero se borrara cuando se entregue el proyecto final
+
+-   Menus de control para el main
+    Se haran con una forma recursiva
+
+-   Crear otras clases hijas:
+
+        Equipamiento: EquipoMedida, EquipoTermico, Centrifugadora
+
+        Consumibles: ReactivoLiquido, ReactivoSolido
+
+-   Crear clase Registro
+
+    En esta clase se montara los textos que se pondrán en auditoria.txt
