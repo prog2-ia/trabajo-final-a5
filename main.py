@@ -1,5 +1,5 @@
 # Importar clases y funciones necesarias
-import funciones
+from funciones import *
 
 # Primera capa de menu
 def menu_principal():
@@ -14,7 +14,6 @@ def menu_principal():
 
     # Pedir la instrucción
     return pedirNum('\nAcceder a: ')
-    
 
 
 if __name__ == '__main__':
