@@ -12,8 +12,7 @@ class Item(ABC):
         inventario.items.append(self)   # Agrega el item al inventario
 
     def __str__(self):
-
-        pass
+        return f"Item: {self.nombre} (Cant: {self.cantidad})"
 
     @property   # Getter del inventario donde se guarda el item
     def inventario(self):

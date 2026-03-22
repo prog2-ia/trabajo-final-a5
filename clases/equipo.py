@@ -15,6 +15,8 @@ class Equipo(Item):
         self.estado = estado
 
     def __str__(self):
+        dicc_estados = {0: "Operativo", 1: "Defectuoso", 2: "En uso"} #pasamos de número a texto descriptivo
+        txt_estado = dicc_estados.get(self.estado, "Desconocido") #evitar errores
 
-        pass
+        return super().__str__() + f" | Estado: {txt_estado}"
     

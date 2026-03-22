@@ -12,5 +12,8 @@ class Consumible(Item):
                             # Entonces no tendrá setter
 
     def __str__(self):
-
-        pass
+        id_lote = self.__lote.id_lote
+        fecha = self.__lote.fecha_vencimiento
+        # compruebo si el consumible está caducado con la función de lote
+        estado_lote = "CADUCADO" if self.__lote.esta_caducado() else "En fecha"
+        return f"{super().__str__()} | Lote: {id_lote} | Vence: {fecha} ({estado_lote})"
