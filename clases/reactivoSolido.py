@@ -1,10 +1,9 @@
-from item import Consumible
+from consumible import Consumible
 
 class ReactivoSolido(Consumible):
-
-    def __init__(self, nombre, fecha_vencimiento, stock, masa):
-        super().__init__(nombre, fecha_vencimiento, stock)
+    def __init__(self, nombre, inventario, cantidad, lote, masa: float):
+        super().__init__(nombre, inventario, cantidad, lote)
         self.masa = masa
 
     def __str__(self):
-        return f'Sólido: {self.nombre} | Stock: {self.stock} | Masa: {self.masa} | Vencimiento: {self.fecha_vencimiento}'
+        return super().__str__() + f" | Masa: {self.masa}g"
