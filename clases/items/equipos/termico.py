@@ -3,8 +3,10 @@ from ..equipo import Equipo
 from funciones import *
 
 class EquipoTermico(Equipo):
-    def __init__(self, nombre, inventario, cantidad, estado, temp_max: float, temp_min: float):
-        super().__init__(nombre, inventario, cantidad, estado)
+
+    def __init__(self, nombre, estado, temp_max: float, temp_min: float):
+        
+        super().__init__(nombre, estado)
         self.temp_max = temp_max
         self.temp_min = temp_min
 

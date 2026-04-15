@@ -3,8 +3,10 @@ from ..equipo import Equipo
 from funciones import *
 
 class EquipoMedida(Equipo):
-    def __init__(self, nombre, inventario, cantidad, estado, error_medida: float):
-        super().__init__(nombre, inventario, cantidad, estado)
+
+    def __init__(self, nombre, estado, error_medida: float):
+        
+        super().__init__(nombre, estado)
         self.error_medida = error_medida
 
     def __str__(self):
