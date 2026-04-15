@@ -12,5 +12,7 @@ def pedirNum(frase):
 
         return numero
     
+    return -1
+    
     # Si el usuario no introduce un número, devolvemos -1
     # El 0 está reservado para salir de capas de menu
