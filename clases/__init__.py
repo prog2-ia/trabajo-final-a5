@@ -1,18 +1,18 @@
 from .almacen import Inventario
-from .lote import Lote
+from .items.lote import Lote
 from .item import Item
 from .registro import Registro
 
 # Subsclases de Item
 
-from .equipo import Equipo
+from .items.equipo import Equipo
 
-from .termico import EquipoTermico
-from .medida import EquipoMedida
-from .centrifugadora import Centrifugadora
+from .items.equipos.termico import EquipoTermico
+from .items.equipos.medida import EquipoMedida
+from .items.equipos.centrifugadora import Centrifugadora
 
 
-from .consumible import Consumible
+from .items.consumible import Consumible
 
-from .reactivoLiquido import ReactivoLiquido
-from .reactivoSolido import ReactivoSolido  
+from .items.consumibles.reactivoLiquido import ReactivoLiquido
+from .items.consumibles.reactivoSolido import ReactivoSolido  

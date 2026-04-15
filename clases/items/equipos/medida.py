@@ -1,4 +1,4 @@
-from .equipo import Equipo
+from ..equipo import Equipo
 
 class EquipoMedida(Equipo):
     def __init__(self, nombre, inventario, cantidad, estado, error_medida: float):

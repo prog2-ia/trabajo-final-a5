@@ -38,6 +38,7 @@ def menu_almacen():
         f'\t[2] -\tVer almacenes\n'
         f'\t[3] - \tJuntar almacenes\n'
         f'\t[4] -\tEliminar almacen\n'
+        f'\t[5] -\tAcceder a almacen\n'
         f'\t[0] -\tVolver al menu principal\n'
     )
 
@@ -97,6 +98,8 @@ def menu_sesiones():
 
 
 if __name__ == '__main__':
+
+
     
     print('Bienvenido al programa de gestión de laboratorio')
 
@@ -137,6 +140,11 @@ if __name__ == '__main__':
                             pass
 
                         case '4':   # Eliminar almacen
+
+                            pass
+
+                        case '5':   # Acceder a almacen
+                            
 
                             pass
 
@@ -257,3 +265,10 @@ if __name__ == '__main__':
     hola = Equipo('hola', invetario_prueba, 1, 0)
     xd = EquipoMedida('xd', invetario_prueba, 1, 0, 0.1)
     comida = Consumible('comida', invetario_prueba, 1, '2024-12-31')
+    gg = Lote('lote1', '2024-12-31')
+    cc = Consumible('cc', invetario_prueba, 1, gg)
+    l = EquipoTermico('termico', invetario_prueba, 1, 0, 20, 12)
+    c = Centrifugadora('centrifugadora', invetario_prueba, 1, 0, 10000)
+    r = ReactivoLiquido('reactivo liquido', invetario_prueba, 1, gg, 0.5)
+    s = ReactivoSolido('reactivo solido', invetario_prueba, 1, gg, 0.5)
+    prueba = Registro('registro de prueba', [hola, xd, comida, cc, l, c, r, s])

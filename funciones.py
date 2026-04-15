@@ -1,5 +1,5 @@
 # Para que el archivo main() no sea gigantesco,
-# escribimos la mayoría de funciones aquí
+# escribimos la mayoría de funciones básicas aquí
 
 
 def pedir_num(frase):

@@ -1,5 +1,5 @@
-from .item import Item
-from .almacen import Inventario
+from ..item import Item
+from ..almacen import Inventario
 
 class Equipo(Item):
 
