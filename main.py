@@ -14,7 +14,10 @@ from clases import Lote, Registro, Inventario, Equipo, EquipoMedida, EquipoTermi
 
 if __name__ == '__main__':
 
-    laboratorio = cargar_laboratorio()  # Diccionario con los almacenes y sesiones guardadas
+    laboratorio = cargar_laboratorio()  # Diccionario con los almacenes y sesiones guardadas en listas
+
+    #"lista_inventarios": [],
+    #"lista_sesiones": []
     
     print('Bienvenido al programa de gestión de laboratorio')
 
