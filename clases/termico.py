@@ -1,4 +1,4 @@
-from equipo import Equipo
+from .equipo import Equipo
 
 class EquipoTermico(Equipo):
     def __init__(self, nombre, inventario, cantidad, estado, temp_max: float, temp_min: float):

@@ -1,4 +1,4 @@
-from consumible import Consumible
+from .consumible import Consumible
 
 class ReactivoLiquido(Consumible):
     def __init__(self, nombre, inventario, cantidad, lote, volumen: float):

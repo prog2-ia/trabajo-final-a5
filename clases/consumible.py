@@ -1,6 +1,6 @@
-from item import Item
-from almacen import Inventario
-from lote import Lote
+from .item import Item
+from .almacen import Inventario
+from .lote import Lote
 
 class Consumible(Item):
 

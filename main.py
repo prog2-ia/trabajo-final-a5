@@ -4,7 +4,7 @@ from funciones import *
 
 # Importar clases
 
-from clases import Lote, Registro, Equipo, EquipoMedida, EquipoTermico, Centrifugadora,\
+from clases import Lote, Registro, Inventario, Equipo, EquipoMedida, EquipoTermico, Centrifugadora,\
     Consumible, ReactivoLiquido, ReactivoSolido
 
 # Primera capa de menu
@@ -253,6 +253,7 @@ if __name__ == '__main__':
 
                 print('Instrucción no válida, vuelva a intentarlo')
 
-    hola = Equipo('hola', None, 1, 'bueno')
-    xd = EquipoMedida('xd', None, 1, 'bueno', 0.1)
-    comida = Consumible('comida', None, 1, 'bueno', '2024-12-31')
+    invetario_prueba = Inventario('Almacen de prueba')
+    hola = Equipo('hola', invetario_prueba, 1, 0)
+    xd = EquipoMedida('xd', invetario_prueba, 1, 0, 0.1)
+    comida = Consumible('comida', invetario_prueba, 1, '2024-12-31')

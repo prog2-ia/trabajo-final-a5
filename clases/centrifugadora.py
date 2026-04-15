@@ -1,4 +1,4 @@
-from equipo import Equipo
+from .equipo import Equipo
 
 class Centrifugadora(Equipo):
     def __init__(self, nombre, inventario, cantidad, estado, rpm_max: int):
