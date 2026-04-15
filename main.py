@@ -14,7 +14,7 @@ def menu_principal():
     )
 
     # Pedir la instrucción
-    return pedirNum('\nAcceder a: ')
+    return pedir_num('\nAcceder a: ')
 
 ####################################################
 # A partir de aquí estaría la segunda capa de menu #
@@ -36,7 +36,7 @@ def menu_almacen():
     )
 
     # Pedir la instrucción
-    return pedirNum('\nAcceder a: ')
+    return pedir_num('\nAcceder a: ')
 
 
 
@@ -53,7 +53,7 @@ def menu_equipamiento():
     )
 
     # Pedir la instrucción
-    return pedirNum('\nAcceder a: ')
+    return pedir_num('\nAcceder a: ')
 
 
 
@@ -69,6 +69,9 @@ def menu_consumibles():
         f'\t[0] - \tVolver al menu principal\n'
     )
 
+    # Pedir la instrucción
+    return pedir_num('\nAcceder a: ')
+
 
 
 def menu_sesiones():
@@ -81,7 +84,7 @@ def menu_sesiones():
     )
 
     # Pedir la instrucción
-    return pedirNum('\nAcceder a: ')
+    return pedir_num('\nAcceder a: ')
 
 ####################################################
 
@@ -91,38 +94,79 @@ if __name__ == '__main__':
     
     print('Bienvenido al programa de gestión de laboratorio')
 
-    # El menu será un bucle do-while
+    # El flujo será constituido por bucles while
 
-    instruccion = menu_principal()
+    instruccion = ''
 
-    while instruccion != 0:
+    while instruccion != '0':
 
-        if instruccion == 1:
+        instruccion = menu_principal()
+        #print(type(instruccion))
 
-            instruccion_almacen = menu_almacen()
+        match instruccion:
 
-            # A partir de la segunda capa, estarán las funcionalidades
+            case '1':   # Almacen
 
-            while instruccion_almacen != 0:
+                instruccion_almacen = ''
 
-                if instruccion_almacen == 1:
+                while instruccion_almacen != '0':
 
-                    print('Crear nuevo almacen')
+                    instruccion_almacen = menu_almacen()
 
-                elif instruccion_almacen == 2:
+                    match instruccion_almacen:
 
-                    print('Ver almacenes')
+                        case '1':   # Crear nuevo almacen
 
-                elif instruccion_almacen == 3:
+                            pass
 
-                    print('Juntar almacenes')
+                        case '2':   # Ver almacenes
 
-                elif instruccion_almacen == 4:
+                            pass
 
-                    print('Eliminar almacen')
+                        case '3':   # Juntar almacenes
 
-                elif instruccion != 0:
+                            pass
 
-                    print('Instrucción no válida, vuelva a intentarlo')
+                        case '4':   # Eliminar almacen
 
-                instruccion_almacen = menu_almacen()
+                            pass
+
+                        case '0':   # Volver al menu principal
+
+                            print('Volviendo al menu principal...')
+
+                        case _:
+
+                            print('Instrucción no válida, vuelva a intentarlo')
+
+
+
+
+            case '2':   # Equipamiento
+
+                pass
+
+
+
+
+            case '3':   # Consumibles
+
+                pass
+
+
+
+
+            case '4':   # Sesiones
+
+                pass
+
+
+
+
+            case '0':   # Salir
+
+                print('Saliendo del programa...')
+
+            case _:
+
+                print('Instrucción no válida, vuelva a intentarlo')
