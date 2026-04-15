@@ -29,7 +29,7 @@ class Item(ABC):
             if self.__inventario is not None:
                 self.__inventario.items.remove(self)
 
-            # El is not None comprueba si el item ya tiene un inventario asignado
+            # El is 'not None' comprueba si el item ya tiene un inventario asignado
 
             self.__inventario = nuevo_inventario
             nuevo_inventario.items.append(self)   # Mueve el item al nuevo inventario

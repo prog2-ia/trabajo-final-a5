@@ -1,6 +1,34 @@
 # Para que el archivo main() no sea gigantesco,
 # escribimos la mayoría de funciones básicas aquí
 
+######################################################################
+# Funciones para guardar y cargar el laboratorio                     #
+######################################################################
+
+import pickle
+
+def cargar_laboratorio():
+
+    try:
+
+        with open('datos/laboratorio.pkl', 'rb') as archivo:
+            # Cargamos el diccionario maestro que contiene todo
+            return pickle.load(archivo)
+        
+    except FileNotFoundError:
+        # Si no hay archivo, creamos la estructura base vacía
+        return {
+            "lista_inventarios": [],
+            "lista_sesiones": []
+        }
+
+def guardar_laboratorio(datos_a_guardar):
+
+    with open('datos/laboratorio.pkl', 'wb') as archivo:
+
+        pickle.dump(datos_a_guardar, archivo)
+
+######################################################################
 
 def pedir_num(frase):
 
