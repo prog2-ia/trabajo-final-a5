@@ -100,8 +100,9 @@ if __name__ == '__main__':
 
     while instruccion != '0':
 
+
         instruccion = menu_principal()
-        #print(type(instruccion))
+
 
         match instruccion:
 
@@ -114,6 +115,8 @@ if __name__ == '__main__':
                     instruccion_almacen = menu_almacen()
 
                     match instruccion_almacen:
+
+                        # A partir de esta capa de abstracción ya estarán las funcionalidades
 
                         case '1':   # Crear nuevo almacen
 
@@ -144,21 +147,94 @@ if __name__ == '__main__':
 
             case '2':   # Equipamiento
 
-                pass
+                instruccion_equipamiento = ''
+
+                while instruccion_equipamiento != '0':
+
+                    instruccion_equipamiento = menu_equipamiento()
+
+                    match instruccion_equipamiento:
+
+                        case '1':   # Traer nuevo equipamiento
+
+                            pass
+
+                        case '2':   # Mover equipamiento
+
+                            pass
+
+                        case '3':   # Tirar equipamiento
+
+                            pass
+
+                        case '0':   # Volver al menu principal
+
+                            print('Volviendo al menu principal...')
+
+                        case _:
+
+                            print('Instrucción no válida, vuelva a intentarlo')
 
 
 
 
             case '3':   # Consumibles
 
-                pass
+                instruccion_consumibles = ''
 
+                while instruccion_consumibles != '0':
+
+                    instruccion_consumibles = menu_consumibles()
+
+                    match instruccion_consumibles:
+
+                        case '1':   # Traer nuevo lote
+
+                            pass
+
+                        case '2':   # Tirar lote
+
+                            pass
+
+                        case '0':   # Volver al menu principal
+
+                            print('Volviendo al menu principal...')
+
+                        case _:
+
+                            print('Instrucción no válida, vuelva a intentarlo')
 
 
 
             case '4':   # Sesiones
 
-                pass
+                instruccion_sesiones = ''
+
+                while instruccion_sesiones != '0':
+
+                    instruccion_sesiones = menu_sesiones()
+
+                    match instruccion_sesiones:
+
+                        case '1':   # Crear nueva sesión
+
+                            pass
+
+                        case '2':   # Ver sesiones
+
+                            pass
+
+                        case '3':   # Finalizar sesión
+
+                            pass
+
+                        case '0':   # Volver al menu principal
+
+                            print('Volviendo al menu principal...')
+
+                        case _:
+
+                            print('Instrucción no válida, vuelva a intentarlo')
 
 
 
