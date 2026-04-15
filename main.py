@@ -1,5 +1,8 @@
-# Importar clases y funciones necesarias
+# main.py
+
 from funciones import *
+
+# Importar padres
 
 # Primera capa de menu
 def menu_principal():
