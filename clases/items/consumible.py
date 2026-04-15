@@ -2,6 +2,8 @@ from ..item import Item
 from ..almacen import Inventario
 from .lote import Lote
 
+from funciones import *
+
 class Consumible(Item):
 
     def __init__(self, nombre: str, inventario: Inventario, cantidad: int, lote: Lote):

@@ -1,5 +1,7 @@
 import datetime
 
+from funciones import *
+
 class Registro():
 
 

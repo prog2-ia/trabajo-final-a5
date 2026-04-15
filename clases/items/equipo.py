@@ -1,6 +1,8 @@
 from ..item import Item
 from ..almacen import Inventario
 
+from funciones import *
+
 class Equipo(Item):
 
     def __init__(self, nombre: str, inventario: Inventario, cantidad: int, estado: int):

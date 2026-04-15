@@ -1,6 +1,8 @@
 from abc import ABC, abstractmethod
 from .almacen import Inventario
 
+from funciones import *
+
 class Item(ABC):
 
     def __init__(self, nombre, inventario: Inventario, cantidad=1):

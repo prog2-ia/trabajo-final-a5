@@ -1,5 +1,7 @@
 from datetime import date
 
+from funciones import *
+
 class Lote():
 
     lotes = []  # Lista de lotes creados

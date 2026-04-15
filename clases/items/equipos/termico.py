@@ -1,5 +1,7 @@
 from ..equipo import Equipo
 
+from funciones import *
+
 class EquipoTermico(Equipo):
     def __init__(self, nombre, inventario, cantidad, estado, temp_max: float, temp_min: float):
         super().__init__(nombre, inventario, cantidad, estado)

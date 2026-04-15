@@ -1,5 +1,7 @@
 from ..equipo import Equipo
 
+from funciones import *
+
 class EquipoMedida(Equipo):
     def __init__(self, nombre, inventario, cantidad, estado, error_medida: float):
         super().__init__(nombre, inventario, cantidad, estado)

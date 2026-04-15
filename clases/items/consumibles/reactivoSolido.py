@@ -1,5 +1,7 @@
 from ..consumible import Consumible
 
+from funciones import *
+
 class ReactivoSolido(Consumible):
     def __init__(self, nombre, inventario, cantidad, lote, masa: float):
         super().__init__(nombre, inventario, cantidad, lote)
