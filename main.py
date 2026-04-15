@@ -2,7 +2,10 @@
 
 from funciones import *
 
-# Importar padres
+# Importar clases
+
+from clases import Lote, Registro, Equipo, EquipoMedida, EquipoTermico, Centrifugadora,\
+    Consumible, ReactivoLiquido, ReactivoSolido
 
 # Primera capa de menu
 def menu_principal():
@@ -249,3 +252,7 @@ if __name__ == '__main__':
             case _:
 
                 print('Instrucción no válida, vuelva a intentarlo')
+
+    hola = Equipo('hola', None, 1, 'bueno')
+    xd = EquipoMedida('xd', None, 1, 'bueno', 0.1)
+    comida = Consumible('comida', None, 1, 'bueno', '2024-12-31')
