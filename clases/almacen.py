@@ -9,10 +9,14 @@ from .items.equipo import Equipo
 class Inventario():
 
     def __init__(self, codigo):
-        self.codigo = codigo
+        self.__codigo = codigo
         self.items = []
 
         # Los items se guardaran en una tupla, el objeto item y la cantidad
+
+    @property
+    def codigo(self):
+        return self.__codigo
 
     def quitar_vacios(self):
 
@@ -65,3 +69,62 @@ class Inventario():
 def mostrar_almacenes(inventarios):
 
     print(inventario for inventario in inventarios)
+
+
+# Se le pasa la lista de inventarios ya creados para comprobar que no hayan repetidos
+def crear_almacen(inventarios):
+
+    codigo_valido = False
+
+    while not codigo_valido:
+
+        codigo = input('Introduce el código del nuevo almacén: ')
+
+        codigo_valido = verificar_codigo_almacen(codigo)    # Válidamos el código introducido por el usuario
+
+        if codigo_valido == '-1':
+
+            print('Operación cancelada.')
+            return None
+    
+    
+        if codigo in [inventario.codigo for inventario in inventarios]:
+
+            print('Ya existe un almacén con ese código. Operación cancelada.')
+            return None
+        
+
+        if not codigo_valido:
+
+            print('Código no válido. El código debe ser 2 letras mayúsculas seguidas de 3 dígitos. Inténtalo de nuevo o introduce 0 para cancelar.')
+    
+
+    print(f'Creando nuevo almacén con código [{codigo}]... ')
+    return Inventario(codigo)
+
+
+
+# El código de un almacen será 2 letras mayúsculas seguidas de 3 dígitos
+def verificar_codigo_almacen(codigo):
+
+    if codigo == '0': # Para cancelar cualquier operación...
+
+        return '-1'
+    
+    if len(codigo) != 5:
+
+        return False
+    
+    if not codigo[:2].isalpha():
+
+        return False
+    
+    if not codigo[:2].isupper():
+
+        return False
+    
+    if not codigo[2:].isdigit():
+
+        return False
+    
+    return True

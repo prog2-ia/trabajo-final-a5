@@ -59,7 +59,8 @@ if __name__ == '__main__':
 
                         case '1':   # Crear nuevo almacen
 
-                            pass
+                            nuevo_almacen = crear_almacen()
+                            inventarios.append(nuevo_almacen)
 
                         case '2':   # Acceder y ver almacenes
 

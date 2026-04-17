@@ -30,7 +30,9 @@ def guardar_laboratorio(datos_a_guardar):
 
         pickle.dump(datos_a_guardar, archivo)
 
+
 ######################################################################
+
 
 def pedir_num(frase):
 
