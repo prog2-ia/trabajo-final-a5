@@ -59,6 +59,7 @@ if __name__ == '__main__':
 
                         case '1':   # Crear nuevo almacen
 
+
                             nuevo_almacen = crear_almacen(inventarios)
                             
                             if nuevo_almacen is not None:

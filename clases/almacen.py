@@ -56,7 +56,7 @@ class Inventario():
 
     def __str__(self):
 
-        frase_inicial = f'\nInventario [{self.codigo}] con {len(self.items)} items\n\n'
+        frase_inicial = f'\n[{self.codigo}] con {len(self.items)} items\n\n'
 
         frase_items = ''
 
@@ -67,12 +67,21 @@ class Inventario():
         return frase_inicial + frase_items
 
 
+
 # Pasamos una lista de inventarios
 def mostrar_almacenes(inventarios):
 
-    for inventario in inventarios:
+    if len(inventarios) == 0:
 
-        print(inventario)
+        print('No hay almacenes disponibles.')
+    
+    else:
+
+        print('Almacenes disponibles:')
+
+        for inventario in inventarios:
+
+            print(f'\n[{inventario.codigo}] con {len(inventario.items)} items\n\n')
 
 
 
