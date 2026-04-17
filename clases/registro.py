@@ -2,6 +2,8 @@ import datetime
 
 from funciones import *
 
+
+# Trateremos la clase Registro como una sesión
 class Registro():
 
 
@@ -23,3 +25,18 @@ class Registro():
 
         self.fin = datetime.datetime.now()
         self.abierta = False
+
+
+########################################################################
+# A partir de aquí estarán las funciones de escritura en auditoria.txt #
+########################################################################
+
+
+def escribir_creado_almacen(codigo):
+
+    # datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    # Lo pasa al formato de fecha necesitado
+
+    with open('logs/auditoria.txt', 'a') as archivo:
+
+        archivo.write(f'[{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] - Creado nuevo almacen con codigo [{codigo}]\n')

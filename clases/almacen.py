@@ -5,6 +5,8 @@ from funciones import *
 from .items.consumible import Consumible
 from .items.equipo import Equipo
 
+from .registro import Registro
+
 
 class Inventario():
 
@@ -176,4 +178,6 @@ def acceso_almacen(inventarios):
             print('Código no encontrado, vuelva a intentarlo.')
 
 
-    
+def eliminar_almacen():
+
+    pass

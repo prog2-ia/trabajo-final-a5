@@ -65,6 +65,7 @@ if __name__ == '__main__':
                             if nuevo_almacen is not None:
 
                                 inventarios.append(nuevo_almacen)
+                                escribir_creado_almacen(nuevo_almacen.codigo)
 
 
                         case '2':   # Acceder y ver almacenes
@@ -72,6 +73,7 @@ if __name__ == '__main__':
                             # Previamente se mostraran los almacenes disponibles
 
                             mostrar_almacenes(inventarios)
+
 
                             instruccion_acceso_almacen = ''
 
