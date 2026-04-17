@@ -66,9 +66,7 @@ if __name__ == '__main__':
 
                             # Previamente se mostraran los almacenes disponibles
 
-                            print('Almacenes disponibles:')
-
-                            
+                            mostrar_almacenes(inventarios)
 
                             instruccion_acceso_almacen = ''
 

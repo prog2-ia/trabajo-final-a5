@@ -1,4 +1,4 @@
-from .almacen import Inventario
+from .almacen import Inventario, mostrar_almacenes
 from .items.lote import Lote
 from .item import Item
 from .registro import Registro

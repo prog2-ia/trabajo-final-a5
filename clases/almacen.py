@@ -2,8 +2,8 @@
 # invetarios, cada uno con un nombre y una lista de items
 from funciones import *
 
-from items.consumible import Consumible
-from items.equipo import Equipo
+from .items.consumible import Consumible
+from .items.equipo import Equipo
 
 
 class Inventario():

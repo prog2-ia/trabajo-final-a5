@@ -15,13 +15,13 @@ def cargar_laboratorio():
             # Cargamos el diccionario maestro que contiene todo
             return pickle.load(archivo)
         
-    except FileNotFoundError:
+    except (FileNotFoundError, EOFError):
         # Si no hay archivo, creamos la estructura base vacía
         return {
             "lista_inventarios": [],
             "lista_sesiones": [],
             "equipos": [],
-            "consumibles": []
+            "lotes": []
         }
 
 def guardar_laboratorio(datos_a_guardar):
