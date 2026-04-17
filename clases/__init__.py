@@ -1,7 +1,7 @@
-from .almacen import Inventario, mostrar_almacenes, crear_almacen, acceso_almacen
+from .almacen import Inventario, mostrar_almacenes, crear_almacen, acceso_almacen, eliminar_almacen
 from .items.lote import Lote
 from .item import Item
-from .registro import Registro, escribir_creado_almacen
+from .registro import Registro, escribir_creado_almacen, escribir_eliminado_almacen
 
 # Subsclases de Item
 

@@ -1,5 +1,5 @@
-# El almacen de nuestro laboratorio podrá tener varios
-# invetarios, cada uno con un nombre y una lista de items
+import copy
+
 from funciones import *
 
 from .items.consumible import Consumible
@@ -7,6 +7,9 @@ from .items.equipo import Equipo
 
 from .registro import Registro
 
+
+# El almacen de nuestro laboratorio podrá tener varios
+# invetarios, cada uno con un nombre y una lista de items
 
 class Inventario():
 
@@ -151,7 +154,7 @@ def acceso_almacen(inventarios):
 
         accedido = False
 
-        # Menu de lo para acceder a un almacen concreto
+        # Menu de lo para acceder a un almacen concreto y ver su contenido
         print(f'\n\t[Código] - \tAcceder a un almacen\n'
             f'\t[0] - \tVolver atras\n'
         )
@@ -178,6 +181,39 @@ def acceso_almacen(inventarios):
             print('Código no encontrado, vuelva a intentarlo.')
 
 
-def eliminar_almacen():
+def eliminar_almacen(inventarios):
 
-    pass
+    mostrar_almacenes(inventarios)
+
+    while True:
+
+        codigo_input = input('Introduce el código del almacén que quieres eliminar (0 para cancelar): ')
+
+        if codigo_input == '0':
+
+            print('Operación cancelada.')
+            return '0'
+        
+        for inventario in inventarios:
+
+            if codigo_input == inventario.codigo:
+
+                confirmacion = input(f'¿Estás seguro de que quieres eliminar el almacén [{inventario.codigo}] y todos sus items? Esta acción no se puede deshacer. (s/n): ')
+
+                if confirmacion.lower() == 's':
+
+                    inventario_eliminado = copy.deepcopy(inventario) # Para mostrarlo en la auditoría
+
+                    inventarios.remove(inventario)
+                    print(f'Almacén [{inventario.codigo}] eliminado.')
+
+
+                    return inventario_eliminado
+                
+                
+                else:
+
+                    print('Operación cancelada.')
+                    return '0'
+        
+        print('Código no encontrado, vuelva a intentarlo.')

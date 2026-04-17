@@ -88,7 +88,14 @@ if __name__ == '__main__':
 
                         case '4':   # Eliminar almacen
 
-                            pass
+                            conclusion_operacion = eliminar_almacen(inventarios)
+
+                            if type(conclusion_operacion) == Inventario:
+
+                                # Si la función devuelve un inventario, es que se ha borrado correctamente,
+                                # solo que ha pasado una copia para mostrarla por auditoría
+
+                                escribir_eliminado_almacen(conclusion_operacion)
 
 
                         case '0':   # Volver al menu principal

@@ -31,6 +31,9 @@ class Registro():
 # A partir de aquí estarán las funciones de escritura en auditoria.txt #
 ########################################################################
 
+#####################################
+#       Funciones de almacen        #
+#####################################
 
 def escribir_creado_almacen(codigo):
 
@@ -40,3 +43,12 @@ def escribir_creado_almacen(codigo):
     with open('logs/auditoria.txt', 'a') as archivo:
 
         archivo.write(f'[{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] - Creado nuevo almacen con codigo [{codigo}]\n')
+
+
+def escribir_eliminado_almacen(inventario):
+
+    with open('logs/auditoria.txt', 'a') as archivo:
+
+        mensaje_inicial = f'[{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] - Almacén eliminado:\n'
+
+        archivo.write(f'{mensaje_inicial}{str(inventario)}\n')
