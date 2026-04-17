@@ -1,5 +1,4 @@
 from ..item import Item
-from ..almacen import Inventario
 from .lote import Lote
 
 from funciones import *

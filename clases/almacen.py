@@ -2,6 +2,10 @@
 # invetarios, cada uno con un nombre y una lista de items
 from funciones import *
 
+from items.consumible import Consumible
+from items.equipo import Equipo
+
+
 class Inventario():
 
     def __init__(self, codigo):
@@ -21,9 +25,32 @@ class Inventario():
                 self.items.remove(item)
 
 
+    def limpieza_inventario(self):
+
+        # Elimina items caducados o en mal estado
+        items_eliminados = [] # Para mostrarlo en la auditoría
+
+        for item in self.items:
+
+            if isinstance(item[0], Consumible):
+
+                if item[0].__lote.esta_caducado():
+
+                    items_eliminados.append(item[0])
+                    self.items.remove(item)
+
+
+            elif isinstance(item[0], Equipo):
+
+                if item[0].estado == False: # Defectuoso
+
+                    items_eliminados.append(item[0])
+                    self.items.remove(item)
+
+
     def __str__(self):
 
-        frase_inicial = f'\nInventario [{self.codigo}] con {len(self.items)} items:\n\n'
+        frase_inicial = f'\nInventario [{self.codigo}] con {len(self.items)} items\n\n'
 
         frase_items = ''
 

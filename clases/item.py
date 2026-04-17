@@ -1,5 +1,4 @@
 from abc import ABC, abstractmethod
-from .almacen import Inventario
 
 from funciones import *
 
