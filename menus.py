@@ -35,10 +35,9 @@ def menu_almacen():
 
     print(
         f'\n\t[1] -\tCrear nuevo almacen\n'
-        f'\t[2] -\tVer almacenes\n'
+        f'\t[2] -\tVer y acceder a almacenes\n'
         f'\t[3] - \tJuntar almacenes\n'
         f'\t[4] -\tEliminar almacen\n'
-        f'\t[5] -\tAcceder a almacen\n'
         f'\t[0] -\tVolver al menu principal\n'
     )
 
@@ -86,4 +85,49 @@ def menu_sesiones():
     )
 
     # Pedir la instrucción
+    return pedir_num('\nAcceder a: ')
+
+
+####################################################
+# A partir de aquí estaría la tercera capa de menu #
+####################################################
+
+
+def menu_traer_equipamiento():
+
+    print(
+        f'\n\t[1] - \tDefinir equipamiento genérico\n'
+        f'\t[2] - \tDefinir centrifugadora\n'
+        f'\t[3] - \tDefinir equipamiento de medida\n'
+        f'\t[4] - \tDefinir equipamiento térmico\n'
+        f'\t[5] - \tTraer equipamiento anteriormente definido\n'
+        f'\t[0] - \tVolver atras\n'
+    )
+
+    # Pedir la instrucción
+    return pedir_num('\nAcceder a: ')
+
+
+
+def menu_traer_consumibles():
+
+
+    print(
+        f'\n\t[1] - \tDefinir nuevo lote\n'
+        f'\t[2] - \tTraer lote anteriormente definido\n'
+        f'\t[0] - \tVolver atras\n'
+    )
+
+
+    # Pedir la instrucción
+    return pedir_num('\nAcceder a: ')
+
+
+def menu_acceso_almacen():
+
+    print(f'\n\t[1] - \tAcceder a un almacen\n'
+          f'\t[2] - \tVer almacen\n'
+          f'\t[0] - \tVolver atras\n'
+    )
+
     return pedir_num('\nAcceder a: ')

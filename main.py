@@ -28,7 +28,7 @@ if __name__ == '__main__':
 
 
     equipos = laboratorio['equipos']
-    consumibles = laboratorio['consumibles']
+    lotes = laboratorio['lotes']
 
     
 
@@ -62,9 +62,29 @@ if __name__ == '__main__':
 
                             pass
 
-                        case '2':   # Ver almacenes
+                        case '2':   # Acceder y ver almacenes
 
-                            pass
+                            # Previamente se mostraran los almacenes disponibles
+
+                            print('Almacenes disponibles:')
+
+                            
+
+                            instruccion_acceso_almacen = ''
+
+                            while instruccion_acceso_almacen != '0':
+
+                                instruccion_acceso_almacen = menu_acceso_almacen()
+
+                                match instruccion_acceso_almacen:
+
+                                    case '1':   # Acceder a un almacen
+
+                                        pass
+
+                                    case '2':   # Ver almacen
+
+                                        pass
 
                         case '3':   # Juntar almacenes
 
@@ -74,10 +94,6 @@ if __name__ == '__main__':
 
                             pass
 
-                        case '5':   # Acceder a almacen
-                            
-
-                            pass
 
                         case '0':   # Volver al menu principal
 
@@ -102,7 +118,46 @@ if __name__ == '__main__':
 
                         case '1':   # Traer nuevo equipamiento
 
-                            pass
+                            instruccion_nuevo_equipamiento = ''
+
+                            while instruccion_nuevo_equipamiento != '0':
+
+                                instruccion_nuevo_equipamiento = menu_traer_equipamiento()
+
+                                match instruccion_nuevo_equipamiento:
+
+                                    case '1':   # Definir equipamiento genérico
+
+                                        pass
+
+
+                                    case '2':   # Definir centrifugadora
+
+                                        pass
+
+
+                                    case '3':   # Definir equipamiento de medida
+
+                                        pass
+
+                                    case '4':   # Definir equipamiento térmico
+
+                                        pass
+
+
+                                    case '5':   # Traer equipamiento anteriormente definido
+
+                                        pass
+
+
+                                    case '0':   # Volver al menu anterior
+
+                                        print('Volviendo al menu anterior...')
+
+                                    case _:
+
+                                        print('Instrucción no válida, vuelva a intentarlo')
+
 
                         case '2':   # Mover equipamiento
 
@@ -135,7 +190,34 @@ if __name__ == '__main__':
 
                         case '1':   # Traer nuevo lote
 
-                            pass
+                            instruccion_nuevo_lote = ''
+
+                            while instruccion_nuevo_lote != '0':
+
+                                instruccion_nuevo_lote = menu_traer_consumibles()
+
+                                match instruccion_nuevo_lote:
+
+                                    case '1':   # Definir lote
+
+                                        pass
+
+                                    case '2':   # Traer lote anteriormente definido
+
+                                        # Habrá que cambiar las fechas y código
+                                        # solo se copiara los consumibles del lote
+
+                                        pass
+
+                                    case '0':  # Volver al menu anterior
+
+                                        print('Volviendo al menu anterior...')
+
+                                    case _:
+
+                                        print('Instrucción no válida, vuelva a intentarlo')
+
+
 
                         case '2':   # Tirar lote
 
@@ -197,7 +279,8 @@ if __name__ == '__main__':
         "lista_inventarios": inventarios,
         "lista_sesiones": sesiones,
         "equipos": equipos,
-        "consumibles": consumibles
+        "lotes": lotes
     }
+
 
     guardar_laboratorio(laboratorio_a_guardar)
