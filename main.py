@@ -5,8 +5,7 @@ from menus import *
 
 # Importar clases
 
-from clases import Lote, Registro, Inventario, Equipo, EquipoMedida, EquipoTermico, Centrifugadora,\
-    Consumible, ReactivoLiquido, ReactivoSolido
+from clases import *
 
 
 ####################################################
