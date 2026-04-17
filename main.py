@@ -59,8 +59,12 @@ if __name__ == '__main__':
 
                         case '1':   # Crear nuevo almacen
 
-                            nuevo_almacen = crear_almacen()
-                            inventarios.append(nuevo_almacen)
+                            nuevo_almacen = crear_almacen(inventarios)
+                            
+                            if nuevo_almacen is not None:
+
+                                inventarios.append(nuevo_almacen)
+
 
                         case '2':   # Acceder y ver almacenes
 
@@ -72,17 +76,8 @@ if __name__ == '__main__':
 
                             while instruccion_acceso_almacen != '0':
 
-                                instruccion_acceso_almacen = menu_acceso_almacen()
+                                instruccion_acceso_almacen = acceso_almacen(inventarios)
 
-                                match instruccion_acceso_almacen:
-
-                                    case '1':   # Acceder a un almacen
-
-                                        pass
-
-                                    case '2':   # Ver almacen
-
-                                        pass
 
                         case '3':   # Juntar almacenes
 

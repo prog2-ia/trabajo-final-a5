@@ -51,6 +51,8 @@ class Inventario():
                     items_eliminados.append(item[0])
                     self.items.remove(item)
 
+        return items_eliminados
+
 
     def __str__(self):
 
@@ -68,63 +70,101 @@ class Inventario():
 # Pasamos una lista de inventarios
 def mostrar_almacenes(inventarios):
 
-    print(inventario for inventario in inventarios)
+    for inventario in inventarios:
+
+        print(inventario)
 
 
-# Se le pasa la lista de inventarios ya creados para comprobar que no hayan repetidos
+
 def crear_almacen(inventarios):
 
-    codigo_valido = False
+    print('El código de un almacen debe ser 2 letras mayúsculas seguidas de 3 dígitos. Introduce 0 para cancelar la operación.')
 
-    while not codigo_valido:
+    # El while True crear un bucle infinito que solo romperá un return
+    while True:
 
-        codigo = input('Introduce el código del nuevo almacén: ')
+        codigo_input = input('Introduce el código del nuevo almacén: ')
 
-        codigo_valido = verificar_codigo_almacen(codigo)    # Válidamos el código introducido por el usuario
 
-        if codigo_valido == '-1':
+        try:
 
-            print('Operación cancelada.')
-            return None
-    
-    
-        if codigo in [inventario.codigo for inventario in inventarios]:
+            codigo = verificar_codigo_almacen(codigo_input)
 
-            print('Ya existe un almacén con ese código. Operación cancelada.')
-            return None
+            if codigo == '-1':
+
+                print('Operación cancelada.')
+                return None
+
+
+            if codigo in [inventario.codigo for inventario in inventarios]:
+
+                print('Ya existe un almacén con ese código. Operación cancelada.')
+                return None
+            
+
+            print(f'Creando nuevo almacén con código [{codigo}]... ')
+            return Inventario(codigo)
         
 
-        if not codigo_valido:
+        except ValueError as e:
 
-            print('Código no válido. El código debe ser 2 letras mayúsculas seguidas de 3 dígitos. Inténtalo de nuevo o introduce 0 para cancelar.')
-    
-
-    print(f'Creando nuevo almacén con código [{codigo}]... ')
-    return Inventario(codigo)
+            print(f'\n{e}\n')
+            # Imprime el mensaje hecho en la función verificar_codigo_almacen y vuelve a pedir el código
 
 
 
 # El código de un almacen será 2 letras mayúsculas seguidas de 3 dígitos
+# Devolvemos -1 cuando el usuario quiera cancelar la operación
 def verificar_codigo_almacen(codigo):
 
-    if codigo == '0': # Para cancelar cualquier operación...
+    match codigo:
 
-        return '-1'
-    
-    if len(codigo) != 5:
+        case '0':
 
-        return False
-    
-    if not codigo[:2].isalpha():
+            return '-1'
+        
+        case _:
 
-        return False
-    
-    if not codigo[:2].isupper():
+            if len(codigo) == 5:
 
-        return False
-    
-    if not codigo[2:].isdigit():
+                if codigo[:2].isalpha() and codigo[:2].isupper() and codigo[2:].isdigit():
 
-        return False
+                    return codigo
+                
+            raise ValueError('Código no válido. El código debe ser 2 letras mayúsculas seguidas de 3 dígitos. Inténtalo de nuevo o introduce 0 para cancelar.')
+
+
+def acceso_almacen(inventarios):
+
+    while True:
+
+        accedido = False
+
+        # Menu de lo para acceder a un almacen concreto
+        print(f'\n\t[Código] - \tAcceder a un almacen\n'
+            f'\t[0] - \tVolver atras\n'
+        )
+
+        # Tiene que tomar un código de almacen o 0 para volver atrás
+        instruccion = input('\nAcceder a: ')
+
+        for inventario in inventarios:
+
+            if instruccion == inventario.codigo:
+
+                print(inventario)
+                accedido = True
+
+
+        if instruccion == '0':
+
+            print('Volviendo atrás...')
+            return '0'
+        
+        
+        if not accedido:
+
+            print('Código no encontrado, vuelva a intentarlo.')
+
+
     
-    return True

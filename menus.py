@@ -121,13 +121,3 @@ def menu_traer_consumibles():
 
     # Pedir la instrucción
     return pedir_num('\nAcceder a: ')
-
-
-def menu_acceso_almacen():
-
-    print(f'\n\t[1] - \tAcceder a un almacen\n'
-          f'\t[2] - \tVer almacen\n'
-          f'\t[0] - \tVolver atras\n'
-    )
-
-    return pedir_num('\nAcceder a: ')
