@@ -19,7 +19,9 @@ def cargar_laboratorio():
         # Si no hay archivo, creamos la estructura base vacía
         return {
             "lista_inventarios": [],
-            "lista_sesiones": []
+            "lista_sesiones": [],
+            "equipos": [],
+            "consumibles": []
         }
 
 def guardar_laboratorio(datos_a_guardar):

@@ -19,9 +19,19 @@ if __name__ == '__main__':
     #"lista_inventarios": [],   # Lista con las diferentes instancias de las clases
     #"lista_sesiones": []
 
+
     inventarios = laboratorio['lista_inventarios']
     sesiones = laboratorio['lista_sesiones']
+
+    # Se guardaran los equipos y consumibles en listas para facilitar después de que se instancien
+    # por primera vez
+
+
+    equipos = laboratorio['equipos']
+    consumibles = laboratorio['consumibles']
+
     
+
     print('Bienvenido al programa de gestión de laboratorio')
 
     # El flujo será constituido por bucles while
@@ -185,7 +195,9 @@ if __name__ == '__main__':
 
     laboratorio_a_guardar = {
         "lista_inventarios": inventarios,
-        "lista_sesiones": sesiones
+        "lista_sesiones": sesiones,
+        "equipos": equipos,
+        "consumibles": consumibles
     }
 
     guardar_laboratorio(laboratorio_a_guardar)
