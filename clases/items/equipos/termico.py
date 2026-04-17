@@ -11,4 +11,19 @@ class EquipoTermico(Equipo):
         self.temp_min = temp_min
 
     def __str__(self):
-        return super().__str__() + f" | Rango: {self.temp_min}º a {self.temp_max}º"
+        return super().__str__() + f" | Rango [{self.temp_min} °C, {self.temp_max} °C]"
+    
+    def __eq__(self, other):
+
+        if isinstance(other, EquipoTermico):
+
+            return super().__eq__(other) and self.temp_max == other.temp_max and self.temp_min == other.temp_min
+        
+        return False
+    
+    
+def verificar_rango_temperatura(temp_max, temp_min):
+
+    if temp_max <= temp_min:
+
+        raise ValueError("La temperatura máxima no puede ser menor que la mínima.")

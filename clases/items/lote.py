@@ -16,6 +16,8 @@ class Lote():
         Lote.lotes.append(self)
 
 
+    # Como no se puede modificar el id ni la fecha, no habrá setter, solo getter
+    
     @property   # Getter del id del lote
     def id_lote(self):
         return self.__id_lote
@@ -28,3 +30,11 @@ class Lote():
 
     def esta_caducado(self):
         return date.today() > self.fecha_vencimiento
+    
+    def __eq__(self, other):
+
+        if isinstance(other, Lote):
+
+            return self.id_lote == other.id_lote
+        
+        return False

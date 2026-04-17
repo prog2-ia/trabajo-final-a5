@@ -11,3 +11,11 @@ class Item(ABC):
 
     def __str__(self):
         return f"Item: {self.nombre}"
+    
+    def __eq__(self, other):
+
+        if isinstance(other, Item):
+
+            return self.nombre.lower() == other.nombre.lower()
+        
+        return False

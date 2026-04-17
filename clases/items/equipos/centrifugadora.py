@@ -11,3 +11,11 @@ class Centrifugadora(Equipo):
 
     def __str__(self):
         return super().__str__() + f" | RPM Max: {self.rpm_max}"
+    
+    def __eq__(self, other):
+
+        if isinstance(other, Centrifugadora):
+
+            return super().__eq__(other) and self.rpm_max == other.rpm_max
+        
+        return False

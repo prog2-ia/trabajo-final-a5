@@ -182,6 +182,7 @@ if __name__ == '__main__':
 
                 print('Instrucción no válida, vuelva a intentarlo')
 
+
     laboratorio_a_guardar = {
         "lista_inventarios": inventarios,
         "lista_sesiones": sesiones
