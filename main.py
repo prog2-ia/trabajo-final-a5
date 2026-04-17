@@ -16,8 +16,11 @@ if __name__ == '__main__':
 
     laboratorio = cargar_laboratorio()  # Diccionario con los almacenes y sesiones guardadas en listas
 
-    #"lista_inventarios": [],
+    #"lista_inventarios": [],   # Lista con las diferentes instancias de las clases
     #"lista_sesiones": []
+
+    inventarios = laboratorio['lista_inventarios']
+    sesiones = laboratorio['lista_sesiones']
     
     print('Bienvenido al programa de gestión de laboratorio')
 
@@ -179,16 +182,9 @@ if __name__ == '__main__':
 
                 print('Instrucción no válida, vuelva a intentarlo')
 
+    laboratorio_a_guardar = {
+        "lista_inventarios": inventarios,
+        "lista_sesiones": sesiones
+    }
 
-
-    invetario_prueba = Inventario('Almacen de prueba')
-    hola = Equipo('hola', invetario_prueba, 1, 0)
-    xd = EquipoMedida('xd', invetario_prueba, 1, 0, 0.1)
-    comida = Consumible('comida', invetario_prueba, 1, '2024-12-31')
-    gg = Lote('lote1', '2024-12-31')
-    cc = Consumible('cc', invetario_prueba, 1, gg)
-    l = EquipoTermico('termico', invetario_prueba, 1, 0, 20, 12)
-    c = Centrifugadora('centrifugadora', invetario_prueba, 1, 0, 10000)
-    r = ReactivoLiquido('reactivo liquido', invetario_prueba, 1, gg, 0.5)
-    s = ReactivoSolido('reactivo solido', invetario_prueba, 1, gg, 0.5)
-    prueba = Registro('registro de prueba', [hola, xd, comida, cc, l, c, r, s])
+    guardar_laboratorio(laboratorio_a_guardar)
