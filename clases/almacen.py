@@ -20,6 +20,7 @@ class Inventario():
         # Los items se guardaran en una tupla, el objeto item y la cantidad
 
 
+
     def __str__(self):
 
         frase_inicial = f'\n[{self.codigo}] con {len(self.items)} items\n\n'
@@ -70,6 +71,8 @@ class Inventario():
                     self.items.remove(item)
 
         return items_eliminados
+    
+    
 
 
 
@@ -149,6 +152,9 @@ def verificar_codigo_almacen(codigo):
             raise ValueError('Código no válido. El código debe ser 2 letras mayúsculas seguidas de 3 dígitos. Inténtalo de nuevo o introduce 0 para cancelar.')
 
 
+
+
+
 def acceso_almacen(inventarios):
 
     while True:
@@ -182,6 +188,10 @@ def acceso_almacen(inventarios):
             print('Código no encontrado, vuelva a intentarlo.')
 
 
+
+
+
+# Tengo que comentar esta función
 def eliminar_almacen(inventarios):
 
     mostrar_almacenes(inventarios)
@@ -218,3 +228,42 @@ def eliminar_almacen(inventarios):
                     return '0'
         
         print('Código no encontrado, vuelva a intentarlo.')
+
+
+
+
+def anadir_item(item_cantidad: tuple, inventarios: list):
+
+    mostrar_almacenes()
+
+
+    print(f'\n\t[Código] - \tAñadir al almacen...\n'
+            f'\t[0] - \tCancelar operación\n'
+        )
+
+
+    while True:
+
+        # Tiene que tomar un código de almacen o 0 para volver atrás
+        codigo_input = input('\nAñadir a: ')
+
+
+        for inventario in inventarios:
+
+            if inventario.codigo == codigo_input:
+
+                inventario.anadir_item_seguro(item_cantidad)
+
+                return item_cantidad, inventario.codigo 
+                # Hacemos un return para triggear el mensaje de auditoría y para la función
+
+
+        if codigo_input == '0':
+
+            print('Cancelando operación...')
+            return None
+        
+        else:
+
+            print('Código no válido. Vuelva a intentarlo.')
+    

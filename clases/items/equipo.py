@@ -44,7 +44,7 @@ def definir_equipamiento(equipos: list) -> Equipo:
 
     for equipo in equipos:
 
-        if equipo.nombre.lower() == nombre.lower():
+        if equipo.nombre.lower() == nombre:
 
             print('Equipo anteriormente definido. Extrayendo copia...')
 
@@ -54,7 +54,8 @@ def definir_equipamiento(equipos: list) -> Equipo:
 
         return '-1' 
     
-    return Equipo(nombre)
+    return Equipo(nombre.lower())   # Todos los nombres serán puesto a lower
+                                    # para evitar errores
 
 
 # En esta función controlamos la cantidad que se importara
