@@ -29,7 +29,7 @@ class Inventario():
 
         for item in self.items:
 
-            frase_items += f'\t- {str(item[0])}\n\t - Uds. disponibles: {item[1]}\n\n'
+            frase_items += f'\t- {str(item[0])}\n\t\t - Uds. disponibles: {item[1]}\n\n'
 
         return frase_inicial + frase_items
 
@@ -75,13 +75,22 @@ class Inventario():
     
     def anadir_item_al_inventario(self, item_cantidad):
 
+        terminado = False
+
         for indice, item in enumerate(self.items):
 
             # Comprueba si ya existía esa instancia para solo añadir
             # la cantidad
             if item[0] == item_cantidad[0]:
 
-                self.items[indice][1] += item_cantidad[1]
+                self.items[indice] = (item_cantidad[0], self.items[indice][1] + item_cantidad[1])
+                terminado = True
+
+        if not terminado:
+
+            self.items.append(item_cantidad)
+
+
 
                 
 
