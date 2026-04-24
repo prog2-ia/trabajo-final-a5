@@ -262,7 +262,7 @@ def anadir_item(item_cantidad: tuple, inventarios: list):
 
                 inventario.anadir_item_al_inventario(item_cantidad)
 
-                return item_cantidad, inventario.codigo 
+                return (item_cantidad, inventario.codigo) 
                 # Hacemos un return para triggear el mensaje de auditoría y para la función
 
 

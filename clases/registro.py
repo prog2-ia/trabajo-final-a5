@@ -52,3 +52,20 @@ def escribir_eliminado_almacen(inventario):
         mensaje_inicial = f'[{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] - Almacén eliminado:\n'
 
         archivo.write(f'{mensaje_inicial}{str(inventario)}\n')
+
+
+###################################
+#       Funciones de equipo       #
+###################################
+
+def escribir_importar_equipo(equipo_cantidad_inventario: tuple):
+
+    equipo   = equipo_cantidad_inventario[0][0] # Otra tupla de (equipo, cantidad)
+    cantidad = equipo_cantidad_inventario[0][1]
+    codigo   = equipo_cantidad_inventario[1]
+
+    with open('logs/auditoria.txt', 'a') as archivo:
+
+        mensaje_inicial = f'[{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] - Equipo ({cantidad} uds.) añadido al inventario [{codigo}]:\n'
+
+        archivo.write(f'{mensaje_inicial}{str(equipo)}\n')

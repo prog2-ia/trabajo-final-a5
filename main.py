@@ -140,7 +140,7 @@ if __name__ == '__main__':
 
                                             if not conclusion_operacion is None:
 
-                                                pass
+                                                escribir_importar_equipo(conclusion_operacion)
 
 
                                     case '2':   # Definir centrifugadora
