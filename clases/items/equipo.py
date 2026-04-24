@@ -70,10 +70,10 @@ def importar_equipamiento(equipos) -> tuple:
         return None
 
 
-    copias = pedir_int('(-1) para cancelar la operación | Introduzca la cantidad: ')
+    copias = pedir_int('(0/-1) para cancelar la operación | Introduzca la cantidad: ')
 
 
-    if copias == '-1':
+    if copias == '-1' or copias == 0:
 
         print('Cancelando operación...')
         return None

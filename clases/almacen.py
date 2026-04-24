@@ -94,11 +94,11 @@ def mostrar_almacenes(inventarios):
     
     else:
 
-        print('Almacenes disponibles:')
+        print('\nAlmacenes disponibles:')
 
         for inventario in inventarios:
 
-            print(f'\n[{inventario.codigo}] con {len(inventario.items)} items\n\n')
+            print(f'[{inventario.codigo}] con {len(inventario.items)} items')
 
 
 
@@ -242,7 +242,7 @@ def eliminar_almacen(inventarios):
 
 def anadir_item(item_cantidad: tuple, inventarios: list):
 
-    mostrar_almacenes()
+    mostrar_almacenes(inventarios)
 
 
     print(f'\n\t[Código] - \tAñadir al almacen...\n'
@@ -261,6 +261,8 @@ def anadir_item(item_cantidad: tuple, inventarios: list):
             if inventario.codigo == codigo_input:
 
                 inventario.anadir_item_al_inventario(item_cantidad)
+
+                print('\nItem importado de forma exitosa.\n')
 
                 return (item_cantidad, inventario.codigo) 
                 # Hacemos un return para triggear el mensaje de auditoría y para la función

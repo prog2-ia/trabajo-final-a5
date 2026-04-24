@@ -134,12 +134,13 @@ if __name__ == '__main__':
 
                                         equipamiento_definido = importar_equipamiento(equipos)
 
+
                                         if not equipamiento_definido is None:
 
                                             conclusion_operacion = anadir_item(equipamiento_definido, inventarios)
 
                                             if not conclusion_operacion is None:
-
+                                                
                                                 escribir_importar_equipo(conclusion_operacion)
 
 

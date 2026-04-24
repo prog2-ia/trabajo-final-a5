@@ -1,1 +1,3 @@
 [2026-04-17 17:42:32.647538] - Creado nuevo almacen con código [TD345]
+[2026-04-24 17:41:42] - Equipo (3 uds.) añadido al inventario [AB123]:
+Item: laser x02 | Estado: Buen estado

@@ -56,10 +56,16 @@ def pedir_num(frase):
 
 def pedir_int(frase):
 
-    numero = pedir_num(frase)
+    print(frase, end='')
+    numero = input()
 
     if numero == '-1':
 
-        return -1
+        return '-1'
     
-    return int(numero)
+    if numero.isdigit():
+
+        return int(numero)
+    
+    
+    return pedir_int(frase)
