@@ -15,11 +15,12 @@ En las clases
     en las clases que no tenga
 
 
-En todo el código
+En todo el código   -> Lo de la clase del 20/04
 
     - Poner la sugerencia de tipos, si no sabes que poner, no pongas nada
 
     - Correr el comando de mypy y corrergir posibles errores
+
 
 
 Hacer README.md
