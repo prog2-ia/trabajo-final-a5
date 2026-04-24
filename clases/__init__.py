@@ -5,7 +5,7 @@ from .registro import Registro, escribir_creado_almacen, escribir_eliminado_alma
 
 # Subsclases de Item
 
-from .items.equipo import Equipo, impotar_equipamiento
+from .items.equipo import Equipo, importar_equipamiento
 
 from .items.equipos.termico import EquipoTermico
 from .items.equipos.medida import EquipoMedida

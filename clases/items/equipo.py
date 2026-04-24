@@ -60,7 +60,7 @@ def definir_equipamiento(equipos: list) -> Equipo:
 
 # En esta función controlamos la cantidad que se importara
 
-def impotar_equipamiento(equipos) -> tuple:
+def importar_equipamiento(equipos) -> tuple:
 
     equipo = definir_equipamiento(equipos)
 

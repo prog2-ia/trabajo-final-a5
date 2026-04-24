@@ -131,7 +131,16 @@ if __name__ == '__main__':
 
                                     case '1':   # Definir equipamiento genérico
 
-                                        pass
+
+                                        equipamiento_definido = importar_equipamiento(equipos)
+
+                                        if not equipamiento_definido is None:
+
+                                            conclusion_operacion = anadir_item(equipamiento_definido, inventarios)
+
+                                            if not conclusion_operacion is None:
+
+                                                pass
 
 
                                     case '2':   # Definir centrifugadora
