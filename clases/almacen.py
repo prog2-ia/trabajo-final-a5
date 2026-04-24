@@ -19,6 +19,19 @@ class Inventario():
 
         # Los items se guardaran en una tupla, el objeto item y la cantidad
 
+
+    def __str__(self):
+
+        frase_inicial = f'\n[{self.codigo}] con {len(self.items)} items\n\n'
+
+        frase_items = ''
+
+        for item in self.items:
+
+            frase_items += f'\t- {str(item[0])}\n\t - Uds. disponibles: {item[1]}\n\n'
+
+        return frase_inicial + frase_items
+
     @property
     def codigo(self):
         return self.__codigo
@@ -58,18 +71,6 @@ class Inventario():
 
         return items_eliminados
 
-
-    def __str__(self):
-
-        frase_inicial = f'\n[{self.codigo}] con {len(self.items)} items\n\n'
-
-        frase_items = ''
-
-        for item in self.items:
-
-            frase_items += f'\t- {str(item[0])}\n\t - Uds. disponibles: {item[1]}\n\n'
-
-        return frase_inicial + frase_items
 
 
 

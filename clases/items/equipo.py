@@ -12,7 +12,8 @@ class Equipo(Item):
 
         # True -> Buen estado | False -> Defectuoso
 
-        self.estado = estado
+        self.estado = True
+        # El estado PODRÁ cambiar después de una sesión
 
 
     def __str__(self):
@@ -30,3 +31,51 @@ class Equipo(Item):
         
         return False
     
+
+# equipos es la lista extraída de nuestro archivo pickle
+def definir_equipamiento(equipos: list) -> Equipo:
+
+    # Se pasa la lista con equipo anteriormente definido
+
+    nombre = input('(-1) para cancelar la operación | Introduzca el nombre del equipo: ')
+
+    # Comprobramos que el nombre introducido forma parte o no
+    # de equipamiento anteriormente definido
+
+    for equipo in equipos:
+
+        if equipo.nombre.lower() == nombre.lower():
+
+            print('Equipo anteriormente definido. Extrayendo copia...')
+
+            return equipo
+
+    if nombre == '-1':
+
+        return '-1' 
+    
+    return Equipo(nombre)
+
+
+# En esta función controlamos la cantidad que se importara
+
+def impotar_equipamiento(equipos) -> tuple:
+
+    equipo = definir_equipamiento(equipos)
+
+    if equipo == '-1':
+
+        print('Cancelando operación...')
+        return None
+
+
+    copias = pedir_int('(-1) para cancelar la operación | Introduzca la cantidad: ')
+
+
+    if copias == '-1':
+
+        print('Cancelando operación...')
+        return None
+    
+
+    return (equipo, copias) # Tupla para añadir al inventario
