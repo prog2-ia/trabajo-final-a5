@@ -73,9 +73,17 @@ class Inventario():
         return items_eliminados
     
     
+    def anadir_item_al_inventario(self, item_cantidad):
 
+        for indice, item in enumerate(self.items):
 
+            # Comprueba si ya existía esa instancia para solo añadir
+            # la cantidad
+            if item[0] == item_cantidad[0]:
 
+                self.items[indice][1] += item_cantidad[1]
+
+                
 
 # Pasamos una lista de inventarios
 def mostrar_almacenes(inventarios):
@@ -252,7 +260,7 @@ def anadir_item(item_cantidad: tuple, inventarios: list):
 
             if inventario.codigo == codigo_input:
 
-                inventario.anadir_item_seguro(item_cantidad)
+                inventario.anadir_item_al_inventario(item_cantidad)
 
                 return item_cantidad, inventario.codigo 
                 # Hacemos un return para triggear el mensaje de auditoría y para la función

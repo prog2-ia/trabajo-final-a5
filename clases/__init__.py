@@ -1,11 +1,11 @@
-from .almacen import Inventario, mostrar_almacenes, crear_almacen, acceso_almacen, eliminar_almacen
+from .almacen import Inventario, mostrar_almacenes, crear_almacen, acceso_almacen, eliminar_almacen, anadir_item
 from .items.lote import Lote
 from .item import Item
 from .registro import Registro, escribir_creado_almacen, escribir_eliminado_almacen
 
 # Subsclases de Item
 
-from .items.equipo import Equipo
+from .items.equipo import Equipo, impotar_equipamiento
 
 from .items.equipos.termico import EquipoTermico
 from .items.equipos.medida import EquipoMedida
