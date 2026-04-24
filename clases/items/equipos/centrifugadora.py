@@ -4,9 +4,9 @@ from funciones import *
 
 class Centrifugadora(Equipo):
 
-    def __init__(self, nombre, estado, rpm_max: int):
+    def __init__(self, nombre, rpm_max: int):
 
-        super().__init__(nombre, estado)
+        super().__init__(nombre)
         self.rpm_max = rpm_max
 
     def __str__(self):

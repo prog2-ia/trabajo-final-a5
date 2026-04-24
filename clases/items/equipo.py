@@ -6,7 +6,7 @@ class Equipo(Item):
 
     dicc_estados = {True: "Buen estado", False: "Defectuoso"}
 
-    def __init__(self, nombre: str, estado: bool):
+    def __init__(self, nombre: str):
 
         super().__init__(nombre)
 

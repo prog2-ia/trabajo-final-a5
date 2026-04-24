@@ -4,9 +4,9 @@ from funciones import *
 
 class EquipoMedida(Equipo):
 
-    def __init__(self, nombre, estado, error_medida: float):
+    def __init__(self, nombre, error_medida: float):
         
-        super().__init__(nombre, estado)
+        super().__init__(nombre)
         self.error_medida = error_medida
 
 
