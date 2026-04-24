@@ -1,14 +1,25 @@
-Este fichero se borrara cuando se entregue el proyecto final
 
--   Menus de control para el main
-    Se haran con una forma recursiva
+En funciones.py
 
--   Crear otras clases hijas:
+    - Funciones de validación de entrada
 
-        Equipamiento: EquipoMedida, EquipoTermico, Centrifugadora
+        pedir_fecha() -> Que pida un texto y compruebe que tiene formato YYYY-MM-DD
 
-        Consumibles: ReactivoLiquido, ReactivoSolido
+        pedir_texto_no_vacio() -> Que pida un input y haga un while 
+        que no te deje avanzar si el usuario solo pulsa Enter sin escribir nada.
 
--   Crear clase Registro
 
-    En esta clase se montara los textos que se pondrán en auditoria.txt
+En las clases
+
+    - Comprobar que todos el método __str__ este hecho correctamente y hacerlo
+    en las clases que no tenga
+
+
+En todo el código
+
+    - Poner la sugerencia de tipos, si no sabes que poner, no pongas nada
+
+    - Correr el comando de mypy y corrergir posibles errores
+
+
+Hacer README.md
