@@ -45,15 +45,29 @@ if __name__ == '__main__':
 
         match instruccion:
 
+
+
+
             case '1':   # Almacen
+
+
 
                 instruccion_almacen = ''
 
+
+
                 while instruccion_almacen != '0':
+
+
 
                     instruccion_almacen = menu_almacen()
 
+
+
+
                     match instruccion_almacen:
+
+
 
                         # A partir de esta capa de abstracción ya estarán las funcionalidades
 
@@ -66,6 +80,7 @@ if __name__ == '__main__':
 
                                 inventarios.append(nuevo_almacen)
                                 escribir_creado_almacen(nuevo_almacen.codigo)
+
 
 
                         case '2':   # Acceder y ver almacenes
@@ -86,6 +101,8 @@ if __name__ == '__main__':
 
                             pass
 
+
+
                         case '4':   # Eliminar almacen
 
                             conclusion_operacion = eliminar_almacen(inventarios)
@@ -96,6 +113,7 @@ if __name__ == '__main__':
                                 # solo que ha pasado una copia para mostrarla por auditoría
 
                                 escribir_eliminado_almacen(conclusion_operacion)
+
 
 
                         case '0':   # Volver al menu principal
@@ -139,9 +157,16 @@ if __name__ == '__main__':
 
                                             conclusion_operacion = anadir_item(equipamiento_definido, inventarios)
 
+
                                             if not conclusion_operacion is None:
                                                 
                                                 escribir_importar_equipo(conclusion_operacion)
+
+                                                # Se añade el equipamiento a la lista de equipamiento para futuras importaciones
+
+                                                if not equipamiento_definido[0] in equipos:
+
+                                                    equipos.append(equipamiento_definido[0])
 
 
                                     case '2':   # Definir centrifugadora
