@@ -77,7 +77,7 @@ if __name__ == '__main__':
 
                             nuevo_almacen = crear_almacen(inventarios)
                             
-                            if nuevo_almacen is not None:
+                            if isinstance(nuevo_almacen, Inventario):
 
                                 inventarios.append(nuevo_almacen)
                                 escribir_creado_almacen(nuevo_almacen.codigo)

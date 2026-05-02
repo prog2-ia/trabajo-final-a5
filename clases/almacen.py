@@ -37,6 +37,8 @@ class Inventario():
     def codigo(self):
         return self.__codigo
 
+
+
     def quitar_vacios(self):
 
         # Elimina los items con cantidad 0 del inventario
@@ -72,16 +74,16 @@ class Inventario():
 
         return items_eliminados
     
+
     # Se puede usar también para reducir las unidades, poniendo en la cantidad un número negativo
     # Por eso, se saneará la lista después para eliminar los items con cantidad 0
-    def anadir_item_al_inventario(self, item_cantidad):
+    def anadir_item_al_inventario(self, item_cantidad: tuple):
 
         terminado = False
 
         for indice, item in enumerate(self.items):
 
-            # Comprueba si ya existía esa instancia para solo añadir
-            # la cantidad
+            # Comprueba si ya existía esa instancia para solo añadir la cantidad
             if item[0] == item_cantidad[0]:
 
                 self.items[indice] = (item_cantidad[0], self.items[indice][1] + item_cantidad[1])
@@ -89,7 +91,7 @@ class Inventario():
 
         if not terminado:
 
-            self.items.append(item_cantidad)
+            self.items.append(item_cantidad) # Se añade en caso de que no exista tal instancia en el inventario
 
         self.quitar_vacios() # Para eliminar los items con cantidad 0 después de reducir unidades
 
@@ -153,7 +155,7 @@ def crear_almacen(inventarios):
 
             codigo = verificar_codigo_almacen(codigo_input)
 
-            if codigo == '-1':
+            if codigo is None:
 
                 print('Operación cancelada.')
                 return None
@@ -184,7 +186,7 @@ def verificar_codigo_almacen(codigo):
 
         case '0':
 
-            return '-1'
+            return None
         
         case _:
 
@@ -239,40 +241,47 @@ def acceso_almacen(inventarios):
 # Tengo que comentar esta función
 def eliminar_almacen(inventarios):
 
-    mostrar_almacenes(inventarios)
+    if inventarios: # Comprobar si hay inventarios disponibles para eliminar
 
-    while True:
+        mostrar_almacenes(inventarios)
 
-        codigo_input = input('Introduce el código del almacén que quieres eliminar (0 para cancelar): ')
+        while True:
 
-        if codigo_input == '0':
+            codigo_input = input('Introduce el código del almacén que quieres eliminar (0 para cancelar): ')
 
-            print('Operación cancelada.')
-            return '0'
-        
-        for inventario in inventarios:
+            if codigo_input == '0':
 
-            if codigo_input == inventario.codigo:
+                print('Operación cancelada.')
+                return None
+            
+            for inventario in inventarios:
 
-                confirmacion = input(f'¿Estás seguro de que quieres eliminar el almacén [{inventario.codigo}] y todos sus items? Esta acción no se puede deshacer. (s/n): ')
+                if codigo_input == inventario.codigo:
 
-                if confirmacion.lower() == 's':
+                    confirmacion = input(f'¿Estás seguro de que quieres eliminar el almacén [{inventario.codigo}] y todos sus items? Esta acción no se puede deshacer. (s para continuar): ')
 
-                    inventario_eliminado = copy.deepcopy(inventario) # Para mostrarlo en la auditoría
+                    if confirmacion.lower() == 's':
 
-                    inventarios.remove(inventario)
-                    print(f'Almacén [{inventario.codigo}] eliminado.')
+                        inventario_eliminado = copy.deepcopy(inventario) # Para mostrarlo en la auditoría
+
+                        inventarios.remove(inventario)
+                        print(f'Almacén [{inventario.codigo}] eliminado.')
 
 
-                    return inventario_eliminado
-                
-                
-                else:
+                        return inventario_eliminado
+                    
+                    
+                    else:
 
-                    print('Operación cancelada.')
-                    return '0'
-        
-        print('Código no encontrado, vuelva a intentarlo.')
+                        print('Operación cancelada.')
+                        return None
+            
+            print('Código no encontrado, vuelva a intentarlo.')
+
+
+    else:
+
+        print('No hay almacenes para eliminar.')
 
 
 
