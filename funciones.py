@@ -75,7 +75,7 @@ def pedir_int_entre_valores(frase, valor_min, valor_max):
 
     numero = pedir_int(frase)
 
-    if numero == '-1':
+    if numero is None:
 
         return None
     

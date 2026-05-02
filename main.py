@@ -177,7 +177,11 @@ if __name__ == '__main__':
 
                                     case '4':   # Definir equipamiento térmico
 
-                                        pass
+                                        conclusion_operacion = anadir_item(importar_equipamiento(definir_equipo_termico(equipos)), inventarios)
+
+                                        if type(conclusion_operacion) == tuple:
+
+                                            escribir_importar_equipo(conclusion_operacion)
 
 
                                     case '5':   # Traer equipamiento anteriormente definido
