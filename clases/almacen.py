@@ -284,7 +284,7 @@ def anadir_item(item_cantidad: tuple, inventarios: list):
     # importar equipamiento necesita de definir_equipamiento...etc.
 
 
-    if item_cantidad == '-1':
+    if item_cantidad is None:
         
         print('Operación cancelada...')
         return None

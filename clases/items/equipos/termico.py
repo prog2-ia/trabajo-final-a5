@@ -42,7 +42,7 @@ def definir_equipo_termico(equipos: list) -> EquipoTermico:
 
     if nombre == '-1':
 
-        return '-1' 
+        return None
 
     # Comprobramos que el nombre introducido forma parte o no
     # de equipamiento anteriormente definido

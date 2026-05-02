@@ -34,7 +34,7 @@ def definir_equipo_medida(equipos: list) -> EquipoMedida:
 
     if nombre == '-1':
 
-        return '-1' 
+        return None
 
     # Comprobramos que el nombre introducido forma parte o no
     # de equipamiento anteriormente definido
@@ -52,7 +52,7 @@ def definir_equipo_medida(equipos: list) -> EquipoMedida:
 
     if error_medida == '-1':
 
-        return '-1'
+        return None
     
     return EquipoMedida(nombre.lower(), error_medida)
         
@@ -67,7 +67,7 @@ def pedir_error_medida(frase: str) -> float:
 
         if error_medida == '-1':
 
-            return '-1'
+            return None
         
         try:
 

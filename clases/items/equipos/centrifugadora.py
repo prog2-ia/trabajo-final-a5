@@ -33,7 +33,7 @@ def definir_centrifugadora(equipos: list) -> Centrifugadora:
 
     if nombre == '-1':
 
-        return '-1' 
+        return None
 
     # Comprobramos que el nombre introducido forma parte o no
     # de equipamiento anteriormente definido
@@ -51,7 +51,6 @@ def definir_centrifugadora(equipos: list) -> Centrifugadora:
 
     if rpm_max == '-1':
 
-        print('Cancelando operación...')
-        return '-1'
+        return None
 
     return Centrifugadora(nombre.lower(), rpm_max)   # Todos los nombres serán puesto a lower
