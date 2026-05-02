@@ -33,6 +33,25 @@ def guardar_laboratorio(datos_a_guardar):
 
 ######################################################################
 
+# Se usa para navegar entre los menus
+def pedir_num(frase):
+
+    print(frase, end='')
+
+    numero = input()
+
+    # Comprueba que sea un número
+    if numero.isdigit():
+
+        return numero
+    
+        # Aunque se pida un número, se devuelve un str para evitar errores
+    
+    return None
+    
+    # Si el usuario no introduce un número, devolvemos -1
+    # El 0 está reservado para salir de capas de menu
+
 
 
 def pedir_int(frase):
