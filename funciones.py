@@ -56,19 +56,28 @@ def pedir_num(frase):
 
 def pedir_int(frase):
 
-    print(frase, end='')
-    numero = input()
+    while True:
 
-    if numero == '-1':
+        print(frase, end='')
+        numero = input()
 
-        return None
-    
-    if numero.isdigit():
+        if numero == '-1':
 
-        return int(numero)
-    
-    
-    return pedir_int(frase)
+            return None
+        
+        try:
+
+            if int(numero) == float(numero):
+
+                return int(numero)
+            
+            else:
+
+                print('Introduzca un número entero positivo.')
+
+        except ValueError:
+
+            print('Introduzca un número entero positivo.')
 
 
 def pedir_int_entre_valores(frase, valor_min, valor_max):
@@ -81,7 +90,7 @@ def pedir_int_entre_valores(frase, valor_min, valor_max):
     
     if valor_min > numero or numero > valor_max:
 
-        print(f'Introduzca un número válido ({valor_min} - {valor_max})')
+        print(f'Introduzca un número válido [{valor_min}, {valor_max}]')
         return pedir_int_entre_valores(frase, valor_min, valor_max)
     
     return numero
