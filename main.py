@@ -155,6 +155,7 @@ if __name__ == '__main__':
                                         if type(conclusion_operacion) == tuple:
 
                                             escribir_importar_equipo(conclusion_operacion)
+                                            anadir_equipo_definido(conclusion_operacion[0][0], equipos)
 
 
                                     case '2':   # Definir centrifugadora
@@ -164,6 +165,7 @@ if __name__ == '__main__':
                                         if type(conclusion_operacion) == tuple:
 
                                             escribir_importar_equipo(conclusion_operacion)
+                                            anadir_equipo_definido(conclusion_operacion[0][0], equipos)
 
 
                                     case '3':   # Definir equipamiento de medida
@@ -173,6 +175,7 @@ if __name__ == '__main__':
                                         if type(conclusion_operacion) == tuple:
 
                                             escribir_importar_equipo(conclusion_operacion)
+                                            anadir_equipo_definido(conclusion_operacion[0][0], equipos)
 
 
                                     case '4':   # Definir equipamiento térmico
@@ -182,6 +185,7 @@ if __name__ == '__main__':
                                         if type(conclusion_operacion) == tuple:
 
                                             escribir_importar_equipo(conclusion_operacion)
+                                            anadir_equipo_definido(conclusion_operacion[0][0], equipos)
 
 
                                     case '5':   # Traer equipamiento anteriormente definido

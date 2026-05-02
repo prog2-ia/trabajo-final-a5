@@ -1,3 +1,5 @@
+import copy
+
 # Para que el archivo main() no sea gigantesco,
 # escribimos la mayoría de funciones básicas aquí
 
@@ -29,6 +31,16 @@ def guardar_laboratorio(datos_a_guardar):
     with open('datos/laboratorio.pkl', 'wb') as archivo:
 
         pickle.dump(datos_a_guardar, archivo)
+
+# Está función modificara las listas de los archivos pickle
+
+def anadir_equipo_definido(equipo, equipos: list):
+
+    if not equipo in equipos:
+
+        equipos.append(copy.deepcopy(equipo))
+
+    # Como hace referencia a una lista lo que se edita, no hace falta hacer return
 
 
 ######################################################################
