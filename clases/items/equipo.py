@@ -73,9 +73,9 @@ def importar_equipamiento(equipo: Equipo) -> tuple:
 
     while True:
 
-        copias = pedir_int_entre_valores('-1 para cancelar la operación | Introduzca la cantidad: ', 1, 999)
+        copias = pedir_int_entre_valores('(-1) para cancelar la operación | Introduzca la cantidad: ', 1, 999)
 
-        if copias == '-1':
+        if copias is None:
 
             return None
         

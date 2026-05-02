@@ -55,6 +55,16 @@ def definir_equipo_termico(equipos: list) -> EquipoTermico:
 
             return copy.deepcopy(equipo)
         
+    try:
+
+        temp_max, temp_min = pedir_rango_temperatura()
+
+        return EquipoTermico(nombre.lower(), temp_max, temp_min)
+    
+    except:
+
+        return None
+        
 
 def pedir_rango_temperatura():
 
