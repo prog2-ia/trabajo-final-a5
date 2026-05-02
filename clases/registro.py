@@ -69,3 +69,15 @@ def escribir_importar_equipo(equipo_cantidad_inventario: tuple):
         mensaje_inicial = f'[{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] - Equipo ({cantidad} uds.) añadido al inventario [{codigo}]:\n'
 
         archivo.write(f'{mensaje_inicial}{str(equipo)}\n')
+
+
+def escribir_mover_equipo(equipo_cantidad: tuple, codigo_origen: str, codigo_destino: str):
+
+    equipo   = equipo_cantidad[0] # El equipo es el primer elemento de la tupla
+    cantidad = equipo_cantidad[1] # La cantidad es el segundo elemento de la tupla
+
+    with open('logs/auditoria.txt', 'a') as archivo:
+
+        mensaje_inicial = f'[{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] - Equipo ({cantidad} uds.) movido del inventario [{codigo_origen}] al inventario [{codigo_destino}]:\n'
+
+        archivo.write(f'{mensaje_inicial}{str(equipo)}\n')

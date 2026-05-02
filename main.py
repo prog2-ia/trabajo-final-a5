@@ -174,7 +174,11 @@ if __name__ == '__main__':
 
                         case '2':   # Mover equipamiento
 
-                            pass
+                            conclusion_operacion = mover_equipamiento(inventarios)
+
+                            if conclusion_operacion is tuple:
+
+                                escribir_mover_equipo(conclusion_operacion[0], conclusion_operacion[1], conclusion_operacion[2])
 
                         case '3':   # Tirar equipamiento
 
