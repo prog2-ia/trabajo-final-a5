@@ -72,7 +72,8 @@ class Inventario():
 
         return items_eliminados
     
-    
+    # Se puede usar también para reducir las unidades, poniendo en la cantidad un número negativo
+    # Por eso, se saneará la lista después para eliminar los items con cantidad 0
     def anadir_item_al_inventario(self, item_cantidad):
 
         terminado = False
@@ -89,6 +90,13 @@ class Inventario():
         if not terminado:
 
             self.items.append(item_cantidad)
+
+        self.quitar_vacios() # Para eliminar los items con cantidad 0 después de reducir unidades
+
+
+
+
+
 
 # Pasamos una lista de los objetos de un tipo de item en un inventario
 
@@ -424,8 +432,11 @@ def mover_equipamiento(inventarios):
 
                                         # Movemos el equipo de un inventario a otro
 
-                                        inventario.anadir_item_al_inventario((equipo_seleccionado, -1))
-                                        inventario_2.anadir_item_al_inventario((equipo_seleccionado, 1))
+                                        # Quitar las unidades que quisieramos mover
+                                        inventario.anadir_item_al_inventario((equipo_seleccionado[0], -equipo_seleccionado[1]))
+
+                                        # La ponemos en positivo porque se añaden
+                                        inventario_2.anadir_item_al_inventario((equipo_seleccionado[0], equipo_seleccionado[1]))
 
                                         print(f'Equipo movido de forma exitosa del almacén [{inventario.codigo}] al almacén [{inventario_2.codigo}].')
 
