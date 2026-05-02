@@ -174,6 +174,7 @@ if __name__ == '__main__':
 
                                             escribir_importar_equipo(conclusion_operacion)
 
+
                                     case '4':   # Definir equipamiento térmico
 
                                         pass

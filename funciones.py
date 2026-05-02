@@ -87,3 +87,23 @@ def pedir_int_entre_valores(frase, valor_min, valor_max):
     return numero
     
 
+
+def pedir_float(frase):
+
+    while True:
+
+        print(frase, end='')
+
+        numero = input()
+
+        if numero == '-1':
+
+            return '-1'
+        
+        try:
+
+            return float(numero)
+        
+        except ValueError:
+
+            print('Error. Introduzca un valor numérico válido.')
