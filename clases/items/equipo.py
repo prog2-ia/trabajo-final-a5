@@ -40,6 +40,10 @@ def definir_equipamiento(equipos: list) -> Equipo:
 
     nombre = input('(-1) para cancelar la operación | Introduzca el nombre del equipo: ')
 
+    if nombre == '-1':
+
+        return '-1' 
+
     # Comprobramos que el nombre introducido forma parte o no
     # de equipamiento anteriormente definido
 
@@ -51,9 +55,6 @@ def definir_equipamiento(equipos: list) -> Equipo:
 
             return equipo
 
-    if nombre == '-1':
-
-        return '-1' 
     
     return Equipo(nombre.lower())   # Todos los nombres serán puesto a lower
                                     # para evitar errores

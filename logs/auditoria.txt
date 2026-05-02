@@ -9,3 +9,5 @@ Item: laser x02 | Estado: Buen estado
 [2026-05-02 12:49:34] - Item: laser x02 | Estado: Buen estado (2 uds.) movido del inventario [AB123] al inventario [TD345]
 [2026-05-02 13:27:59] - Equipo (5 uds.) añadido al inventario [AB123]:
 Item: hilo de seda 10m | Estado: Buen estado
+[2026-05-02 16:41:32] - Equipo (4 uds.) añadido al inventario [AB123]:
+Item: cgoldenwall | Estado: Buen estado | RPM Max: 4000

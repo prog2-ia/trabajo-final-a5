@@ -22,33 +22,30 @@ class Centrifugadora(Equipo):
     
 
 
+# Equipos es la lista extraída de nuestro archivo pickle
 def definir_centrifugadora(equipos: list) -> Centrifugadora:
 
     # Se pasa la lista con equipo anteriormente definido
 
     nombre = input('(-1) para cancelar la operación | Introduzca el nombre del equipo: ')
 
-
     if nombre == '-1':
 
-        print('Cancelando operación...')
-        return '-1'
-
+        return '-1' 
 
     # Comprobramos que el nombre introducido forma parte o no
     # de equipamiento anteriormente definido
 
-
     for equipo in equipos:
 
-        if nombre.lower() == equipo.nombre:
+        if equipo.nombre.lower() == nombre:
 
             print('Equipo anteriormente definido. Extrayendo copia...')
 
             return equipo
         
     
-    rpm_max = pedir_int_entre_valores('Introduce las RPM máximas de la centrifugadora: ', 1, 100000)
+    rpm_max = pedir_int_entre_valores('(-1) para cancelar la operación | Introduzca las RPM máximas: ', 1, 1000000)
 
     if rpm_max == '-1':
 

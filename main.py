@@ -1,5 +1,6 @@
 # main.py
 
+from clases.items.equipos.centrifugadora import definir_centrifugadora
 from funciones import *
 from menus import *
 
@@ -158,7 +159,11 @@ if __name__ == '__main__':
 
                                     case '2':   # Definir centrifugadora
 
-                                        pass
+                                        conclusion_operacion = anadir_item(importar_equipamiento(definir_centrifugadora(equipos)), inventarios)
+
+                                        if type(conclusion_operacion) == tuple:
+
+                                            escribir_importar_equipo(conclusion_operacion)
 
 
                                     case '3':   # Definir equipamiento de medida
