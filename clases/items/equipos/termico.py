@@ -62,14 +62,14 @@ def pedir_rango_temperatura():
 
         temp_min = pedir_temperatura('Introduzca cualquier carácter para cancelar la operación | Introduzca la temperatura mínima (°C): ')
 
-        if temp_min == '-1':
+        if temp_min is None:
 
             return None
         
 
         temp_max = pedir_temperatura('Introduzca cualquier carácter para cancelar la operación | Introduzca la temperatura máxima (°C): ')
 
-        if temp_max == '-1':
+        if temp_max is None:
 
             return None
         
