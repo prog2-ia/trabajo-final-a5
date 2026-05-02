@@ -70,16 +70,11 @@ def importar_equipamiento(equipo: Equipo) -> tuple:
 
     while True:
 
-        copias = pedir_int('-1 para cancelar la operación | Introduzca la cantidad: ')
+        copias = pedir_int_entre_valores('-1 para cancelar la operación | Introduzca la cantidad: ', 1, 999)
 
-        if copias == 0:
+        if copias == '-1':
 
-            print('Introduzca una cantidad válida (mayor que 0)')
-
-        elif copias == '-1':
-
-            print('Cancelando operación...')
-            return None
+            return '-1'
         
         else:
 

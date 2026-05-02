@@ -153,7 +153,7 @@ if __name__ == '__main__':
 
                                         if type(conclusion_operacion) == tuple:
 
-                                            escribir_importar_equipo(conclusion_operacion[0], conclusion_operacion[1])
+                                            escribir_importar_equipo(conclusion_operacion)
 
 
                                     case '2':   # Definir centrifugadora

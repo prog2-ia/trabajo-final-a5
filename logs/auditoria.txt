@@ -7,3 +7,5 @@ Item: laser x02 | Estado: Buen estado
 Item: laser x02 | Estado: Buen estado
 [2026-05-02 12:25:02] - Item: laser x02 | Estado: Buen estado (1 uds.) movido del inventario [TD345] al inventario [AB123]:
 [2026-05-02 12:49:34] - Item: laser x02 | Estado: Buen estado (2 uds.) movido del inventario [AB123] al inventario [TD345]
+[2026-05-02 13:27:59] - Equipo (5 uds.) añadido al inventario [AB123]:
+Item: hilo de seda 10m | Estado: Buen estado
