@@ -149,7 +149,7 @@ if __name__ == '__main__':
 
                                     case '1':   # Definir equipamiento genérico
 
-
+                                        '''
                                         equipamiento_definido = importar_equipamiento(equipos)
 
 
@@ -167,6 +167,7 @@ if __name__ == '__main__':
                                                 if not equipamiento_definido[0] in equipos:
 
                                                     equipos.append(equipamiento_definido[0])
+                                        '''
 
 
                                     case '2':   # Definir centrifugadora

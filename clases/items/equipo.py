@@ -33,7 +33,7 @@ class Equipo(Item):
         return False
     
 
-# equipos es la lista extraída de nuestro archivo pickle
+# Equipos es la lista extraída de nuestro archivo pickle
 def definir_equipamiento(equipos: list) -> Equipo:
 
     # Se pasa la lista con equipo anteriormente definido
