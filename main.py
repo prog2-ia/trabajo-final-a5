@@ -149,25 +149,11 @@ if __name__ == '__main__':
 
                                     case '1':   # Definir equipamiento genérico
 
-                                        '''
-                                        equipamiento_definido = importar_equipamiento(equipos)
+                                        conclusion_operacion = anadir_item(importar_equipamiento(definir_equipamiento(equipos)), inventarios)
 
+                                        if type(conclusion_operacion) == tuple:
 
-                                        if not equipamiento_definido is None:
-
-                                            conclusion_operacion = anadir_item(equipamiento_definido, inventarios)
-
-
-                                            if not conclusion_operacion is None:
-                                                
-                                                escribir_importar_equipo(conclusion_operacion)
-
-                                                # Se añade el equipamiento a la lista de equipamiento para futuras importaciones
-
-                                                if not equipamiento_definido[0] in equipos:
-
-                                                    equipos.append(equipamiento_definido[0])
-                                        '''
+                                            escribir_importar_equipo(conclusion_operacion[0], conclusion_operacion[1])
 
 
                                     case '2':   # Definir centrifugadora

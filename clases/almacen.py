@@ -3,7 +3,7 @@ import copy
 from funciones import *
 
 from .items.consumible import Consumible
-from .items.equipo import Equipo
+from .items.equipo import Equipo, importar_equipamiento
 
 from .registro import Registro
 
@@ -279,40 +279,56 @@ def eliminar_almacen(inventarios):
 
 def anadir_item(item_cantidad: tuple, inventarios: list):
 
-    mostrar_almacenes(inventarios)
+
+    # item_cantidad viene de importar_equipamiento
+    # importar equipamiento necesita de definir_equipamiento...etc.
 
 
-    print(f'\n\t[Código] - \tAñadir al almacen...\n'
-            f'\t[0] - \tCancelar operación\n'
-        )
-
-
-    while True:
-
-        # Tiene que tomar un código de almacen o 0 para volver atrás
-        codigo_input = input('\nAñadir a: ')
-
-
-        for inventario in inventarios:
-
-            if inventario.codigo == codigo_input:
-
-                inventario.anadir_item_al_inventario(item_cantidad)
-
-                print('\nItem importado de forma exitosa.\n')
-
-                return (item_cantidad, inventario.codigo) 
-                # Hacemos un return para triggear el mensaje de auditoría y para la función
-
-
-        if codigo_input == '0':
-
-            print('Cancelando operación...')
-            return None
+    if item_cantidad == '-1':
         
-        else:
+        print('Operación cancelada...')
+        return None
 
-            print('Código no válido. Vuelva a intentarlo.')
+
+    if inventarios:
+
+        mostrar_almacenes(inventarios)
+
+
+        print(f'\n\t[Código] - \tAñadir al almacen...\n'
+                f'\t[0] - \tCancelar operación\n'
+            )
+
+
+        while True:
+
+            # Tiene que tomar un código de almacen o 0 para volver atrás
+            codigo_input = input('\nAñadir a: ')
+
+
+            for inventario in inventarios:
+
+                if inventario.codigo == codigo_input:
+
+                    inventario.anadir_item_al_inventario(item_cantidad)
+
+                    print('\nItem importado de forma exitosa.\n')
+
+                    return (item_cantidad, inventario.codigo) 
+                    # Hacemos un return para triggear el mensaje de auditoría y para la función
+
+
+            if codigo_input == '0':
+
+                print('Cancelando operación...')
+                return None
+            
+            else:
+
+                print('Código no válido. Vuelva a intentarlo.')
+
+    print('No hay almacenes disponibles. Crea un almacén antes de importar items.')
+    return None
 
 
 
