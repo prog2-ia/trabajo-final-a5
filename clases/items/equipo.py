@@ -61,6 +61,26 @@ def definir_equipamiento(equipos: list) -> Equipo:
 
 # En esta función controlamos la cantidad que se importara
 
+def import_equipamiento(equipo: Equipo) -> tuple:
+
+    while True:
+
+        copias = pedir_int('-1 para cancelar la operación | Introduzca la cantidad: ')
+
+        if copias == 0:
+
+            print('Introduzca una cantidad válida (mayor que 0)')
+
+        elif copias == '-1':
+
+            print('Cancelando operación...')
+            return None
+        
+        else:
+
+            return (equipo, copias) # Tupla para añadir al inventario
+        
+'''
 def importar_equipamiento(equipos) -> tuple:
 
     equipo = definir_equipamiento(equipos)
@@ -81,3 +101,4 @@ def importar_equipamiento(equipos) -> tuple:
     
 
     return (equipo, copias) # Tupla para añadir al inventario
+'''
