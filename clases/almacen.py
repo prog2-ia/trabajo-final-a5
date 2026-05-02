@@ -363,7 +363,7 @@ def mover_equipamiento(inventarios):
         if codigo_input == '0':
 
             print('Operación cancelada.')
-            return '0'
+            return None
         
         for inventario in inventarios:
 
@@ -377,7 +377,7 @@ def mover_equipamiento(inventarios):
                 if longitud == 0:
 
                     print('No hay equipamiento en este almacén. Operación cancelada.')
-                    return '0'
+                    return None
 
                 # El usuario selecciona el equipo que quiere mover
 
@@ -385,14 +385,15 @@ def mover_equipamiento(inventarios):
 
                     equipo_input = pedir_int('Introduce el número del equipo que quieres mover (0/-1 para cancelar): ')
 
-                    if equipo_input == 0 or equipo_input == '-1':
+                    if equipo_input is None:
 
                         print('Operación cancelada.')
-                        return '0'
+                        return None
                     
-                    elif equipo_input > longitud:
+                    elif equipo_input > longitud or equipo_input == 0:
 
                         print('Número no válido. Vuelva a intentarlo.')
+
                     
                     else:
 
@@ -417,10 +418,10 @@ def mover_equipamiento(inventarios):
 
 
 
-                        if cantidad == '-1':
+                        if cantidad is None:
 
                             print('Operación cancelada.')
-                            return '0'
+                            return None
                         
 
                         equipo_seleccionado_cantidad = (equipo_seleccionado, cantidad)
@@ -441,7 +442,7 @@ def mover_equipamiento(inventarios):
                             if codigo_input_2 == '0':
 
                                 print('Operación cancelada.')
-                                return '0'
+                                return None
                             
                             elif codigo_input_2 == codigo_primero:
 
