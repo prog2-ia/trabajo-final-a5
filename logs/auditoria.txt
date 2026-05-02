@@ -17,3 +17,5 @@ Item: vaso de expansion 5l | Estado: Buen estado
 Item: nevera | Estado: Buen estado | Rango [-32.5 °C, 12.5 °C]
 [2026-05-02 18:21:28] - Equipo (4 uds.) añadido al inventario [AB123]:
 Item: amperimetro | Estado: Buen estado | Error: ±0.1
+[2026-05-02 18:31:08] - Item: nevera | Estado: Buen estado | Rango [-32.5 °C, 12.5 °C] (2 uds.) movido del inventario [TD345] al inventario [AB123]
+[2026-05-02 18:31:30] - Item: vaso de expansion 5l | Estado: Buen estado (1 uds.) movido del inventario [TD345] al inventario [AB123]

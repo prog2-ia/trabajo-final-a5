@@ -341,6 +341,7 @@ def anadir_item(item_cantidad: tuple, inventarios: list):
 
 
 
+
 # Como los consumibles van por lotes, no se podrán mover de almacen, pero el equipamiento sí
 def mover_equipamiento(inventarios):
 
@@ -355,6 +356,7 @@ def mover_equipamiento(inventarios):
 
     mostrar_almacenes(inventarios)
 
+
     while True:
 
         # El usuario selecciona el inventario del que quiere mover el equipo
@@ -365,7 +367,9 @@ def mover_equipamiento(inventarios):
             print('Operación cancelada.')
             return None
         
+
         for inventario in inventarios:
+
 
             if codigo_input == inventario.codigo:
 
@@ -379,17 +383,20 @@ def mover_equipamiento(inventarios):
                     print('No hay equipamiento en este almacén. Operación cancelada.')
                     return None
 
+
                 # El usuario selecciona el equipo que quiere mover
 
                 while True:
 
-                    equipo_input = pedir_int('Introduce el número del equipo que quieres mover (0/-1 para cancelar): ')
+                    equipo_input = pedir_int('Introduce el número del equipo que quieres mover (-1 para cancelar): ')
+
 
                     if equipo_input is None:
 
                         print('Operación cancelada.')
                         return None
                     
+
                     elif equipo_input > longitud or equipo_input == 0:
 
                         print('Número no válido. Vuelva a intentarlo.')
@@ -414,7 +421,7 @@ def mover_equipamiento(inventarios):
                         
 
 
-                        cantidad = pedir_int_entre_valores(f'Introduce la cantidad a mover (1-{cantidad_max}, -1 para cancelar): ', 1, cantidad_max)
+                        cantidad = pedir_int_entre_valores(f'Introduce la cantidad a mover (1-{cantidad_max} | -1 para cancelar): ', 1, cantidad_max)
 
 
 
