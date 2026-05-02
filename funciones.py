@@ -69,3 +69,21 @@ def pedir_int(frase):
     
     
     return pedir_int(frase)
+
+
+def pedir_int_entre_valores(frase, valor_min, valor_max):
+
+    numero = pedir_int(frase)
+
+    if numero == '-1':
+
+        return '-1'
+    
+    if valor_min > numero or numero > valor_max:
+
+        print(f'Introduzca un número válido ({valor_min} - {valor_max})')
+        return pedir_int_entre_valores(frase, valor_min, valor_max)
+    
+    return numero
+    
+

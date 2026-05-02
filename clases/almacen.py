@@ -387,24 +387,18 @@ def mover_equipamiento(inventarios):
                                 indice += 1
                         
 
-                        # Pedimos la cantidad a mover
-                        while True:
 
-                            cantidad_input = pedir_int(f'Introduce la cantidad a mover (1-{cantidad_max}, 0/-1 para cancelar): ')
+                        cantidad = pedir_int_entre_valores(f'Introduce la cantidad a mover (1-{cantidad_max}, 0/-1 para cancelar): ', 1, cantidad_max)
 
-                            if cantidad_input == 0 or cantidad_input == '-1':
 
-                                print('Operación cancelada.')
-                                return '0'
-                            
-                            elif cantidad_input > cantidad_max:
 
-                                print('Cantidad no válida. Vuelva a intentarlo.')
-                            
-                            else:
+                        if cantidad == '-1':
 
-                                equipo_seleccionado_cantidad = (equipo_seleccionado, cantidad_input)
-                                break
+                            print('Operación cancelada.')
+                            return '0'
+                        
+
+                        equipo_seleccionado_cantidad = (equipo_seleccionado, cantidad)
 
 
                         # El usuario selecciona el inventario al que quiere mover el equipo
@@ -413,7 +407,10 @@ def mover_equipamiento(inventarios):
 
                         while True:
 
+
                             codigo_input_2 = input('Introduce el código del almacén al que quieres mover el equipo (0 para cancelar): ')
+
+
 
                             if codigo_input_2 == '0':
 
@@ -424,6 +421,8 @@ def mover_equipamiento(inventarios):
 
                                 print('No puedes mover un equipo a su mismo almacén. Vuelva a intentarlo.')
                             
+
+
                             else:
 
                                 for inventario_2 in inventarios:
