@@ -44,7 +44,7 @@ def definir_equipamiento(equipos: list) -> Equipo:
 
     if nombre == '-1':
 
-        return '-1' 
+        return None
 
     # Comprobramos que el nombre introducido forma parte o no
     # de equipamiento anteriormente definido
@@ -66,9 +66,9 @@ def definir_equipamiento(equipos: list) -> Equipo:
 
 def importar_equipamiento(equipo: Equipo) -> tuple:
 
-    if equipo == '-1':
+    if equipo is None:
 
-        return '-1'
+        return None # Esto acabara el anadir_item, el cual mostrara el mensaje de cancelando operación
     
 
     while True:
@@ -77,7 +77,7 @@ def importar_equipamiento(equipo: Equipo) -> tuple:
 
         if copias == '-1':
 
-            return '-1'
+            return None
         
         else:
 
