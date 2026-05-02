@@ -21,3 +21,64 @@ class EquipoMedida(Equipo):
             return super().__eq__(other) and self.error_medida == other.error_medida
         
         return False
+    
+
+# Equipos es la lista extraída de nuestro archivo pickle
+def definir_equipo_medida(equipos: list) -> EquipoMedida:
+
+    # Se pasa la lista con equipo anteriormente definido
+
+    nombre = input('(-1) para cancelar la operación | Introduzca el nombre del equipo: ')
+
+    if nombre == '-1':
+
+        return '-1' 
+
+    # Comprobramos que el nombre introducido forma parte o no
+    # de equipamiento anteriormente definido
+
+    for equipo in equipos:
+
+        if equipo.nombre.lower() == nombre:
+
+            print('Equipo anteriormente definido. Extrayendo copia...')
+
+            return equipo
+        
+    
+    error_medida = pedir_error_medida('(-1) para cancelar la operación | Introduzca el error de medida (±): ')
+
+    if error_medida == '-1':
+
+        return '-1'
+    
+    return EquipoMedida(nombre.lower(), error_medida)
+        
+
+def pedir_error_medida(frase: str) -> float:
+
+    while True:
+
+        print(frase, end='')
+
+        error_medida = input()
+
+        if error_medida == '-1':
+
+            return '-1'
+        
+        try:
+
+            error_medida = float(error_medida)
+
+            if error_medida < 0:
+
+                print('Error. Introduzca un valor positivo.')
+
+            else:
+
+                return error_medida
+
+        except ValueError:
+
+            print('Error. Introduzca un valor numérico válido.')

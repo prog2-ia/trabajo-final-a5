@@ -168,7 +168,11 @@ if __name__ == '__main__':
 
                                     case '3':   # Definir equipamiento de medida
 
-                                        pass
+                                        conclusion_operacion = anadir_item(importar_equipamiento(definir_equipo_medida(equipos)), inventarios)
+
+                                        if type(conclusion_operacion) == tuple:
+
+                                            escribir_importar_equipo(conclusion_operacion)
 
                                     case '4':   # Definir equipamiento térmico
 

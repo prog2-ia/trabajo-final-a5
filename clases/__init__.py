@@ -10,8 +10,8 @@ from .registro import Registro, escribir_creado_almacen, escribir_eliminado_alma
 from .items.equipo import Equipo, importar_equipamiento, definir_equipamiento
 
 from .items.equipos.termico import EquipoTermico
-from .items.equipos.medida import EquipoMedida
-from .items.equipos.centrifugadora import Centrifugadora
+from .items.equipos.medida import EquipoMedida, definir_equipo_medida
+from .items.equipos.centrifugadora import Centrifugadora, definir_centrifugadora
 
 
 from .items.consumible import Consumible
