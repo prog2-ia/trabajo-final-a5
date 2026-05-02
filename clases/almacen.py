@@ -90,9 +90,27 @@ class Inventario():
 
             self.items.append(item_cantidad)
 
+# Pasamos una lista de los objetos de un tipo de item en un inventario
+
+def mostrar_items(inventario, tipo_item):
+
+    print(f'\nItems de tipo {tipo_item} en el inventario [{inventario.codigo}]:\n')
+
+
+    indice = 1
+    for (instancia, cantidad) in inventario.items:
+
+        if isinstance(instancia, tipo_item):
+
+            print(f'[{indice}]\t - {str(instancia)}\n\t\t Uds. disponibles: {cantidad}\n\n')
+            indice += 1
+
+    return indice - 1 # Para saber el número de items mostrados, si es 0 no se ha mostrado ningún item del tipo pedido
 
 
                 
+
+
 
 # Pasamos una lista de inventarios
 def mostrar_almacenes(inventarios):
@@ -108,6 +126,8 @@ def mostrar_almacenes(inventarios):
         for inventario in inventarios:
 
             print(f'[{inventario.codigo}] con {len(inventario.items)} items')
+
+
 
 
 
@@ -285,4 +305,129 @@ def anadir_item(item_cantidad: tuple, inventarios: list):
         else:
 
             print('Código no válido. Vuelva a intentarlo.')
+
+
+
+# Como los consumibles van por lotes, no se podrán mover de almacen, pero el equipamiento sí
+def mover_equipamiento(inventarios):
+
+    # Primero se comprueba que sea posible la operación
+    if len(inventarios) < 2:
+
+        print('No hay suficientes almacenes para mover equipamiento. Se necesitan al menos 2 almacenes.')
+        return None
     
+
+    # Hay que seleccionar el inventario del que se quiera mover el equipo
+
+    mostrar_almacenes(inventarios)
+
+    while True:
+
+        # El usuario selecciona el inventario del que quiere mover el equipo
+        codigo_input = input('Introduce el código del almacén que quieres eliminar (0 para cancelar): ')
+
+        if codigo_input == '0':
+
+            print('Operación cancelada.')
+            return '0'
+        
+        for inventario in inventarios:
+
+            if codigo_input == inventario.codigo:
+
+                codigo_primero = codigo_input # Lo guardamos para después
+                
+                # Mostramos el equipamiento del inventario seleccionado
+                longitud = mostrar_items(inventario, Equipo)
+
+                if longitud == 0:
+
+                    print('No hay equipamiento en este almacén. Operación cancelada.')
+                    return '0'
+
+                # El usuario selecciona el equipo que quiere mover
+
+                while True:
+
+                    equipo_input = pedir_int('Introduce el número del equipo que quieres mover (0/-1 para cancelar): ')
+
+                    if equipo_input == 0 or equipo_input == '-1':
+
+                        print('Operación cancelada.')
+                        return '0'
+                    
+                    elif equipo_input > longitud:
+
+                        print('Número no válido. Vuelva a intentarlo.')
+                    
+                    else:
+
+                        equipo_seleccionado = None
+
+                        indice = 1
+                        for (instancia, cantidad) in inventario.items:
+
+                            if isinstance(instancia, Equipo):
+
+                                if indice == equipo_input:
+
+                                    equipo_seleccionado = instancia
+                                    cantidad_max = cantidad
+
+                                
+                                indice += 1
+                        
+
+                        # Pedimos la cantidad a mover
+                        while True:
+
+                            cantidad_input = pedir_int(f'Introduce la cantidad a mover (1-{cantidad_max}, 0/-1 para cancelar): ')
+
+                            if cantidad_input == 0 or cantidad_input == '-1':
+
+                                print('Operación cancelada.')
+                                return '0'
+                            
+                            elif cantidad_input > cantidad_max:
+
+                                print('Cantidad no válida. Vuelva a intentarlo.')
+                            
+                            else:
+
+                                equipo_seleccionado_cantidad = (equipo_seleccionado, cantidad_input)
+                                break
+
+
+                        # El usuario selecciona el inventario al que quiere mover el equipo
+
+                        mostrar_almacenes(inventarios)
+
+                        while True:
+
+                            codigo_input_2 = input('Introduce el código del almacén al que quieres mover el equipo (0 para cancelar): ')
+
+                            if codigo_input_2 == '0':
+
+                                print('Operación cancelada.')
+                                return '0'
+                            
+                            elif codigo_input_2 == codigo_primero:
+
+                                print('No puedes mover un equipo a su mismo almacén. Vuelva a intentarlo.')
+                            
+                            else:
+
+                                for inventario_2 in inventarios:
+
+                                    if inventario_2.codigo == codigo_input_2:
+
+                                        # Movemos el equipo de un inventario a otro
+
+                                        inventario.anadir_item_al_inventario((equipo_seleccionado, -1))
+                                        inventario_2.anadir_item_al_inventario((equipo_seleccionado, 1))
+
+                                        print(f'Equipo movido de forma exitosa del almacén [{inventario.codigo}] al almacén [{inventario_2.codigo}].')
+
+                                        return (equipo_seleccionado, inventario.codigo, inventario_2.codigo) 
+                                        # Hacemos un return para triggear el mensaje de auditoría y para la función

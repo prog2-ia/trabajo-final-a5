@@ -13,7 +13,8 @@ class Equipo(Item):
         # True -> Buen estado | False -> Defectuoso
 
         self.estado = True
-        # El estado PODRÁ cambiar después de una sesión
+        # El estado PODRÁ cambiar después de una sesión, cuando
+        # los científicos devuelvan el equipo, se podrá marcar como defectuoso o no
 
 
     def __str__(self):
