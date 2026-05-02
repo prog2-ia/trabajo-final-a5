@@ -19,3 +19,11 @@ Item: nevera | Estado: Buen estado | Rango [-32.5 °C, 12.5 °C]
 Item: amperimetro | Estado: Buen estado | Error: ±0.1
 [2026-05-02 18:31:08] - Item: nevera | Estado: Buen estado | Rango [-32.5 °C, 12.5 °C] (2 uds.) movido del inventario [TD345] al inventario [AB123]
 [2026-05-02 18:31:30] - Item: vaso de expansion 5l | Estado: Buen estado (1 uds.) movido del inventario [TD345] al inventario [AB123]
+[2026-05-02 20:03:27] - Equipo (3 uds.) añadido al inventario [TD345]:
+Item: gafas proteccion | Estado: Buen estado
+[2026-05-02 20:04:46] - Equipo (3 uds.) añadido al inventario [TD345]:
+Item: gafas de proteccion | Estado: Buen estado
+[2026-05-02 20:05:19] - Equipo (2 uds.) añadido al inventario [TD345]:
+Item: centrifugadora_x | Estado: Buen estado | RPM Max: 3000
+[2026-05-02 20:05:39] - Equipo (2 uds.) añadido al inventario [AB123]:
+Item: gafas proteccion | Estado: Buen estado

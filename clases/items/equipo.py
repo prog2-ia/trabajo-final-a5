@@ -104,4 +104,4 @@ def traer_equipamiento_definido(equipos: list) -> Equipo:
 
         return None
     
-    return equipos[equipamiento_elegido]
+    return equipos[equipamiento_elegido - 1]
