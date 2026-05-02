@@ -82,3 +82,26 @@ def importar_equipamiento(equipo: Equipo) -> tuple:
         else:
 
             return (equipo, copias) # Tupla para añadir al inventario
+        
+
+
+def traer_equipamiento_definido(equipos: list) -> Equipo:
+
+    if not equipos:
+
+        print('No hay equipamiento anteriormente definido.')
+        return None
+    
+
+    for indice, equipo in enumerate(equipos, start=1):
+
+        print(f'[{indice}]\t-\t{str(equipo)}')
+
+    # Pedimos el índice del equipo que se quiera importar
+    equipamiento_elegido = pedir_int_entre_valores('(-1) para cancelar la operación | Introduzca el equipo a importar: ', 1, len(equipos))
+
+    if equipamiento_elegido is None:
+
+        return None
+    
+    return equipos[equipamiento_elegido]

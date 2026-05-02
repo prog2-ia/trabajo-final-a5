@@ -190,7 +190,11 @@ if __name__ == '__main__':
 
                                     case '5':   # Traer equipamiento anteriormente definido
 
-                                        pass
+                                        conclusion_operacion = anadir_item(importar_equipamiento(traer_equipamiento_definido(equipos)), inventarios)
+                                        
+                                        if type(conclusion_operacion) == tuple:
+
+                                            escribir_importar_equipo(conclusion_operacion)
 
 
                                     case '0':   # Volver al menu anterior
