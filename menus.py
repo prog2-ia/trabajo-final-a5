@@ -52,7 +52,6 @@ def menu_equipamiento():
     print(
         f'\n\t[1] - \tTraer nuevo equipamiento\n'
         f'\t[2] - \tMover equipamiento\n'
-        f'\t[3] - \tTirar equipamiento\n'
         f'\t[0] - \tVolver al menu principal\n'
     )
 

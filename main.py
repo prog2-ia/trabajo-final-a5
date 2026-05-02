@@ -180,9 +180,6 @@ if __name__ == '__main__':
 
                                 escribir_mover_equipo(conclusion_operacion[0], conclusion_operacion[1], conclusion_operacion[2])
 
-                        case '3':   # Tirar equipamiento
-
-                            pass
 
                         case '0':   # Volver al menu principal
 
