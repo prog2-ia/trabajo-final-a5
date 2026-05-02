@@ -102,7 +102,7 @@ class Inventario():
 
 def mostrar_items(inventario, tipo_item):
 
-    print(f'\nItems de tipo {tipo_item} en el inventario [{inventario.codigo}]:\n')
+    print(f'\nItems de tipo {tipo_item.__name__} en el inventario [{inventario.codigo}]:\n')
 
 
     indice = 1
@@ -388,7 +388,7 @@ def mover_equipamiento(inventarios):
                         
 
 
-                        cantidad = pedir_int_entre_valores(f'Introduce la cantidad a mover (1-{cantidad_max}, 0/-1 para cancelar): ', 1, cantidad_max)
+                        cantidad = pedir_int_entre_valores(f'Introduce la cantidad a mover (1-{cantidad_max}, -1 para cancelar): ', 1, cantidad_max)
 
 
 
@@ -404,6 +404,7 @@ def mover_equipamiento(inventarios):
                         # El usuario selecciona el inventario al que quiere mover el equipo
 
                         mostrar_almacenes(inventarios)
+
 
                         while True:
 
