@@ -2,6 +2,8 @@ from ..equipo import Equipo
 
 from funciones import *
 
+import copy
+
 class EquipoMedida(Equipo):
 
     def __init__(self, nombre, error_medida: float):
@@ -43,7 +45,7 @@ def definir_equipo_medida(equipos: list) -> EquipoMedida:
 
             print('Equipo anteriormente definido. Extrayendo copia...')
 
-            return equipo
+            return copy.deepcopy(equipo)
         
     
     error_medida = pedir_error_medida('(-1) para cancelar la operación | Introduzca el error de medida (±): ')

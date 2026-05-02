@@ -2,6 +2,8 @@ from ..equipo import Equipo
 
 from funciones import *
 
+import copy
+
 class Centrifugadora(Equipo):
 
     def __init__(self, nombre, rpm_max: int):
@@ -42,7 +44,7 @@ def definir_centrifugadora(equipos: list) -> Centrifugadora:
 
             print('Equipo anteriormente definido. Extrayendo copia...')
 
-            return equipo
+            return copy.deepcopy(equipo)
         
     
     rpm_max = pedir_int_entre_valores('(-1) para cancelar la operación | Introduzca las RPM máximas: ', 1, 1000000)

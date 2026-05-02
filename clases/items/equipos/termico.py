@@ -2,6 +2,8 @@ from ..equipo import Equipo
 
 from funciones import *
 
+import copy
+
 class EquipoTermico(Equipo):
 
     def __init__(self, nombre, temp_max: float, temp_min: float):
@@ -51,7 +53,7 @@ def definir_equipo_termico(equipos: list) -> EquipoTermico:
 
             print('Equipo anteriormente definido. Extrayendo copia...')
 
-            return equipo
+            return copy.deepcopy(equipo)
         
 
 def pedir_rango_temperatura():
@@ -62,14 +64,14 @@ def pedir_rango_temperatura():
 
         if temp_min == '-1':
 
-            return '-1'
+            return None
         
 
         temp_max = pedir_temperatura('Introduzca cualquier carácter para cancelar la operación | Introduzca la temperatura máxima (°C): ')
 
         if temp_max == '-1':
 
-            return '-1'
+            return None
         
         try:
 
@@ -96,9 +98,9 @@ def pedir_temperatura(frase: str) -> float:
 
         temperatura = input()
 
-        if temperatura.is_alpha():
+        if temperatura.isalpha():
 
-            return '-1' # Se devuelve un caracter, entonces la cadena de arrastrarlo hasta que
+            return None # Se devuelve un None, entonces la cadena de arrastrarlo hasta que
                         # anadir_item() lo verifique funcionara porque no se trata de un número
 
         try:

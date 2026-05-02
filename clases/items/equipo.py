@@ -2,6 +2,8 @@ from ..item import Item
 
 from funciones import *
 
+import copy
+
 class Equipo(Item):
 
     dicc_estados = {True: "Buen estado", False: "Defectuoso"}
@@ -53,7 +55,7 @@ def definir_equipamiento(equipos: list) -> Equipo:
 
             print('Equipo anteriormente definido. Extrayendo copia...')
 
-            return equipo
+            return copy.deepcopy(equipo)
 
     
     return Equipo(nombre.lower())   # Todos los nombres serán puesto a lower
