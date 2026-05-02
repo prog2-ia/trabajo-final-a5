@@ -176,7 +176,7 @@ if __name__ == '__main__':
 
                             conclusion_operacion = mover_equipamiento(inventarios)
 
-                            if conclusion_operacion is tuple:
+                            if type(conclusion_operacion) == tuple:
 
                                 escribir_mover_equipo(conclusion_operacion[0], conclusion_operacion[1], conclusion_operacion[2])
 

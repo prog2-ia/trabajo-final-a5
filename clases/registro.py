@@ -78,6 +78,6 @@ def escribir_mover_equipo(equipo_cantidad: tuple, codigo_origen: str, codigo_des
 
     with open('logs/auditoria.txt', 'a') as archivo:
 
-        mensaje_inicial = f'[{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] - Equipo ({cantidad} uds.) movido del inventario [{codigo_origen}] al inventario [{codigo_destino}]:\n'
+        mensaje = f'[{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] - {str(equipo)} ({cantidad} uds.) movido del inventario [{codigo_origen}] al inventario [{codigo_destino}]\n'
 
-        archivo.write(f'{mensaje_inicial}{str(equipo)}\n')
+        archivo.write(mensaje)

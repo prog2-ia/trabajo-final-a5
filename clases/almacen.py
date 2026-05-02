@@ -433,12 +433,12 @@ def mover_equipamiento(inventarios):
                                         # Movemos el equipo de un inventario a otro
 
                                         # Quitar las unidades que quisieramos mover
-                                        inventario.anadir_item_al_inventario((equipo_seleccionado[0], -equipo_seleccionado[1]))
+                                        inventario.anadir_item_al_inventario((equipo_seleccionado_cantidad[0], -equipo_seleccionado_cantidad[1]))
 
                                         # La ponemos en positivo porque se añaden
-                                        inventario_2.anadir_item_al_inventario((equipo_seleccionado[0], equipo_seleccionado[1]))
+                                        inventario_2.anadir_item_al_inventario((equipo_seleccionado_cantidad[0], equipo_seleccionado_cantidad[1]))
 
                                         print(f'Equipo movido de forma exitosa del almacén [{inventario.codigo}] al almacén [{inventario_2.codigo}].')
 
-                                        return (equipo_seleccionado, inventario.codigo, inventario_2.codigo) 
+                                        return (equipo_seleccionado_cantidad, inventario.codigo, inventario_2.codigo) 
                                         # Hacemos un return para triggear el mensaje de auditoría y para la función
