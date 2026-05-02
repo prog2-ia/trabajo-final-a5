@@ -50,7 +50,7 @@ def definir_equipo_medida(equipos: list) -> EquipoMedida:
     
     error_medida = pedir_error_medida('(-1) para cancelar la operación | Introduzca el error de medida (±): ')
 
-    if error_medida == '-1':
+    if error_medida is None:
 
         return None
     

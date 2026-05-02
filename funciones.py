@@ -47,7 +47,7 @@ def pedir_num(frase):
     
         # Aunque se pida un número, se devuelve un str para evitar errores
     
-    return '-1'
+    return None
     
     # Si el usuario no introduce un número, devolvemos -1
     # El 0 está reservado para salir de capas de menu
@@ -61,7 +61,7 @@ def pedir_int(frase):
 
     if numero == '-1':
 
-        return '-1'
+        return None
     
     if numero.isdigit():
 
@@ -77,7 +77,7 @@ def pedir_int_entre_valores(frase, valor_min, valor_max):
 
     if numero == '-1':
 
-        return '-1'
+        return None
     
     if valor_min > numero or numero > valor_max:
 
@@ -98,7 +98,7 @@ def pedir_float(frase):
 
         if numero == '-1':
 
-            return '-1'
+            return None
         
         try:
 

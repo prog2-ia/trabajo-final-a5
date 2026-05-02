@@ -49,7 +49,7 @@ def definir_centrifugadora(equipos: list) -> Centrifugadora:
     
     rpm_max = pedir_int_entre_valores('(-1) para cancelar la operación | Introduzca las RPM máximas: ', 1, 1000000)
 
-    if rpm_max == '-1':
+    if rpm_max is None:
 
         return None
 
