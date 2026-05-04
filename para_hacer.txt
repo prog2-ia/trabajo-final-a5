@@ -3,6 +3,7 @@ En funciones.py
 
     - Funciones de validación de entrada
 
+        [Se puede usar el try y except para estas, fíjate en como están hechas las demás]
         pedir_fecha() -> Que pida un texto y compruebe que tiene formato YYYY-MM-DD
 
         pedir_texto_no_vacio() -> Que pida un input y haga un while 
