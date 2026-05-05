@@ -52,7 +52,8 @@ def comprobar_id_lote(id:str) -> bool:
     
 
 
-# El usuario define un lote nuevo
+# El usuario define un lote nuevo, aunque se seleccione un lote
+# anteriormente definido, habría que cambiar la fecha y el ID
 def definir_lote(lotes: list):
 
     id_comprobado = False
@@ -90,3 +91,33 @@ def definir_lote(lotes: list):
         if not id_comprobado:
 
             print('Introduzca un ID válido o (0) para cancelar la operación.')
+
+
+    # A partir de aquí se pide la fecha
+    while True:
+
+        fecha_caducidad = pedir_fecha('(0) para cancelar | Introduzca la fecha de caducidad (DD/MM/AAAA): ')
+
+        if fecha_caducidad is None:
+
+            return None
+        
+        if fecha_caducidad < date.today():
+
+            print('Fecha no válida. No puedes importar lotes ya caducados.')
+
+        else:
+
+            return introducir_id, fecha_caducidad
+        
+
+# En esta función se añaden los consumibles
+def definir_lote_nuevo(id, fecha_caducidad):
+
+    instruccion = ''
+
+    print('Introduzca (1) para terminar de añadir consumibles al lote o (0) para cancelar la operación.')
+
+    while instruccion:
+
+        pass

@@ -1,13 +1,6 @@
 
 En funciones.py
 
-    - Funciones de validación de entrada
-
-        [Se puede usar el try y except para estas, fíjate en como están hechas las demás]
-        pedir_fecha() -> Que pida un texto y compruebe que tiene formato YYYY-MM-DD
-
-        pedir_texto_no_vacio() -> Que pida un input y haga un while 
-        que no te deje avanzar si el usuario solo pulsa Enter sin escribir nada.
 
 
 En las clases
@@ -22,9 +15,9 @@ En las clases
 En todo el código   -> Lo de la clase del 20/04
 
     - Poner la sugerencia de tipos, si no sabes que poner, no pongas nada
+        -> Correr el comando de mypy
 
-    - Correr el comando de mypy y corrergir posibles errores
-
+    - Decorar la salida, no tocar nada de funcionalidades, solo los print()
 
 
 Hacer README.md

@@ -1,4 +1,5 @@
 import copy
+from datetime import datetime
 
 # Para que el archivo main() no sea gigantesco,
 # escribimos la mayoría de funciones básicas aquí
@@ -128,3 +129,29 @@ def pedir_float(frase):
         except ValueError:
 
             print('Error. Introduzca un valor numérico válido.')
+
+
+
+def pedir_fecha(frase):
+
+    while True:
+
+        print(frase, end='')
+        fecha_str = input()
+
+
+        if fecha_str == '0':
+            return None
+
+        try:
+            
+
+            fecha_parseada = datetime.strptime(fecha_str, "%d/%m/%Y")
+            
+            # 3. Como strptime devuelve fecha Y hora, usamos .date() para quedarnos solo con el día
+            return fecha_parseada.date()
+
+
+        except ValueError:
+            # Si el usuario escribe "hola", "32/13/2024" o usa guiones en lugar de barras, salta aquí
+            print('Formato de fecha incorrecto o fecha no válida. Use el formato DD/MM/AAAA.')
