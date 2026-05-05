@@ -15,6 +15,9 @@ En las clases
     - Comprobar que todos el método __str__ este hecho correctamente y hacerlo
     en las clases que no tenga
 
+        -> Hacer str() de lote, a parte de mostrar el id y la fecha, necesito que muestre el NÚMERO de consumibles 
+        y luego iterar cada consumible para que muestre los detalles de cada consumible y sus unidades
+
 
 En todo el código   -> Lo de la clase del 20/04
 
