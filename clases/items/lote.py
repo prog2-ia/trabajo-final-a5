@@ -1,6 +1,8 @@
 from datetime import date
 
-from consumible import importar_consumible_generico
+from .consumible import importar_consumible_generico
+from .consumibles.reactivoSolido import ReactivoSolido
+from .consumibles.reactivoLiquido import ReactivoLiquido
 
 from funciones import *
 
@@ -132,22 +134,26 @@ def definir_lote_nuevo(lote: Lote):
 
         match instruccion:
 
-            case '1':
+            case '1': # Consumible genérico
                 
                 # Como las funciones trabaja mediante referencia de lista, no tiene return
                 importar_consumible_generico(consumibles, lote)
 
-            case '2':
+
+
+            case '2': # Reactivo líquido
 
                 pass
 
-            case '3':
+            case '3': # Reactivo solido
 
                 pass
+
+
 
             case '4':
 
-                pass
+                return consumibles
 
 
             case '0':

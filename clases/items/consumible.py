@@ -73,7 +73,7 @@ def importar_consumible_generico(consumibles: list, lote: Lote):
         # Se trata de una tupla, así que extraigo la instancia de consumible
         consumible = consumible_uds[0]
 
-        if consumible.nombre == nombre_introducido:
+        if consumible == Consumible(nombre_introducido, lote):
 
             unidades_anteriores = consumible_uds[1]
 

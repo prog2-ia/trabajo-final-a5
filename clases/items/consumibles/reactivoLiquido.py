@@ -1,4 +1,5 @@
 from ..consumible import Consumible
+from ..lote import Lote
 
 from funciones import *
 
@@ -21,3 +22,8 @@ class ReactivoLiquido(Consumible):
                 and self._Consumible__lote == other._Consumible__lote
 
         return False
+    
+
+def importar_reactivo_liquido(consumibles: list, lote: Lote):
+
+    pass
