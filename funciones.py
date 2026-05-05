@@ -155,3 +155,20 @@ def pedir_fecha(frase):
         except ValueError:
             # Si el usuario escribe "hola", "32/13/2024" o usa guiones en lugar de barras, salta aquí
             print('Formato de fecha incorrecto o fecha no válida. Use el formato DD/MM/AAAA.')
+
+
+
+def pedir_cadena_no_vacia(frase):
+
+    print(frase, end='')
+    cadena = input()
+
+    if cadena == '0':
+
+        return None
+    
+    elif not cadena:
+
+        return pedir_cadena_no_vacia(frase)
+    
+    return cadena

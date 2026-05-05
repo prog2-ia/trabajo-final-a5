@@ -5,7 +5,7 @@ from funciones import *
 class Lote():
 
 
-    def __init__(self, id_lote: str, fecha_vencimiento: date, consumibles: list):
+    def __init__(self, id_lote: str, fecha_vencimiento: date):
 
         # El id es constante, así que solo habrá getter
         self.__id_lote = id_lote
@@ -13,8 +13,6 @@ class Lote():
         # Las fechas son constante, así que solo habrá getter
         self.__fecha_vencimiento = fecha_vencimiento
 
-        # Lista que contendrá los consumibles de un lote
-        self.consumibles = consumibles
 
 
 
@@ -41,6 +39,7 @@ class Lote():
         
         return False
     
+
 # Los IDs de los lotes tendrán forman 00-ABC
 def comprobar_id_lote(id:str) -> bool:
 
@@ -54,7 +53,7 @@ def comprobar_id_lote(id:str) -> bool:
 
 # El usuario define un lote nuevo, aunque se seleccione un lote
 # anteriormente definido, habría que cambiar la fecha y el ID
-def definir_lote(lotes: list):
+def definir_lote(lotes: dict):
 
     id_comprobado = False
 
@@ -76,10 +75,10 @@ def definir_lote(lotes: list):
 
 
             # Comprobamos que no exista tal id en lotes anteriormente definidos
-            for lote in lotes:
+            for lote in lotes.keys():
 
 
-                if lote.id_lote == introducir_id:
+                if lote == introducir_id:
 
                     print('Ya existe un lote con ese ID.')
                     return None
@@ -96,28 +95,76 @@ def definir_lote(lotes: list):
     # A partir de aquí se pide la fecha
     while True:
 
+
         fecha_caducidad = pedir_fecha('(0) para cancelar | Introduzca la fecha de caducidad (DD/MM/AAAA): ')
+
 
         if fecha_caducidad is None:
 
             return None
         
+        
+        # Comprobar que sea válida.
         if fecha_caducidad < date.today():
 
             print('Fecha no válida. No puedes importar lotes ya caducados.')
 
         else:
 
-            return introducir_id, fecha_caducidad
+            return Lote(introducir_id, fecha_caducidad)
         
 
-# En esta función se añaden los consumibles
-def definir_lote_nuevo(id, fecha_caducidad):
+# Ahora hay que añadir consumibles al lote definido
+def definir_lote_nuevo(lote: Lote):
+
 
     instruccion = ''
 
-    print('Introduzca (1) para terminar de añadir consumibles al lote o (0) para cancelar la operación.')
+    consumibles = [] # Esta lista se desempaquetara a la hora de añadirla
+                     # a un inventario
 
-    while instruccion:
 
-        pass
+    while not instruccion in ['4', '0']:
+
+        instruccion = menu_consumibles()
+
+        match instruccion:
+
+            case '1':
+
+                pass
+
+            case '2':
+
+                pass
+
+            case '3':
+
+                pass
+
+            case '4':
+
+                pass
+
+
+            case '0':
+
+                return None
+
+
+# Menu para que el usuario seleccione que consumible quiere añadir al lote
+def menu_consumibles():
+
+    print('\n\t[1] - Consumible genérico')
+    print('\t[2] - Reactivo líquido')
+    print('\t[3] - Reactivo solido')
+    print('\t[4] - Finalizar lote')
+    print('\t[0] - Cancelar lote')
+
+    instruccion = input('Instrucción: ')
+
+    if not instruccion in ['1', '2', '3', '4', '0']:
+
+        return menu_consumibles()
+    
+    return instruccion

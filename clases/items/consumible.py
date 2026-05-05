@@ -37,3 +37,10 @@ class Consumible(Item):
 
 
         return False
+    
+
+
+# Función usada en la definición de nuevo lote
+def importar_consumible_generico(consumibles: list):
+
+    
