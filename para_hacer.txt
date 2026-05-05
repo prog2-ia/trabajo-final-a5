@@ -12,5 +12,7 @@ En todo el código   -> Lo de la clase del 20/04
 
     - Decorar la salida, no tocar nada de funcionalidades, solo los print()
 
+    - Poner strip() en las verificaciones de funciones que pidan str
+
 
 Hacer README.md

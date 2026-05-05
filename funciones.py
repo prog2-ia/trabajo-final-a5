@@ -80,7 +80,7 @@ def pedir_int(frase):
         
         try:
 
-            if int(numero) == float(numero):
+            if int(numero) == float(numero) and int(numero) > 0:
 
                 return int(numero)
             
@@ -160,15 +160,15 @@ def pedir_fecha(frase):
 
 def pedir_cadena_no_vacia(frase):
 
-    print(frase, end='')
-    cadena = input()
+    while True:
 
-    if cadena == '0':
+        print(frase, end='')
+        cadena = input()
 
-        return None
-    
-    elif not cadena:
+        if cadena == '0':
 
-        return pedir_cadena_no_vacia(frase)
-    
-    return cadena
+            return None
+        
+        if cadena.strip() and cadena.strip() != '0':
+        
+            return cadena

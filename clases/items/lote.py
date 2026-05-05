@@ -132,7 +132,7 @@ def definir_lote_nuevo(lote: Lote):
 
             case '1':
 
-                pass
+                
 
             case '2':
 
