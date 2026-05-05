@@ -172,11 +172,18 @@ def pedir_cadena_no_vacia(frase):
         
             return cadena
         
+##################################################################################
+# En estas dos funciones se pediran números mayores que 0                        #
+##################################################################################
 
 def pedir_unidades(frase):
 
     print(frase, end='')
     unidades = input()
+
+    if unidades == '0':
+
+        return None
 
     try:
 
@@ -190,3 +197,29 @@ def pedir_unidades(frase):
     except ValueError:
 
         print('\nIntroduzca un valor numérico válido.')
+
+
+def pedir_unidades_float(frase):
+
+    print(frase, end='')
+    unidades = input()
+
+    if unidades == '0':
+
+        return None
+
+    try:
+
+        if float(unidades) > 0:
+
+            return float(unidades)
+        
+        raise ValueError
+
+
+    except ValueError:
+
+        print('\nIntroduzca un valor numérico válido.')
+
+
+##################################################################################

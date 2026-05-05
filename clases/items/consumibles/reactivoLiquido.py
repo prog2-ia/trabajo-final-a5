@@ -41,7 +41,7 @@ def importar_reactivo_liquido(consumibles: list, nombres: list, lote: Lote):
     
 
 
-    volumen_introducido = pedir_unidades('(0) para cancelar la importación | Introduzca el volumen del reactivo (ml): ')
+    volumen_introducido = pedir_unidades_float('(0) para cancelar la importación | Introduzca el volumen del reactivo (ml): ')
 
     if volumen_introducido is None:
 
@@ -55,6 +55,9 @@ def importar_reactivo_liquido(consumibles: list, nombres: list, lote: Lote):
 
         return
     
+
+    nombre_introducido = nombre_introducido.lower()
+    repetido = False
 
 
     # Evitar repeticiones de nombres en diferentes tipos de clase

@@ -1,8 +1,8 @@
 from datetime import date
 
 from .consumible import importar_consumible_generico
-from .consumibles.reactivoSolido import ReactivoSolido
-from .consumibles.reactivoLiquido import ReactivoLiquido
+from .consumibles.reactivoSolido import importar_reactivo_solido
+from .consumibles.reactivoLiquido import importar_reactivo_liquido
 
 from funciones import *
 
@@ -145,11 +145,13 @@ def definir_lote_nuevo(lote: Lote):
 
             case '2': # Reactivo líquido
 
-                pass
+                importar_reactivo_liquido(consumibles, nombres, lote)
+
+
 
             case '3': # Reactivo solido
 
-                pass
+                importar_reactivo_solido(consumibles, nombres, lote)
 
 
 

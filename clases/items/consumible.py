@@ -16,8 +16,8 @@ class Consumible(Item):
     def __str__(self):
 
 
-        id_lote = self.__lote.id_lote
-        fecha = self.__lote.fecha_vencimiento
+        id_lote = self.lote.id_lote
+        fecha = self.lote.fecha_vencimiento
 
         # Compruebo si el consumible está caducado con la función de lote
 
@@ -33,10 +33,15 @@ class Consumible(Item):
 
         if isinstance(other, Consumible):
 
-            return super().__eq__(other) and self.__lote == other.__lote
-
+            return super().__eq__(other) and self.lote == other.lote
 
         return False
+    
+
+    @property
+    def lote(self):
+
+        return self.__lote
     
 
 

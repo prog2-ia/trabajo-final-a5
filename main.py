@@ -1,6 +1,5 @@
 # main.py
 
-from clases.items.equipos.centrifugadora import definir_centrifugadora
 from funciones import *
 from menus import *
 
@@ -248,7 +247,15 @@ if __name__ == '__main__':
 
                                     case '1':   # Definir lote
 
-                                        pass
+                                        # anadir_lote -> Añade a un inventario los consumibles
+                                        # definir_lote_nuevo -> Se deciden que consumibles se ponen en el lote
+                                        # definir_lote -> Se pone la fecha de caducidad y el ID
+
+                                        conclusion_operacion = anadir_lote(definir_lote_nuevo(definir_lote(lotes)), inventarios)
+
+                                        if type(conclusion_operacion) == tuple:
+
+                                            pass
 
                                     case '2':   # Traer lote anteriormente definido
 

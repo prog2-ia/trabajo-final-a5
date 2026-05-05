@@ -284,6 +284,62 @@ def eliminar_almacen(inventarios):
         print('No hay almacenes para eliminar.')
 
 
+def anadir_lote(consumibles: list, inventarios:list):
+
+    # consumibles viene de funciones de definir_lote
+    
+    if consumibles is None:
+
+        print('Operación cancelada...')
+        return None
+    
+    if not consumibles: # Que este vacío...
+        
+        print('No se han importado consumibles.')
+        return None
+    
+    if not inventarios:
+
+        print('No hay almacenes para guardar objetos.')
+        return None
+    
+    # Mostramos al usuario los posibles almacenes
+    # en los que desee guardar el lote
+
+    mostrar_almacenes(inventarios)
+
+
+    print(f'\n\t[Código] - \tAñadir al almacen...\n'
+            f'\t[0] - \tCancelar operación\n')
+
+
+    while True:
+
+        # Tiene que tomar un código de almacen o 0 para volver atrás
+        codigo_input = input('\nAñadir a: ')
+        
+
+        for inventario in inventarios:
+
+            if codigo_input.upper() == inventario.codigo:
+
+
+                # Añade cada consumible definido anteriormente
+                for consumible in consumibles:
+                    inventario.anadir_item_al_inventario(consumible)
+                
+                    
+                return (consumibles, inventario)
+            
+
+        if codigo_input == '0':
+
+            print('Cancelando operación...')
+            return None
+            
+        else:
+
+            print('Código no válido. Vuelva a intentarlo.')
 
 
 def anadir_item(item_cantidad: tuple, inventarios: list):
