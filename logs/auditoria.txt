@@ -27,3 +27,11 @@ Item: gafas de proteccion | Estado: Buen estado
 Item: centrifugadora_x | Estado: Buen estado | RPM Max: 3000
 [2026-05-02 20:05:39] - Equipo (2 uds.) añadido al inventario [AB123]:
 Item: gafas proteccion | Estado: Buen estado
+[2026-05-05 18:06:25] - Creado nuevo almacen con codigo [DC789]
+[2026-05-05 18:08:32] - Lote (30 uds.) añadido a DC789 .
+
+	- Item: pipeta 300 ml | Lote: 12-ABC | Vence: 2027-02-14 (En fecha) (8 uds.)
+	- Item: ácido sulfúrico | Lote: 12-ABC | Vence: 2027-02-14 (En fecha) | Vol: 400.0 ml (7 uds.)
+	- Item: ácido sulfúrico | Lote: 12-ABC | Vence: 2027-02-14 (En fecha) | Vol: 600.0 ml (3 uds.)
+	- Item: ácido brómico | Lote: 12-ABC | Vence: 2027-02-14 (En fecha) | Masa: 200.0 g (9 uds.)
+	- Item: ácido brómico 6 | Lote: 12-ABC | Vence: 2027-02-14 (En fecha) | Masa: 300.0 g (3 uds.)

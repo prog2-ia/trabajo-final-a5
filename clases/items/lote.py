@@ -88,7 +88,7 @@ def definir_lote(lotes: dict):
 
                 if lote == introducir_id:
 
-                    print('Ya existe un lote con ese ID.')
+                    print('Ya existe un lote con ese ID.\n')
                     return None
                 
             
@@ -97,14 +97,14 @@ def definir_lote(lotes: dict):
 
         if not id_comprobado:
 
-            print('Introduzca un ID válido o (0) para cancelar la operación.')
+            print('Introduzca un ID válido o (0) para cancelar la operación.\n')
 
 
     # A partir de aquí se pide la fecha
-    while True:
+    while id_comprobado:
 
 
-        fecha_caducidad = pedir_fecha('(0) para cancelar | Introduzca la fecha de caducidad (DD/MM/AAAA): ')
+        fecha_caducidad = pedir_fecha('(0) para cancelar la operación | Introduzca la fecha de caducidad (DD/MM/AAAA): ')
 
 
         if fecha_caducidad is None:
@@ -115,7 +115,7 @@ def definir_lote(lotes: dict):
         # Comprobar que sea válida.
         if fecha_caducidad < date.today():
 
-            print('Fecha no válida. No puedes importar lotes ya caducados.')
+            print('Fecha no válida. No puedes importar lotes ya caducados.\n')
 
         else:
 
@@ -125,13 +125,16 @@ def definir_lote(lotes: dict):
 # Ahora hay que añadir consumibles al lote definido
 def definir_lote_nuevo(lote: Lote):
 
+    if lote is None:
+
+        return None
+
 
     instruccion = ''
 
     consumibles = [] # Esta lista se desempaquetara a la hora de añadirla
                      # a un inventario
 
-    nombres = [] # Para verificar no repetidos
 
 
     while not instruccion in ['4', '0']:
@@ -143,19 +146,19 @@ def definir_lote_nuevo(lote: Lote):
             case '1': # Consumible genérico
                 
                 # Como las funciones trabaja mediante referencia de lista, no tiene return
-                importar_consumible_generico(consumibles, nombres, lote)
+                importar_consumible_generico(consumibles, lote)
 
 
 
             case '2': # Reactivo líquido
 
-                importar_reactivo_liquido(consumibles, nombres, lote)
+                importar_reactivo_liquido(consumibles, lote)
 
 
 
             case '3': # Reactivo solido
 
-                importar_reactivo_solido(consumibles, nombres, lote)
+                importar_reactivo_solido(consumibles, lote)
 
 
 
@@ -178,7 +181,7 @@ def menu_consumibles():
     print('\t[4] - Finalizar lote')
     print('\t[0] - Cancelar lote')
 
-    instruccion = input('Instrucción: ')
+    instruccion = input('\nInstrucción: ')
 
     if not instruccion in ['1', '2', '3', '4', '0']:
 

@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 
 from funciones import *
 
@@ -10,7 +10,7 @@ class Registro():
     def __init__(self, cod, items):
 
 
-        self.inicio = datetime.datetime.now()
+        self.inicio = datetime.now()
         self.abierta = True
 
 
@@ -23,7 +23,7 @@ class Registro():
         # Hay que programarla de tal manera que los objetos de items
         # se devuelvan al inventario, y que se guarde el registro de la sesión
 
-        self.fin = datetime.datetime.now()
+        self.fin = datetime.now()
         self.abierta = False
 
 
@@ -42,14 +42,14 @@ def escribir_creado_almacen(codigo):
 
     with open('logs/auditoria.txt', 'a') as archivo:
 
-        archivo.write(f'[{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] - Creado nuevo almacen con codigo [{codigo}]\n')
+        archivo.write(f'[{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] - Creado nuevo almacen con codigo [{codigo}]\n')
 
 
 def escribir_eliminado_almacen(inventario):
 
     with open('logs/auditoria.txt', 'a') as archivo:
 
-        mensaje_inicial = f'[{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] - Almacén eliminado:\n'
+        mensaje_inicial = f'[{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] - Almacén eliminado:\n'
 
         archivo.write(f'{mensaje_inicial}{str(inventario)}\n')
 
@@ -66,7 +66,7 @@ def escribir_importar_equipo(equipo_cantidad_inventario: tuple):
 
     with open('logs/auditoria.txt', 'a') as archivo:
 
-        mensaje_inicial = f'[{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] - Equipo ({cantidad} uds.) añadido al inventario [{codigo}]:\n'
+        mensaje_inicial = f'[{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] - Equipo ({cantidad} uds.) añadido al inventario [{codigo}]:\n'
 
         archivo.write(f'{mensaje_inicial}{str(equipo)}\n')
 
@@ -78,7 +78,7 @@ def escribir_mover_equipo(equipo_cantidad: tuple, codigo_origen: str, codigo_des
 
     with open('logs/auditoria.txt', 'a') as archivo:
 
-        mensaje = f'[{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] - {str(equipo)} ({cantidad} uds.) movido del inventario [{codigo_origen}] al inventario [{codigo_destino}]\n'
+        mensaje = f'[{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] - {str(equipo)} ({cantidad} uds.) movido del inventario [{codigo_origen}] al inventario [{codigo_destino}]\n'
 
         archivo.write(mensaje)
 
@@ -104,7 +104,7 @@ def escribir_nuevo_lote_definido(consumibles_inventario: tuple):
 
     
 
-    mensaje_inicial = f'[{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] - Lote ({unidades} uds.) añadido a {inventario.codigo} .\n'
+    mensaje_inicial = f'[{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] - Lote ({unidades} uds.) añadido a {inventario.codigo} .\n'
 
 
     with open('logs/auditoria.txt', 'a') as archivo:

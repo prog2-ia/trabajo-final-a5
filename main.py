@@ -29,6 +29,7 @@ if __name__ == '__main__':
     equipos = laboratorio['equipos']
     lotes = laboratorio['lotes'] # lotes será un diccionario
 
+
     
 
     print('Bienvenido al programa de gestión de laboratorio')

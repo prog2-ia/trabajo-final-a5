@@ -327,8 +327,8 @@ def anadir_lote(consumibles: list, inventarios:list):
                 # Añade cada consumible definido anteriormente
                 for consumible in consumibles:
                     inventario.anadir_item_al_inventario(consumible)
-                
-                    
+
+                print('\nLote importado con éxito.\n')
                 return (consumibles, inventario)
             
 

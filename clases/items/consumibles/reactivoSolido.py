@@ -1,11 +1,10 @@
 from ..consumible import Consumible
-from ..lote import Lote
 
 from funciones import *
 
 class ReactivoSolido(Consumible):
 
-    def __init__(self, nombre, lote: Lote, masa: float):
+    def __init__(self, nombre, lote, masa: float):
         
         super().__init__(nombre, lote)
         self.masa = masa
@@ -24,7 +23,7 @@ class ReactivoSolido(Consumible):
         return False
     
 
-def importar_reactivo_solido(consumibles: list, nombres: list, lote: Lote):
+def importar_reactivo_solido(consumibles: list, lote):
 
     # Esta función trabaja mediante referencia de lista, así que no hara falta return
 
@@ -58,31 +57,23 @@ def importar_reactivo_solido(consumibles: list, nombres: list, lote: Lote):
 
 
 
-    # Evitar repeticiones de nombres en diferentes tipos de clase
-    if not nombre_introducido in nombres:
+    # Si el consumible ha sido introducido anteriormente, se añaden las unidades
+    for indice, reactivo_uds in enumerate(consumibles):
+
+        # Se trata de una tupla, así que extraigo la instancia de consumible
+        reactivo = reactivo_uds[0]
+
+        if reactivo == ReactivoSolido(nombre_introducido, lote, masa_introducida):
+
+            unidades_anteriores = reactivo_uds[1]
+
+            consumibles[indice] = (reactivo, unidades + unidades_anteriores)
+
+            repetido = True
 
 
-        # Si el consumible ha sido introducido anteriormente, se añaden las unidades
-        for indice, reactivo_uds in enumerate(consumibles):
+    # Si no ha sido introducido anteriormente, se añade a la lista
+    if not repetido:
 
-            # Se trata de una tupla, así que extraigo la instancia de consumible
-            reactivo = reactivo_uds[0]
+        consumibles.append((ReactivoSolido(nombre_introducido, lote, masa_introducida), unidades))
 
-            if reactivo == ReactivoSolido(nombre_introducido, lote, masa_introducida):
-
-                unidades_anteriores = reactivo_uds[1]
-
-                consumibles[indice] = (reactivo, unidades + unidades_anteriores)
-
-                repetido = True
-
-
-        # Si no ha sido introducido anteriormente, se añade a la lista
-        if not repetido:
-
-            consumibles.append((ReactivoSolido(nombre_introducido, lote, masa_introducida), unidades))
-            nombres.append(nombre_introducido)
-
-
-    else:
-        print('Se ve que un consumible con el mismo nombre ha sido introducido anteriormente. Cancelando importación...')

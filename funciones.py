@@ -24,7 +24,7 @@ def cargar_laboratorio():
             "lista_inventarios": [],
             "lista_sesiones": [],
             "equipos": [],
-            "lotes": []
+            "lotes": {}
         }
 
 def guardar_laboratorio(datos_a_guardar):
@@ -89,7 +89,7 @@ def pedir_int(frase):
 
         except ValueError:
 
-            print('Introduzca un número entero positivo.')
+            print('Introduzca un número entero positivo.\n')
 
 
 def pedir_int_entre_valores(frase, valor_min, valor_max):
@@ -102,7 +102,7 @@ def pedir_int_entre_valores(frase, valor_min, valor_max):
     
     if valor_min > numero or numero > valor_max:
 
-        print(f'Introduzca un número válido [{valor_min}, {valor_max}]')
+        print(f'Introduzca un número válido [{valor_min}, {valor_max}]\n')
         return pedir_int_entre_valores(frase, valor_min, valor_max)
     
     return numero
@@ -127,7 +127,7 @@ def pedir_float(frase):
         
         except ValueError:
 
-            print('Error. Introduzca un valor numérico válido.')
+            print('Error. Introduzca un valor numérico válido.\n')
 
 
 
@@ -153,7 +153,7 @@ def pedir_fecha(frase):
 
         except ValueError:
             # Si el usuario escribe "hola", "32/13/2024" o usa guiones en lugar de barras, salta aquí
-            print('Formato de fecha incorrecto o fecha no válida. Use el formato DD/MM/AAAA.')
+            print('Formato de fecha incorrecto o fecha no válida. Use el formato DD/MM/AAAA.\n')
 
 
 
@@ -178,48 +178,54 @@ def pedir_cadena_no_vacia(frase):
 
 def pedir_unidades(frase):
 
-    print(frase, end='')
-    unidades = input()
+    while True:
 
-    if unidades == '0':
-
-        return None
-
-    try:
-
-        if int(unidades) == float(unidades) and int(unidades) > 0:
-
-            return int(unidades)
-        
-        raise ValueError
+        print(frase, end='')
+        unidades = input()
 
 
-    except ValueError:
+        if unidades == '0':
 
-        print('\nIntroduzca un valor numérico válido.')
+            return None
+
+        try:
+
+            if int(unidades) == float(unidades) and int(unidades) > 0:
+
+                return int(unidades)
+            
+            raise ValueError
+
+
+        except ValueError:
+
+            print('Introduzca un valor numérico válido.\n')
 
 
 def pedir_unidades_float(frase):
 
-    print(frase, end='')
-    unidades = input()
 
-    if unidades == '0':
+    while True:
 
-        return None
+        print(frase, end='')
+        unidades = input()
 
-    try:
+        if unidades == '0':
 
-        if float(unidades) > 0:
+            return None
 
-            return float(unidades)
-        
-        raise ValueError
+        try:
+
+            if float(unidades) > 0:
+
+                return float(unidades)
+            
+            raise ValueError
 
 
-    except ValueError:
+        except ValueError:
 
-        print('\nIntroduzca un valor numérico válido.')
+            print('Introduzca un valor numérico válido.\n')
 
 
 ##################################################################################

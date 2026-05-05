@@ -1,5 +1,5 @@
 from ..consumible import Consumible
-from ..lote import Lote
+
 
 from funciones import *
 
@@ -27,7 +27,7 @@ class ReactivoLiquido(Consumible):
     
     
 
-def importar_reactivo_liquido(consumibles: list, nombres: list, lote: Lote):
+def importar_reactivo_liquido(consumibles: list, lote):
 
     # Esta función trabaja mediante referencia de lista, así que no hara falta return
 
@@ -60,31 +60,24 @@ def importar_reactivo_liquido(consumibles: list, nombres: list, lote: Lote):
     repetido = False
 
 
-    # Evitar repeticiones de nombres en diferentes tipos de clase
-    if not nombre_introducido in nombres:
+
+    # Si el consumible ha sido introducido anteriormente, se añaden las unidades
+    for indice, reactivo_uds in enumerate(consumibles):
+
+        # Se trata de una tupla, así que extraigo la instancia de consumible
+        reactivo = reactivo_uds[0]
+
+        if reactivo == ReactivoLiquido(nombre_introducido, lote, volumen_introducido):
+
+            unidades_anteriores = reactivo_uds[1]
+
+            consumibles[indice] = (reactivo, unidades + unidades_anteriores)
+
+            repetido = True
 
 
-        # Si el consumible ha sido introducido anteriormente, se añaden las unidades
-        for indice, reactivo_uds in enumerate(consumibles):
+    # Si no ha sido introducido anteriormente, se añade a la lista
+    if not repetido:
 
-            # Se trata de una tupla, así que extraigo la instancia de consumible
-            reactivo = reactivo_uds[0]
+        consumibles.append((ReactivoLiquido(nombre_introducido, lote, volumen_introducido), unidades))
 
-            if reactivo == ReactivoLiquido(nombre_introducido, lote, volumen_introducido):
-
-                unidades_anteriores = reactivo_uds[1]
-
-                consumibles[indice] = (reactivo, unidades + unidades_anteriores)
-
-                repetido = True
-
-
-        # Si no ha sido introducido anteriormente, se añade a la lista
-        if not repetido:
-
-            consumibles.append((ReactivoLiquido(nombre_introducido, lote, volumen_introducido), unidades))
-            nombres.append(nombre_introducido)
-
-
-    else:
-        print('Se ve que un consumible con el mismo nombre ha sido introducido anteriormente. Cancelando importación...')
