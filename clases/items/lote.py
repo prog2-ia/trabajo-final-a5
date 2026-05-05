@@ -55,16 +55,21 @@ def comprobar_id_lote(id:str) -> bool:
 # El usuario define un lote nuevo
 def definir_lote(lotes: list):
 
+    id_comprobado = False
+
     # Pasamos la lista de los lotes anteriormente definidos
     # Hara falta para ver que no hayan IDs repetidos
 
-    while True:
+    while not id_comprobado:   # Este bucle se parara con un return o si el id introducido es válido
+
 
         introducir_id = input('(0) para cancelar la operación | Introduzca el ID (00-ABC) del nuevo lote: ').upper()
 
         if introducir_id == '0':
 
             return None
+        
+
         
         if comprobar_id_lote(introducir_id):
 
@@ -75,9 +80,13 @@ def definir_lote(lotes: list):
 
                 if lote.id_lote == introducir_id:
 
-                    print('Operación cancelada. Ya existe un lote con ese ID.')
+                    print('Ya existe un lote con ese ID.')
+                    return None
+                
+            
+            id_comprobado = True
+            
 
+        if not id_comprobado:
 
-
-        
-        print('Introduzca un ID válido o (0) para cancelar la operación.')
+            print('Introduzca un ID válido o (0) para cancelar la operación.')
