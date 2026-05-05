@@ -43,6 +43,10 @@ class Lote():
         
         return False
     
+    def __str__(self):
+
+        return f'[{self.id}] | Fecha vencimiento: {self.fecha_vencimiento}'
+    
 
 # Los IDs de los lotes tendrán forman 00-ABC
 def comprobar_id_lote(id:str) -> bool:

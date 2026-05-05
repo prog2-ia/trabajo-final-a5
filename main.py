@@ -255,7 +255,16 @@ if __name__ == '__main__':
 
                                         if type(conclusion_operacion) == tuple:
 
-                                            pass
+                                            escribir_nuevo_lote_definido(conclusion_operacion)
+
+                                            # Hay que guardar el nuevo lote en el diccionario de lotes
+                                            consumibles = conclusion_operacion[0]
+                                            consumible = consumibles[0][0]
+
+                                            lote = consumible.lote
+
+                                            # Guardamos en el diccionaro de lotes anteriormente definidos
+                                            lotes[lote.id_lote] = consumibles
 
                                     case '2':   # Traer lote anteriormente definido
 
