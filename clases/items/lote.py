@@ -127,6 +127,8 @@ def definir_lote_nuevo(lote: Lote):
     consumibles = [] # Esta lista se desempaquetara a la hora de añadirla
                      # a un inventario
 
+    nombres = [] # Para verificar no repetidos
+
 
     while not instruccion in ['4', '0']:
 
@@ -137,7 +139,7 @@ def definir_lote_nuevo(lote: Lote):
             case '1': # Consumible genérico
                 
                 # Como las funciones trabaja mediante referencia de lista, no tiene return
-                importar_consumible_generico(consumibles, lote)
+                importar_consumible_generico(consumibles, nombres, lote)
 
 
 

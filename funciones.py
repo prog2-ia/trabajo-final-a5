@@ -62,7 +62,7 @@ def pedir_num(frase):
     
     return None
     
-    # Si el usuario no introduce un número, devolvemos -1
+    # Si el usuario no introduce un número, devolvemos None
     # El 0 está reservado para salir de capas de menu
 
 
@@ -84,9 +84,8 @@ def pedir_int(frase):
 
                 return int(numero)
             
-            else:
+            raise ValueError
 
-                print('Introduzca un número entero positivo.')
 
         except ValueError:
 
@@ -172,3 +171,22 @@ def pedir_cadena_no_vacia(frase):
         if cadena.strip() and cadena.strip() != '0':
         
             return cadena
+        
+
+def pedir_unidades(frase):
+
+    print(frase, end='')
+    unidades = input()
+
+    try:
+
+        if int(unidades) == float(unidades) and int(unidades) > 0:
+
+            return int(unidades)
+        
+        raise ValueError
+
+
+    except ValueError:
+
+        print('\nIntroduzca un valor numérico válido.')
