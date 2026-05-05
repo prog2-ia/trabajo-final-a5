@@ -1,5 +1,7 @@
 from datetime import date
 
+from consumible import importar_consumible_generico
+
 from funciones import *
 
 class Lote():
@@ -131,8 +133,9 @@ def definir_lote_nuevo(lote: Lote):
         match instruccion:
 
             case '1':
-
                 
+                # Como las funciones trabaja mediante referencia de lista, no tiene return
+                importar_consumible_generico(consumibles, lote)
 
             case '2':
 

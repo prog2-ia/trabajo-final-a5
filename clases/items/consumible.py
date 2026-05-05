@@ -45,31 +45,44 @@ def importar_consumible_generico(consumibles: list, lote: Lote):
 
     # Esta función trabaja mediante referencia de lista, así que no hara falta return
 
+
+
     nombre_introducido = pedir_cadena_no_vacia('(0) para cancelar la importación | Introduzca el nombre del consumible: ')
 
-    if not nombre_introducido is None:
+    if nombre_introducido is None:
 
-        unidades = pedir_int('(0) para cancelar la importación | Introduzca las unidades del consumible: ')
-
-        if not unidades is None:
-
-            nombre_introducido = nombre_introducido.lower()
-            repetido = False
-
-            # Si el consumible ha sido introducido anteriormente, se añaden las unidades
-            for indice, consumible_uds in enumerate(consumibles):
-
-                # Se trata de una tupla, así que extraigo la instancia de consumible
-                consumible = consumible_uds[0]
-
-                if consumible.nombre == nombre_introducido:
-
-                    unidades_anteriores = consumible_uds[1]
-
-                    consumibles[indice] = (consumible, unidades + unidades_anteriores)
+        return
 
 
-            # Si no ha sido introducido anteriormente, se añade a la lista
-            if not repetido:
+    unidades = pedir_int('(0) para cancelar la importación | Introduzca las unidades del consumible: ')
 
-                consumibles.append((Consumible(nombre_introducido, lote), unidades))
+
+    if unidades is None:
+
+        return
+
+
+
+    nombre_introducido = nombre_introducido.lower()
+    repetido = False
+
+
+    # Si el consumible ha sido introducido anteriormente, se añaden las unidades
+    for indice, consumible_uds in enumerate(consumibles):
+
+        # Se trata de una tupla, así que extraigo la instancia de consumible
+        consumible = consumible_uds[0]
+
+        if consumible.nombre == nombre_introducido:
+
+            unidades_anteriores = consumible_uds[1]
+
+            consumibles[indice] = (consumible, unidades + unidades_anteriores)
+
+            repetido = True
+
+
+    # Si no ha sido introducido anteriormente, se añade a la lista
+    if not repetido:
+
+        consumibles.append((Consumible(nombre_introducido, lote), unidades))
