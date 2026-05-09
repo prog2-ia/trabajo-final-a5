@@ -45,7 +45,7 @@ class Lote():
     
     def __str__(self):
 
-        return f'[{self.id}] | Fecha vencimiento: {self.fecha_vencimiento}'
+        return f'Lote: [{self.id_lote}] | Fecha vencimiento: {self.fecha_vencimiento}'
     
 
 # Los IDs de los lotes tendrán forman 00-ABC
