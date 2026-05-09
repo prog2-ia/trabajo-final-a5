@@ -1,22 +1,22 @@
 from ..consumible import Consumible
-
+from typing import Any
 
 from funciones import *
 
 class ReactivoLiquido(Consumible):
 
-    def __init__(self, nombre, lote, volumen: float):
+    def __init__(self, nombre: str, lote: Any, volumen: float):
 
         super().__init__(nombre, lote)
-        self.volumen = volumen
+        self.volumen: float = volumen
 
 
-    def __str__(self):
+    def __str__(self) -> str:
         return super().__str__() + f" | Vol: {self.volumen} ml"
     
 
     
-    def __eq__(self, other):
+    def __eq__(self, other: Any) -> bool:
 
         if isinstance(other, ReactivoLiquido):
 

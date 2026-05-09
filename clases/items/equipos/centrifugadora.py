@@ -1,20 +1,20 @@
 from ..equipo import Equipo
-
 from funciones import *
+from typing import Any, Optional, List
 
 import copy
 
 class Centrifugadora(Equipo):
 
-    def __init__(self, nombre, rpm_max: int):
+    def __init__(self, nombre: str, rpm_max: int):
 
         super().__init__(nombre)
-        self.rpm_max = rpm_max
+        self.rpm_max: int = rpm_max
 
-    def __str__(self):
+    def __str__(self) -> str:
         return super().__str__() + f" | RPM Max: {self.rpm_max}"
     
-    def __eq__(self, other):
+    def __eq__(self, other: Any) -> bool:
 
         if isinstance(other, Centrifugadora):
 
@@ -25,7 +25,7 @@ class Centrifugadora(Equipo):
 
 
 # Equipos es la lista extraída de nuestro archivo pickle
-def definir_centrifugadora(equipos: list) -> Centrifugadora:
+def definir_centrifugadora(equipos: List[Any]) -> Optional[Centrifugadora]:
 
     # Se pasa la lista con equipo anteriormente definido
 

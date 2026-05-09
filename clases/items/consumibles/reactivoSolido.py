@@ -1,20 +1,21 @@
 from ..consumible import Consumible
+from typing import Any
 
 from funciones import *
 
 class ReactivoSolido(Consumible):
 
-    def __init__(self, nombre, lote, masa: float):
+    def __init__(self, nombre: str, lote: Any, masa: float):
         
         super().__init__(nombre, lote)
-        self.masa = masa
+        self.masa: float = masa
 
 
-    def __str__(self):
+    def __str__(self) -> str:
         return super().__str__() + f" | Masa: {self.masa} g"
     
 
-    def __eq__(self, other):
+    def __eq__(self, other: Any) -> bool:
 
         if isinstance(other, ReactivoSolido):
 
@@ -23,7 +24,7 @@ class ReactivoSolido(Consumible):
         return False
     
 
-def importar_reactivo_solido(consumibles: list, lote):
+def importar_reactivo_solido(consumibles: list[Any], lote: Any) -> None:
 
     # Esta función trabaja mediante referencia de lista, así que no hara falta return
 

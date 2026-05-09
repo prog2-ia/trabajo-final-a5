@@ -1,21 +1,21 @@
 from ..equipo import Equipo
-
 from funciones import *
+from typing import Any, Optional, Tuple, List
 
 import copy
 
 class EquipoTermico(Equipo):
 
-    def __init__(self, nombre, temp_max: float, temp_min: float):
+    def __init__(self, nombre: str, temp_max: float, temp_min: float):
         
         super().__init__(nombre)
-        self.temp_max = temp_max
-        self.temp_min = temp_min
+        self.temp_max: float = temp_max
+        self.temp_min: float = temp_min
 
-    def __str__(self):
+    def __str__(self) -> str:
         return super().__str__() + f" | Rango [{self.temp_min} °C, {self.temp_max} °C]"
     
-    def __eq__(self, other):
+    def __eq__(self, other: Any) -> bool:
 
         if isinstance(other, EquipoTermico):
 
@@ -26,7 +26,7 @@ class EquipoTermico(Equipo):
     
 
 
-def verificar_rango_temperatura(temp_max, temp_min):
+def verificar_rango_temperatura(temp_max: float, temp_min: float) -> None:
 
     if temp_max <= temp_min:
 
@@ -34,7 +34,7 @@ def verificar_rango_temperatura(temp_max, temp_min):
     
 
 # Equipos es la lista extraída de nuestro archivo pickle
-def definir_equipo_termico(equipos: list) -> EquipoTermico:
+def definir_equipo_termico(equipos: List[Any]) -> Optional[EquipoTermico]:
 
     # Se pasa la lista con equipo anteriormente definido
 
@@ -49,24 +49,23 @@ def definir_equipo_termico(equipos: list) -> EquipoTermico:
 
     for equipo in equipos:
 
-        if equipo.nombre.lower() == nombre:
+        if isinstance(equipo, EquipoTermico) and equipo.nombre.lower() == nombre.lower():
 
             print('Equipo anteriormente definido. Extrayendo copia...')
 
             return copy.deepcopy(equipo)
-        
-    try:
 
-        temp_max, temp_min = pedir_rango_temperatura()
+    rango = pedir_rango_temperatura()
 
-        return EquipoTermico(nombre.lower(), temp_max, temp_min)
-    
-    except:
-
+    if rango is None:
         return None
-        
 
-def pedir_rango_temperatura():
+    temp_max, temp_min = rango
+
+    return EquipoTermico(nombre.lower(), temp_max, temp_min)
+
+
+def pedir_rango_temperatura() -> Optional[Tuple[float, float]]:
 
     while True:
 
@@ -98,7 +97,7 @@ def pedir_rango_temperatura():
 # Como -1 puede ser una temperatura válida, hace falta una función de pedir float diferente a la
 # establecida en funciones.py
 
-def pedir_temperatura(frase: str) -> float:
+def pedir_temperatura(frase: str) -> Optional[float]:
 
     while True:
 
