@@ -1,5 +1,6 @@
 import copy
-from datetime import datetime
+from datetime import datetime, date
+from typing import Optional, Dict, Any, List
 
 # Para que el archivo main() no sea gigantesco,
 # escribimos la mayoría de funciones básicas aquí
@@ -10,7 +11,7 @@ from datetime import datetime
 
 import pickle
 
-def cargar_laboratorio():
+def cargar_laboratorio() -> Dict[str, Any]:
 
     try:
 
@@ -47,7 +48,7 @@ def anadir_equipo_definido(equipo, equipos: list):
 ######################################################################
 
 # Se usa para navegar entre los menus
-def pedir_num(frase):
+def pedir_num(frase: str) -> Optional[str]:
 
     print(frase, end='')
 
@@ -67,7 +68,7 @@ def pedir_num(frase):
 
 
 
-def pedir_int(frase):
+def pedir_int(frase: str) -> Optional[int]:
 
     while True:
 
@@ -131,7 +132,7 @@ def pedir_float(frase):
 
 
 
-def pedir_fecha(frase):
+def pedir_fecha(frase: str) -> Optional[date]:
 
     while True:
 
