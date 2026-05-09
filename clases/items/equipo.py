@@ -1,4 +1,5 @@
 from ..item import Item
+from typing import Any, Dict, Optional, List, Tuple
 
 from funciones import *
 
@@ -6,7 +7,7 @@ import copy
 
 class Equipo(Item):
 
-    dicc_estados = {True: "Buen estado", False: "Defectuoso"}
+    dicc_estados: Dict[bool,str] = {True: "Buen estado", False: "Defectuoso"}
 
     def __init__(self, nombre: str):
 
@@ -14,19 +15,19 @@ class Equipo(Item):
 
         # True -> Buen estado | False -> Defectuoso
 
-        self.estado = True
+        self.estado: bool = True
         # El estado PODRÁ cambiar después de una sesión, cuando
         # los científicos devuelvan el equipo, se podrá marcar como defectuoso o no
 
 
-    def __str__(self):
+    def __str__(self) -> str:
 
-        txt_estado = type(self).dicc_estados.get(self.estado, "Desconocido") # Evitar errores
+        txt_estado: str = type(self).dicc_estados.get(self.estado, "Desconocido") # Evitar errores
 
         return super().__str__() + f" | Estado: {txt_estado}"
     
 
-    def __eq__(self, other):
+    def __eq__(self, other: Any) -> bool:
 
         if isinstance(other, Equipo):
 
@@ -36,7 +37,7 @@ class Equipo(Item):
     
 
 # Equipos es la lista extraída de nuestro archivo pickle
-def definir_equipamiento(equipos: list) -> Equipo:
+def definir_equipamiento(equipos: List[Any]) -> Optional[Equipo]:
 
     # Se pasa la lista con equipo anteriormente definido
 
@@ -64,7 +65,7 @@ def definir_equipamiento(equipos: list) -> Equipo:
 
 # En esta función controlamos la cantidad que se importara
 
-def importar_equipamiento(equipo: Equipo) -> tuple:
+def importar_equipamiento(equipo: Optional[Equipo]) -> Optional[Tuple[Equipo, int]]:
 
     if equipo is None:
 
@@ -85,7 +86,7 @@ def importar_equipamiento(equipo: Equipo) -> tuple:
         
 
 
-def traer_equipamiento_definido(equipos: list) -> Equipo:
+def traer_equipamiento_definido(equipos: List[Any]) -> Optional[Equipo]:
 
     if not equipos:
 

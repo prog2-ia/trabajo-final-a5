@@ -1,19 +1,19 @@
 from ..item import Item
-
+from typing import Any
 
 from funciones import *
 
 class Consumible(Item):
 
-    def __init__(self, nombre: str, lote):
+    def __init__(self, nombre: str, lote: Any):
 
         super().__init__(nombre)
-        self.__lote = lote  # No se podra mofidicar
+        self.__lote: Any = lote  # No se podra mofidicar
                             # El lote de un consumible representa su fecha de vencimiento
                             # Entonces no tendrá setter
 
 
-    def __str__(self):
+    def __str__(self) -> str:
 
 
         id_lote = self.lote.id_lote
@@ -29,7 +29,7 @@ class Consumible(Item):
         return f"{super().__str__()} | Lote: {id_lote} | Vence: {fecha} ({estado_lote})"
     
 
-    def __eq__(self, other):
+    def __eq__(self, other: Any) -> bool:
 
         if isinstance(other, Consumible):
 
@@ -39,7 +39,7 @@ class Consumible(Item):
     
 
     @property
-    def lote(self):
+    def lote(self) -> Any:
 
         return self.__lote
     
