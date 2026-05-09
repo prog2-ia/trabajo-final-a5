@@ -7,6 +7,8 @@ from .items.equipo import Equipo, importar_equipamiento
 
 from .registro import Registro
 
+from typing import List, Tuple, Optional, Any
+from .item import Item
 
 # El almacen de nuestro laboratorio podrá tener varios
 # invetarios, cada uno con un nombre y una lista de items
@@ -34,7 +36,7 @@ class Inventario():
         return frase_inicial + frase_items
 
     @property
-    def codigo(self):
+    def codigo(self) -> str:
         return self.__codigo
 
 
