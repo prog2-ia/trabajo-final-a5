@@ -13,7 +13,7 @@ def menu_principal():
 
 
     print(
-        f'\n\t[1] -\tAlmacen\n'
+        f'\n\t[1] -\tAlmacén\n'
         f'\t[2] -\tEquipamiento\n'
         f'\t[3] -\tConsumibles\n'
         f'\t[4] -\tSesiones\n'

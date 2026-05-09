@@ -52,7 +52,7 @@ def pedir_num(frase: str) -> Optional[str]:
 
     print(frase, end='')
 
-    numero = input()
+    numero = input().strip()
 
     # Comprueba que sea un número
     if numero.isdigit():
@@ -163,15 +163,16 @@ def pedir_cadena_no_vacia(frase):
     while True:
 
         print(frase, end='')
-        cadena = input()
+        cadena = input().strip()
 
         if cadena == '0':
 
             return None
         
-        if cadena.strip() and cadena.strip() != '0':
+        if cadena:
         
             return cadena
+        print('Error: El texto no puede estar vacío o contener solo espacios.')
         
 ##################################################################################
 # En estas dos funciones se pediran números mayores que 0                        #

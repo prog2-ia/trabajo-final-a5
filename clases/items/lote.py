@@ -51,6 +51,8 @@ class Lote():
 
 # Los IDs de los lotes tendrán forman 00-ABC
 def comprobar_id_lote(id:str) -> bool:
+    # Limpiar la entrada antes de validar
+    id = id.strip()
 
     if len(id) != 6:
 
@@ -67,7 +69,7 @@ def definir_lote(lotes: Dict[str, Any]) -> Optional[Lote]:
     id_valido = False
 
     while not id_valido:
-        entrada = input('(0 para cancelar | ID (00-ABC): ').upper()
+        entrada = input('(0 para cancelar | ID (00-ABC): ').strip().upper()
         if entrada == '0':
             return None
         if comprobar_id_lote(entrada):
