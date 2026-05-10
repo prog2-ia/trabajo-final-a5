@@ -8,9 +8,7 @@ class Consumible(Item):
     def __init__(self, nombre: str, lote: Any):
 
         super().__init__(nombre)
-        self.__lote: Any = lote  # No se podra mofidicar
-                            # El lote de un consumible representa su fecha de vencimiento
-                            # Entonces no tendrá setter
+        self.__lote: Any = lote
 
 
     def __str__(self) -> str:
@@ -42,6 +40,12 @@ class Consumible(Item):
     def lote(self) -> Any:
 
         return self.__lote
+    
+    @lote.setter
+    def lote(self, lote):
+
+        self.__lote = lote
+
     
 
 

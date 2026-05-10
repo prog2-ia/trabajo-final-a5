@@ -225,6 +225,73 @@ def definir_lote_nuevo(lote: Optional[Lote]) -> Optional[List[Any]]:
     return None
 
 
+def traer_lote_definido(lotes: dict):
+
+    if not lotes:
+
+        print('No hay lotes anteriormente definidos.\n')
+        return None
+
+    for lote in lotes:
+
+        # Extraemos la lista del lote
+        consumibles = lotes[lote]
+        unidades_totales = 0
+
+        # Desempaquetamos la tupla
+        for consumible, unidades in consumibles:
+
+            unidades_totales += unidades
+
+        print(f'\t - {lote}: {len(consumibles)} consumibles, {unidades_totales} uds.')
+
+
+
+    codigo_valido = False
+
+    while not codigo_valido:
+
+        # Se pide el código del lote que se quiera volver a importar
+        lote_pedido = pedir_cadena_no_vacia('(0) para cancelar | Introduzca el código del lote que quieras importar: ').upper()
+
+        if lote_pedido is None:
+
+            return None
+        
+        if not lote_pedido in lotes.keys():
+            print('Introduzca un código válido.\n')
+
+        else:
+            codigo_valido = True
+    
+
+    
+
+    print('\nHay que definir un nuevo código y fecha para el lote importado.\n')
+
+    # Se trae un objeto de lote para poner a los consumibles
+    lote_definido = definir_lote(lotes)
+
+    if lote_definido is None:
+
+        return None
+
+    # Ahora a las instancias de consumible hay que cambiar el atributo lote
+
+    consumibles_nuevos = []
+
+    for consumible, unidades in lotes[lote_pedido]:
+
+        consumible.lote = lote_definido
+
+        consumibles_nuevos.append((consumible, unidades))
+
+    return consumibles_nuevos
+
+
+
+
+
 # Menu para que el usuario seleccione que consumible quiere añadir al lote
 def menu_consumibles() -> str:
 
