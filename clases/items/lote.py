@@ -252,7 +252,7 @@ def traer_lote_definido(lotes: dict):
     while not codigo_valido:
 
         # Se pide el código del lote que se quiera volver a importar
-        lote_pedido = pedir_cadena_no_vacia('(0) para cancelar | Introduzca el código del lote que quieras importar: ').upper()
+        lote_pedido = pedir_cadena_no_vacia('(0) para cancelar | Introduzca el código del lote que quieras importar: ')
 
         if lote_pedido is None:
 

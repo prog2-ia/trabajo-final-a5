@@ -42,3 +42,10 @@ Item: centrifugadora_a | Estado: Buen estado | RPM Max: 5000
 	- Item: etanol | Lote: 01-ABC | Vence: 2027-01-01 (En fecha) | Vol: 500.0 ml (10 uds.)[2026-05-09 16:09:02] - Creado nuevo almacen con codigo [BB999]
 [2026-05-09 16:09:56] - Item: centrifugadora_a | Estado: Buen estado | RPM Max: 5000 (1 uds.) movido del inventario [AA123] al inventario [BB999]
 [2026-05-09 16:11:01] - Item: centrifugadora_a | Estado: Buen estado | RPM Max: 5000 (1 uds.) movido del inventario [AA123] al inventario [BB999]
+[2026-05-10 20:50:09] - Lote (Lote: [44-DFC] | Fecha vencimiento: 2026-05-12) (30 uds.) añadido a AA123.
+
+	- Item: pipeta 300 ml | Lote: 44-DFC | Vence: 2026-05-12 (En fecha) (8 uds.)
+	- Item: ácido sulfúrico | Lote: 44-DFC | Vence: 2026-05-12 (En fecha) | Vol: 400.0 ml (7 uds.)
+	- Item: ácido sulfúrico | Lote: 44-DFC | Vence: 2026-05-12 (En fecha) | Vol: 600.0 ml (3 uds.)
+	- Item: ácido brómico | Lote: 44-DFC | Vence: 2026-05-12 (En fecha) | Masa: 200.0 g (9 uds.)
+	- Item: ácido brómico 6 | Lote: 44-DFC | Vence: 2026-05-12 (En fecha) | Masa: 300.0 g (3 uds.)
