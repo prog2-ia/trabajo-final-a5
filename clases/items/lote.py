@@ -65,23 +65,33 @@ def comprobar_id_lote(id:str) -> bool:
 # El usuario define un lote nuevo, aunque se seleccione un lote
 # anteriormente definido, habría que cambiar la fecha y el ID
 def definir_lote(lotes: Dict[str, Any]) -> Optional[Lote]:
+
     introducir_id = ''
     id_valido = False
 
     while not id_valido:
+
         entrada = input('(0 para cancelar | ID (00-ABC): ').strip().upper()
+
         if entrada == '0':
             return None
+        
         if comprobar_id_lote(entrada):
+
             if entrada in lotes:
+
                 print('Ya existe un lote con ese ID.\n')
                 return None
+            
             introducir_id = entrada
             id_valido = True
+
         else:
+
             print('Introduzca un ID válido.\n')
 
     while True:
+
         fecha = pedir_fecha('(0) para cancelar | Fecha (DD/MM/AAAA): ')
 
         if fecha is None:
@@ -89,6 +99,7 @@ def definir_lote(lotes: Dict[str, Any]) -> Optional[Lote]:
 
         if fecha < date.today():
             print('Fecha no válida. No puedes importar lotes caducados.\n')
+            
         else:
             return Lote(introducir_id, fecha)
     '''
