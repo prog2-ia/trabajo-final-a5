@@ -116,6 +116,11 @@ if __name__ == '__main__':
                                 escribir_eliminado_almacen(conclusion_operacion)
 
 
+                        case '5': # Limpiar almacenes
+
+                            pass
+
+
 
                         case '0':   # Volver al menu principal
 

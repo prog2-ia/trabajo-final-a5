@@ -43,13 +43,8 @@ class Inventario():
 
     def quitar_vacios(self):
 
-        # Elimina los items con cantidad 0 del inventario
-
-        for item in self.items:
-
-            if item[1] == 0:
-
-                self.items.remove(item)
+        # Sobrescribimos la lista quedándonos solo con los que tienen cantidad mayor de 0
+        self.items = [item for item in self.items if item[1] > 0]
 
 
     def limpieza_inventario(self):
@@ -57,22 +52,35 @@ class Inventario():
         # Elimina items caducados o en mal estado
         items_eliminados = [] # Para mostrarlo en la auditoría
 
+        items_validos = []    # Para guardar los que sobreviven
+
         for item in self.items:
 
-            if isinstance(item[0], Consumible):
+            objeto_item = item[0]
 
-                if item[0].__lote.esta_caducado():
+            if isinstance(objeto_item, Consumible):
 
-                    items_eliminados.append(item[0])
-                    self.items.remove(item)
+                if objeto_item.lote.esta_caducado():
+
+                    items_eliminados.append(item)
+
+                else:
+
+                    items_validos.append(item)
 
 
-            elif isinstance(item[0], Equipo):
+            elif isinstance(objeto_item, Equipo):
 
-                if item[0].estado == False: # Defectuoso
+                if not objeto_item.estado: # Defectuoso
 
-                    items_eliminados.append(item[0])
-                    self.items.remove(item)
+                    items_eliminados.append(item)
+                
+                else:
+
+                    items_validos.append(item)
+
+
+        self.items = items_validos
 
         return items_eliminados
     
@@ -98,6 +106,22 @@ class Inventario():
         self.quitar_vacios() # Para eliminar los items con cantidad 0 después de reducir unidades
 
 
+
+def limpiar_inventarios(inventarios: list):
+
+    if not inventarios:
+
+        print('No hay inventarios para limpiar.')
+        return None
+    
+    # Diccionario donde se devolveran los items eliminados
+    limpieza = {}
+
+    for inventario in inventarios:
+
+        limpieza[inventario.codigo] = inventario.limpieza_inventario()
+
+    return limpieza
 
 
 
@@ -344,6 +368,9 @@ def anadir_lote(consumibles: list, inventarios:list):
         else:
 
             print('Código no válido. Vuelva a intentarlo.')
+
+
+
 
 
 def anadir_item(item_cantidad: tuple, inventarios: list):
