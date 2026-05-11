@@ -55,6 +55,38 @@ def escribir_eliminado_almacen(inventario):
         archivo.write(f'{mensaje_inicial}{str(inventario)}\n')
 
 
+def escribir_limpieza_inventarios(diccionario_limpieza: dict):
+
+    mensaje_inicial = f'[{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] - Limpieza de almacenes\n\n'
+
+    cuerpo_mensaje = ''
+
+    for inventario_sucio in diccionario_limpieza:
+
+        limpiado = diccionario_limpieza[inventario_sucio]
+
+        # Comprueba que no este vacio, si esta vacio no se muestra
+        if limpiado:
+
+            cuerpo_mensaje += f'\t[{inventario_sucio}]\n\n'
+
+            # Se añadían a la lista de limpiados los items con sus unidades
+            for item in limpiado:
+
+                cuerpo_mensaje += f'\t\t - {str(item[0])} | [{item[1]}] uds.\n'
+
+
+    mensaje_final = mensaje_inicial + cuerpo_mensaje
+
+
+    with open('logs/auditoria.txt', 'a') as archivo:
+
+        archivo.write(mensaje_inicial) 
+
+
+
+
+
 ###################################
 #       Funciones de equipo       #
 ###################################

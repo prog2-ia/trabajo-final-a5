@@ -118,7 +118,12 @@ if __name__ == '__main__':
 
                         case '5': # Limpiar almacenes
 
-                            pass
+                            # La conclusión debería ser un diccionario con listas
+                            conclusion_operacion = limpiar_inventarios(inventarios)
+
+                            if isinstance(conclusion_operacion, dict):
+
+                                escribir_limpieza_inventarios(conclusion_operacion)
 
 
 
