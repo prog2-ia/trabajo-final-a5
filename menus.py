@@ -38,6 +38,7 @@ def menu_almacen():
         f'\t[2] -\tVer y acceder a almacenes\n'
         f'\t[3] - \tJuntar almacenes\n'
         f'\t[4] -\tEliminar almacen\n'
+        f'\t[5] - \tLimpiar almacenes\n'
         f'\t[0] -\tVolver al menu principal\n'
     )
 
@@ -51,7 +52,7 @@ def menu_equipamiento():
 
     print(
         f'\n\t[1] - \tTraer nuevo equipamiento\n'
-        f'\t[2] - \tMover equipamiento\n'
+        f'\t[2] - \tMover equipamiento entre inventarios\n'
         f'\t[0] - \tVolver al menu principal\n'
     )
 
@@ -65,9 +66,9 @@ def menu_consumibles():
     # también se tiran los demás consumibles del lote A.
 
     print(
-        f'\n\t[1] - \tTraer nuevo lote\n'
-        f'\t[2] - \tTirar lote\n'
-        f'\t[0] - \tVolver al menu principal\n'
+        f'\n\t[1] - \tDefinir nuevo lote\n'
+        f'\t[2] - \tTraer lote anteriormente definido\n'
+        f'\t[0] - \tVolver atras\n'
     )
 
     # Pedir la instrucción
@@ -102,21 +103,6 @@ def menu_traer_equipamiento():
         f'\t[5] - \tTraer equipamiento anteriormente definido\n'
         f'\t[0] - \tVolver atras\n'
     )
-
-    # Pedir la instrucción
-    return pedir_num('\nAcceder a: ')
-
-
-
-def menu_traer_consumibles():
-
-
-    print(
-        f'\n\t[1] - \tDefinir nuevo lote\n'
-        f'\t[2] - \tTraer lote anteriormente definido\n'
-        f'\t[0] - \tVolver atras\n'
-    )
-
 
     # Pedir la instrucción
     return pedir_num('\nAcceder a: ')

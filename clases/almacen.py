@@ -286,6 +286,8 @@ def eliminar_almacen(inventarios):
         print('No hay almacenes para eliminar.')
 
 
+
+
 def anadir_lote(consumibles: list, inventarios:list):
 
     # consumibles viene de funciones de definir_lote

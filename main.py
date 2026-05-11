@@ -286,81 +286,62 @@ if __name__ == '__main__':
 
                         case '1':   # Traer nuevo lote
 
-                            instruccion_nuevo_lote = ''
 
-                            while instruccion_nuevo_lote != '0':
+                            # anadir_lote -> Añade a un inventario los consumibles
+                            # definir_lote_nuevo -> Se deciden que consumibles se ponen en el lote
+                            # definir_lote -> Se pone la fecha de caducidad y el ID
 
-                                instruccion_nuevo_lote = menu_traer_consumibles()
+                            '''
+                            conclusion_operacion = anadir_lote(definir_lote_nuevo(definir_lote(lotes)), inventarios)
 
-                                match instruccion_nuevo_lote:
+                            if type(conclusion_operacion) == tuple:
 
-                                    case '1':   # Definir lote
+                                escribir_nuevo_lote_definido(conclusion_operacion)
 
-                                        # anadir_lote -> Añade a un inventario los consumibles
-                                        # definir_lote_nuevo -> Se deciden que consumibles se ponen en el lote
-                                        # definir_lote -> Se pone la fecha de caducidad y el ID
-                                        '''
-                                        conclusion_operacion = anadir_lote(definir_lote_nuevo(definir_lote(lotes)), inventarios)
+                                # Hay que guardar el nuevo lote en el diccionario de lotes
+                                consumibles = conclusion_operacion[0]
+                                consumible = consumibles[0][0]
 
-                                        if type(conclusion_operacion) == tuple:
+                                lote = consumible.lote
 
-                                            escribir_nuevo_lote_definido(conclusion_operacion)
-
-                                            # Hay que guardar el nuevo lote en el diccionario de lotes
-                                            consumibles = conclusion_operacion[0]
-                                            consumible = consumibles[0][0]
-
-                                            lote = consumible.lote
-
-                                            # Guardamos en el diccionaro de lotes anteriormente definidos
-                                            lotes[lote.id_lote] = consumibles
-                                            '''
+                                # Guardamos en el diccionaro de lotes anteriormente definidos
+                                lotes[lote.id_lote] = consumibles
+                            '''
                                         
-                                        lote_datos = definir_lote(lotes)
+                            lote_datos = definir_lote(lotes)
 
-                                        if lote_datos is not None:
+                            if lote_datos is not None:
 
-                                            lista_consumibles = definir_lote_nuevo(lote_datos)
+                                lista_consumibles = definir_lote_nuevo(lote_datos)
 
-                                            if lista_consumibles is not None:
+                                if lista_consumibles is not None:
 
-                                                conclusion_operacion = anadir_lote(lista_consumibles, inventarios)
+                                    conclusion_operacion = anadir_lote(lista_consumibles, inventarios)
 
-                                                if isinstance(conclusion_operacion, tuple):
+                                    if isinstance(conclusion_operacion, tuple):
 
-                                                    escribir_nuevo_lote_definido(conclusion_operacion)
+                                        escribir_nuevo_lote_definido(conclusion_operacion)
 
-                                                    consumibles_tupla = conclusion_operacion[0]
-                                                    consumible_obj = consumibles_tupla[0][0]
-                                                    lote_obj = consumible_obj.lote
+                                        consumibles_tupla = conclusion_operacion[0]
+                                        consumible_obj = consumibles_tupla[0][0]
+                                        lote_obj = consumible_obj.lote
 
-                                                    lotes[lote_obj.id_lote] = consumibles_tupla
-
-
-                                    case '2':   # Traer lote anteriormente definido
-
-                                        # Habrá que cambiar las fechas y código
-                                        # solo se copiara los consumibles del lote
-
-                                        conclusion_operacion = anadir_lote(traer_lote_definido(lotes), inventarios)
-
-                                        if isinstance(conclusion_operacion, tuple):
-
-                                            escribir_nuevo_lote_definido(conclusion_operacion)
-
-                                    case '0':  # Volver al menu anterior
-
-                                        print('Volviendo al menu anterior...')
-
-                                    case _:
-
-                                        print('Instrucción no válida, vuelva a intentarlo')
+                                        lotes[lote_obj.id_lote] = consumibles_tupla
 
 
+                        case '2':   # Traer lote anteriormente definido
 
-                        case '2':   # Tirar lote
+                                        
+                            # Habrá que cambiar las fechas y código
+                            # solo se copiara los consumibles del lote
 
-                            pass
+                            conclusion_operacion = anadir_lote(traer_lote_definido(lotes), inventarios)
+
+                            if isinstance(conclusion_operacion, tuple):
+
+                                    escribir_nuevo_lote_definido(conclusion_operacion)
+                                        
+
 
                         case '0':   # Volver al menu principal
 
