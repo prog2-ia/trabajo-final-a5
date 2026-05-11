@@ -328,6 +328,19 @@ if __name__ == '__main__':
 
                                         lotes[lote_obj.id_lote] = consumibles_tupla
 
+                                    else:
+
+                                        print('Operación cancelada...\n')
+
+                                else:
+
+                                    print('Operación cancelada...\n')
+
+                            else:
+
+                                print('Operación cancelada...\n')
+
+
 
                         case '2':   # Traer lote anteriormente definido
 
