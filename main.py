@@ -388,7 +388,17 @@ if __name__ == '__main__':
 
                         case '1':   # Crear nueva sesión
 
-                            pass
+                            conclusion_operacion = anadir_items_a_sesion(inventarios, sesiones)
+
+                            if conclusion_operacion is None:
+
+                                print('Operación cancelada.\n')
+
+                            else:
+
+                                # Se añade el código de la sesión al registro
+                                sesiones.append(conclusion_operacion.cod)
+                                
 
                         case '2':   # Ver sesiones
 

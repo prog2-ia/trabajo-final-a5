@@ -363,6 +363,8 @@ def anadir_items_a_sesion(inventarios: list, sesiones: list):
             print('Comenzando sesión...')
             sesion.items = items
 
+            return sesion
+
         else:
 
             instruccion = instruccion.upper()
@@ -379,6 +381,15 @@ def anadir_items_a_sesion(inventarios: list, sesiones: list):
                     codigo_valido = True
 
 
+            if not codigo_valido:
+
+                print('Introduzca un código válido.')
+
+                
+
+
+
+
 def anadir_item_desde_inventario(items_anadidos: list, inventario: Inventario):
 
 
@@ -391,8 +402,10 @@ def anadir_item_desde_inventario(items_anadidos: list, inventario: Inventario):
             return items_anadidos
 
 
-        nombres = []
-        unidades = []
+        nombres     = []
+        unidades    = []
+
+    
 
         # Mostramos los items al usuario para que eliga que item quiere usar en la sesión
         for items in inventario.items:

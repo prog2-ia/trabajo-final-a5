@@ -1,5 +1,5 @@
 from .almacen import Inventario, mostrar_almacenes, crear_almacen, acceso_almacen, eliminar_almacen, anadir_item, \
-    mover_equipamiento, anadir_lote, limpiar_inventarios
+    mover_equipamiento, anadir_lote, limpiar_inventarios, anadir_items_a_sesion
 from .items.lote import Lote, definir_lote, definir_lote_nuevo, traer_lote_definido
 from .item import Item
 from .registro import Registro, escribir_creado_almacen, escribir_eliminado_almacen, escribir_importar_equipo, \
