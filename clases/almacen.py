@@ -334,6 +334,10 @@ def anadir_items_a_sesion(inventarios: list, sesiones: list):
 
     # Hay que pedir los items que se vayan a usar
 
+    if not inventarios:
+
+        pass
+
     items = []
 
     while True:
@@ -363,14 +367,65 @@ def anadir_items_a_sesion(inventarios: list, sesiones: list):
 
             instruccion = instruccion.upper()
 
+            codigo_valido = False
+
             # Vemos si el usuario ha introducido un código válido
             for inventario in inventarios:
 
                 if inventario.codigo == instruccion:
 
-                    
+                    # La función funcionara mediante referencia de listas
+                    anadir_item_desde_inventario(items, inventario)
+                    codigo_valido = True
 
 
+def anadir_item_desde_inventario(items_anadidos: list, inventario: Inventario):
+
+    while True:
+
+        nombres = []
+        unidades = []
+
+        for items in inventario.items:
+
+            nombres.append(items[0])
+            unidades.append(items[1])
+
+            print(f'\t\t ({unidades[-1]} uds.)\t | {str(nombres[-1])}')
+
+
+        nombre = input('Introduzca el nombre del item: ').lower()
+
+        if not nombre in nombres:
+
+            print('\nItem no encontrado.\n')
+
+        else:
+
+            # Tomamos el índice del item que se quiera usar
+            indice = nombres.index(nombre)
+
+            unidades_requeridas = pedir_unidades('\nIntroduzca las unidades requeridas: ')
+
+            # Se añaden a los items añadidos si es válido
+            if unidades_requeridas <= unidades[indice]:
+
+                # Extraer instancia exacta
+                instancia_item = inventario.items[indice][0]
+
+                items_anadidos.append((instancia_item, unidades_requeridas))
+                
+                
+                # Ahora hay que quitar las unidades del inventario
+                item_quitar = (instancia_item, -unidades_requeridas)
+
+                anadir_item(item_quitar, inventario)
+        
+
+
+
+
+        
 
 
 ######################################################################################################
