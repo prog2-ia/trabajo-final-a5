@@ -381,20 +381,36 @@ def anadir_items_a_sesion(inventarios: list, sesiones: list):
 
 def anadir_item_desde_inventario(items_anadidos: list, inventario: Inventario):
 
+
     while True:
+
+        # Comprobar que el inventario no este vacio
+        if not inventario.items:
+
+            print('No hay items en este inventario\n')
+            return items_anadidos
+
 
         nombres = []
         unidades = []
 
+        # Mostramos los items al usuario para que eliga que item quiere usar en la sesión
         for items in inventario.items:
 
-            nombres.append(items[0])
+            nombres.append(items[0].nombre)
             unidades.append(items[1])
 
+            # Se muestra el último añadido a la lista
             print(f'\t\t ({unidades[-1]} uds.)\t | {str(nombres[-1])}')
 
 
-        nombre = input('Introduzca el nombre del item: ').lower()
+        # Pedir el nombre del item que se vaya a usar
+        nombre = input('[-1] para terminar | Introduzca el nombre del item: ').lower()
+
+        if nombre == '-1':
+
+            return items_anadidos
+        
 
         if not nombre in nombres:
 
@@ -405,29 +421,41 @@ def anadir_item_desde_inventario(items_anadidos: list, inventario: Inventario):
             # Tomamos el índice del item que se quiera usar
             indice = nombres.index(nombre)
 
-            unidades_requeridas = pedir_unidades('\nIntroduzca las unidades requeridas: ')
+            unidades_requeridas = input('Introduzca las unidades requeridas: ')
 
-            # Se añaden a los items añadidos si es válido
-            if unidades_requeridas <= unidades[indice]:
+            try:
 
-                # Extraer instancia exacta
-                instancia_item = inventario.items[indice][0]
+                unidades_requeridas = int(unidades_requeridas)
 
-                items_anadidos.append((instancia_item, unidades_requeridas))
+                # Se añaden a los items añadidos si es válido
+                if unidades_requeridas <= unidades[indice] and unidades >= 1:
+
+                    # Extraer instancia exacta
+                    instancia_item = inventario.items[indice][0]
+                    items_anadidos.append((instancia_item, unidades_requeridas))
                 
                 
-                # Ahora hay que quitar las unidades del inventario
-                item_quitar = (instancia_item, -unidades_requeridas)
+                    # Ahora hay que quitar las unidades del inventario
+                    item_quitar = (instancia_item, -unidades_requeridas)
+                    anadir_item(item_quitar, inventario)
 
-                anadir_item(item_quitar, inventario)
+
+                else:
+
+                    raise ValueError
+
+
+            except ValueError:
+
+                print('Introduzca unidades válidas\n')
+
+        
         
 
 
 
 
         
-
-
 ######################################################################################################
 #   Funciones de lotes
 ######################################################################################################
