@@ -28,6 +28,32 @@ class Registro():
         self.abierta = False
 
 
+# Verificar que el código introducido sea válido
+def verificar_codigo(cod: str):
+
+    match cod:
+
+        case '0':
+
+            return None
+        
+        case _:
+
+            if len(cod) == 5:
+
+                if cod[:3].isalpha() and cod[:3].isupper() and cod[3:].isdigit():
+
+                    return True
+
+            raise ValueError('Código no válido. El código debe ser 3 letras mayúsculas y 2 números.')
+
+
+# Se le pasa la lista con las sesiones abiertas
+def crear_sesion(sesiones:list):
+
+    pass
+
+
 ########################################################################
 # A partir de aquí estarán las funciones de escritura en auditoria.txt #
 ########################################################################
