@@ -48,10 +48,33 @@ def verificar_codigo(cod: str):
             raise ValueError('Código no válido. El código debe ser 3 letras mayúsculas y 2 números.')
 
 
+
 # Se le pasa la lista con las sesiones abiertas
 def crear_sesion(sesiones:list):
 
-    pass
+    while True:
+
+        codigo_input = input('0 para cancelar | Introduzca el código de la nueva sesión: ')
+
+        try:
+
+            verificacion = verificar_codigo(codigo_input)
+
+            if verificacion is None:
+
+                return None
+            
+            if not codigo_input in sesiones:
+
+                return Registro(codigo_input, [])
+            
+            else:
+
+                print('Ya existe una sesión con ese código. Por favor use otro.')
+
+        except ValueError as e:
+
+            print(f'\n{e}\n')
 
 
 ########################################################################
