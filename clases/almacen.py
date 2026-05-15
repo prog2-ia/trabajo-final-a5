@@ -5,7 +5,7 @@ from funciones import *
 from .items.consumible import Consumible
 from .items.equipo import Equipo, importar_equipamiento
 
-from .registro import Registro
+from .registro import Registro, crear_sesion
 
 from typing import List, Tuple, Optional, Any
 from .item import Item
@@ -106,6 +106,11 @@ class Inventario():
         self.quitar_vacios() # Para eliminar los items con cantidad 0 después de reducir unidades
 
 
+######################################################################################################
+#   Funciones de almacen
+######################################################################################################
+
+
 
 def limpiar_inventarios(inventarios: list):
 
@@ -144,7 +149,7 @@ def mostrar_items(inventario, tipo_item):
     return indice - 1 # Para saber el número de items mostrados, si es 0 no se ha mostrado ningún item del tipo pedido
 
 
-                
+               
 
 
 
@@ -312,6 +317,67 @@ def eliminar_almacen(inventarios):
 
 
 
+######################################################################################################
+#   Funciones de sesión
+######################################################################################################
+
+
+def anadir_items_a_sesion(inventarios: list, sesiones: list):
+
+    
+    sesion = crear_sesion(sesiones)
+
+    if sesion is None:
+
+        return None
+    
+
+    # Hay que pedir los items que se vayan a usar
+
+    items = []
+
+    while True:
+
+        mostrar_almacenes(inventarios)
+
+        print(f'\n\t[Código] - \tAcceder a un almacen\n'
+            f'\t[1] - \tTerminar\n'
+            f'\t[0] - \tCancelar sesión\n'
+            )
+        
+        instruccion = pedir_cadena_no_vacia('\nInstruccion: ')
+
+        # El usuario cancela la operación
+        if instruccion is None:
+
+            return None
+        
+
+        if instruccion == '1':
+
+            # Se modifica la lista con los items
+            print('Comenzando sesión...')
+            sesion.items = items
+
+        else:
+
+            instruccion = instruccion.upper()
+
+            # Vemos si el usuario ha introducido un código válido
+            for inventario in inventarios:
+
+                if inventario.codigo == instruccion:
+
+                    
+
+
+
+
+######################################################################################################
+#   Funciones de lotes
+######################################################################################################
+
+
 def anadir_lote(consumibles: list, inventarios:list):
 
     # consumibles viene de funciones de definir_lote
@@ -370,6 +436,9 @@ def anadir_lote(consumibles: list, inventarios:list):
             print('Código no válido. Vuelva a intentarlo.')
 
 
+######################################################################################################
+#   Funciones de items
+######################################################################################################
 
 
 

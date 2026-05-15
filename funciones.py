@@ -172,6 +172,7 @@ def pedir_cadena_no_vacia(frase):
         if cadena:
         
             return cadena
+        
         print('Error: El texto no puede estar vacío o contener solo espacios.')
         
 ##################################################################################
