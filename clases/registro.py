@@ -52,6 +52,7 @@ def verificar_codigo(cod: str):
 # Se le pasa la lista con las sesiones abiertas
 def crear_sesion(sesiones:list):
 
+
     while True:
 
         codigo_input = input('0 para cancelar | Introduzca el código de la nueva sesión: ')
@@ -64,6 +65,7 @@ def crear_sesion(sesiones:list):
 
                 return None
             
+            '''
             if not codigo_input in sesiones:
 
                 return Registro(codigo_input, [])
@@ -71,7 +73,23 @@ def crear_sesion(sesiones:list):
             else:
 
                 print('Ya existe una sesión con ese código. Por favor use otro.')
+            '''
 
+
+            for sesion in sesiones:
+
+                codigo = sesion.cod
+
+                if codigo_input == codigo:
+
+                    print('Ya existe una sesión con ese código.\n')
+                    verificacion = False
+
+            if verificacion:
+
+                return codigo
+
+            
         except ValueError as e:
 
             print(f'\n{e}\n')
@@ -125,7 +143,7 @@ def escribir_limpieza_inventarios(diccionario_limpieza: dict):
                 cuerpo_mensaje += f'\t\t - {str(item[0])} | [{item[1]}] uds.\n'
 
 
-    mensaje_final = mensaje_inicial + cuerpo_mensaje
+    mensaje_final = mensaje_inicial + cuerpo_mensaje + '\n'
 
 
     with open('logs/auditoria.txt', 'a') as archivo:
@@ -189,7 +207,7 @@ def escribir_nuevo_lote_definido(consumibles_inventario: tuple):
         unidades += consumible[1]
 
 
-    mensaje_inicial = f'[{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] - Lote ({codigo}) ({unidades} uds.) añadido a {inventario.codigo}.\n'
+    mensaje_inicial = f'\n[{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] - Lote ({codigo}) ({unidades} uds.) añadido a {inventario.codigo}.\n'
 
 
     with open('logs/auditoria.txt', 'a') as archivo:
@@ -200,5 +218,28 @@ def escribir_nuevo_lote_definido(consumibles_inventario: tuple):
 
     
     
+###################################
+#       Funciones de sesion       #
+###################################
 
+
+def escribir_sesion_empezada(sesion: Registro):
+
+    items   = sesion.items
+    codigo  = sesion.cod
+    fecha_inicio = sesion.inicio
+
+    cuerpo_mensaje = ''
+
+    for item in items:
+
+        cuerpo_mensaje += f'\t - {str(item[0])} | {item[1]} uds.'
+
+    mensaje_inicial = f'\n[{fecha_inicio}] Sesión con código ({codigo}) comenzada\n'
+
+    
+
+    with open('logs/auditoria.txt', 'a') as archivo:
+
+        archivo.write()
 

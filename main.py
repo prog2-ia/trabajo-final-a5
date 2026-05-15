@@ -397,8 +397,8 @@ if __name__ == '__main__':
                             else:
 
                                 # Se añade el código de la sesión al registro
-                                sesiones.append(conclusion_operacion.cod)
-                                
+                                sesiones.append(conclusion_operacion)
+
 
                         case '2':   # Ver sesiones
 
