@@ -355,13 +355,18 @@ def anadir_items_a_sesion(inventarios: list, sesiones: list):
 
     if not inventarios:
 
-        pass
+        return sesion
 
     items = []
 
     while True:
 
-        mostrar_almacenes(inventarios)
+        # La función de mostrar almacenes me daba un bug así que la vuelvo hacer manualmente aquí
+
+        print('Almacenes disponibles:')
+        for inventario in inventarios:
+
+            print(f'[{inventario.codigo}] con {len(inventario.items)}')
 
         print(f'\n\t[Código] - \tAcceder a un almacen\n'
             f'\t[1] - \tTerminar\n'
@@ -394,12 +399,18 @@ def anadir_items_a_sesion(inventarios: list, sesiones: list):
             # Vemos si el usuario ha introducido un código válido
             for inventario in inventarios:
 
+                inventario_antiguo = inventario
+
                 if inventario.codigo == instruccion:
 
                     # La función funcionara mediante referencia de listas
-                    anadir_item_desde_inventario(items, inventario)
+                    items, inventario = anadir_item_desde_inventario(items, inventario_antiguo)
                     codigo_valido = True
 
+                    # Hay que modificarlo porque al pasar a la funcion anadir_item_desde_inventario una instancia y no
+                    # una lista, no se guardan los valores
+                    
+                    inventarios[inventarios.index(inventario_antiguo)] = inventario
 
             if not codigo_valido:
 
@@ -426,6 +437,7 @@ def anadir_item_desde_inventario(items_anadidos: list, inventario: Inventario):
         unidades    = []
 
     
+        print()
 
         # Mostramos los items al usuario para que eliga que item quiere usar en la sesión
         for items in inventario.items:
@@ -437,12 +449,14 @@ def anadir_item_desde_inventario(items_anadidos: list, inventario: Inventario):
             print(f'\t\t ({unidades[-1]} uds.)\t | {str(nombres[-1])}')
 
 
+        print()
+
         # Pedir el nombre del item que se vaya a usar
         nombre = input('[-1] para terminar | Introduzca el nombre del item: ').lower()
 
         if nombre == '-1':
 
-            return items_anadidos
+            return items_anadidos, inventario
         
 
         if not nombre in nombres:
@@ -461,7 +475,7 @@ def anadir_item_desde_inventario(items_anadidos: list, inventario: Inventario):
                 unidades_requeridas = int(unidades_requeridas)
 
                 # Se añaden a los items añadidos si es válido
-                if unidades_requeridas <= unidades[indice] and unidades >= 1:
+                if unidades_requeridas <= unidades[indice] and unidades[indice] >= 1:
 
                     # Extraer instancia exacta
                     instancia_item = inventario.items[indice][0]
@@ -469,7 +483,7 @@ def anadir_item_desde_inventario(items_anadidos: list, inventario: Inventario):
                 
                     # Ahora hay que quitar las unidades del inventario
                     item_quitar = (instancia_item, -unidades_requeridas)
-                    anadir_item(item_quitar, inventario)
+                    inventario.anadir_item_al_inventario(item_quitar)
 
                     # A la sesión ira la tupla del item a usar, unidades del item y el inventario del cual se toma
                     items_anadidos.append((instancia_item, unidades_requeridas, inventario))
@@ -487,7 +501,9 @@ def anadir_item_desde_inventario(items_anadidos: list, inventario: Inventario):
         
         
 
+def quitar_items():
 
+    pass
 
 
         

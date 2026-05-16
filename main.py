@@ -396,8 +396,10 @@ if __name__ == '__main__':
 
                             else:
 
-                                # Se añade el código de la sesión al registro
+                                # Se añade la sesión a las sesiones para el pickle
                                 sesiones.append(copy.deepcopy(conclusion_operacion))
+
+                                escribir_sesion_empezada(conclusion_operacion)
 
 
                         case '2':   # Ver sesiones

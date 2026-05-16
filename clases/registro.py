@@ -8,7 +8,7 @@ from funciones import *
 class Registro():
 
 
-    def __init__(self, cod, items):
+    def __init__(self, cod, items: list):
 
 
         self.inicio = datetime.now()
@@ -87,7 +87,7 @@ def crear_sesion(sesiones:list):
 
             if verificacion:
 
-                return codigo
+                return Registro(codigo_input, [])
 
             
         except ValueError as e:
@@ -216,8 +216,6 @@ def escribir_nuevo_lote_definido(consumibles_inventario: tuple):
 
 
 
-    
-    
 ###################################
 #       Funciones de sesion       #
 ###################################
@@ -229,18 +227,19 @@ def escribir_sesion_empezada(sesion: Registro):
     codigo  = sesion.cod
     fecha_inicio = sesion.inicio
 
+
     cuerpo_mensaje = ''
 
     for item in items:
 
-        cuerpo_mensaje += f'\t - {str(item[0])}\n\t\t({item[1]}) uds. \t| [{item[2].codigo}]'
+        cuerpo_mensaje += f'\t - {str(item[0])}\n\t\t({item[1]}) uds. \t| [{item[2].codigo}]\n\n'
 
 
-    mensaje_inicial = f'\n[{fecha_inicio}] Sesión con código ({codigo}) comenzada\n'
+    mensaje_inicial = f'\n\n[{fecha_inicio}] Sesión con código ({codigo}) comenzada\n'
 
-    
+    mensaje_inicial += cuerpo_mensaje
 
     with open('logs/auditoria.txt', 'a') as archivo:
 
-        archivo.write()
+        archivo.write(mensaje_inicial)
 

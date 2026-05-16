@@ -49,3 +49,18 @@ Item: centrifugadora_a | Estado: Buen estado | RPM Max: 5000
 	- Item: ácido sulfúrico | Lote: 44-DFC | Vence: 2026-05-12 (En fecha) | Vol: 600.0 ml (3 uds.)
 	- Item: ácido brómico | Lote: 44-DFC | Vence: 2026-05-12 (En fecha) | Masa: 200.0 g (9 uds.)
 	- Item: ácido brómico 6 | Lote: 44-DFC | Vence: 2026-05-12 (En fecha) | Masa: 300.0 g (3 uds.)
+[2026-05-16 18:28:51.969255] Sesión con código (ABC12) comenzada
+
+
+[2026-05-16 18:53:12.215295] Sesión con código (ADC34) comenzada
+	 - Item: nevera | Estado: Buen estado | Rango [-32.5 °C, 12.5 °C]
+		(1) uds. 	| [TD345]
+
+
+[2026-05-16 19:01:16.662694] Sesión con código (FDC12) comenzada
+	 - Item: laser x02 | Estado: Buen estado
+		(4) uds. 	| [TD345]
+
+	 - Item: etanol | Lote: 01-ABC | Vence: 2027-01-01 (En fecha) | Vol: 500.0 ml
+		(10) uds. 	| [AA123]
+
