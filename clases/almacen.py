@@ -361,7 +361,7 @@ def anadir_items_a_sesion(inventarios: list, sesiones: list):
             # Se modifica la lista con los items
             print('Comenzando sesión...')
 
-            sesion.items = sanear_lista_items(items)
+            sesion.items = items
 
             return sesion
 
