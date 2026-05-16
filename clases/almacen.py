@@ -110,47 +110,6 @@ class Inventario():
 #   Funciones de almacen
 ######################################################################################################
 
-def sanear_lista_items(items: list):
-
-    nuevo_items = []
-    nuevo_unidades = []
-
-    # Digamos que tenemos X en la posición 3 y en la 5
-
-    for item in items:
-
-        # Extrae posicion 3
-        indice = items.index(item)
-
-        # Para evitar que añada dos veces
-        if not item[0] in nuevo_items:
-
-            # Solo se añade a la lista la de posición 3, cuando el bucle for
-            # avance, evitara que añada otra vez el de la posición 5
-
-
-            # Para evitar errores de índice
-            nuevo_items.append(item[0])
-
-            for item2 in items:
-
-                indice2 = items.index(item2)
-
-                # Hacemos que se añadan las posiciones 3 y 5
-                if item[0] == item2[0] and indice != indice2:
-
-                    nuevo_unidades.append(item[1] + item2[1])
-
-    nueva_lista_items = []
-
-    indice = 0
-    while indice < len(nuevo_items):
-
-        nueva_lista_items.append((nuevo_items[indice], nuevo_unidades[indice]))
-        indice += 1
-
-    return nueva_lista_items
-
 
 def limpiar_inventarios(inventarios: list):
 
@@ -486,12 +445,14 @@ def anadir_item_desde_inventario(items_anadidos: list, inventario: Inventario):
 
                     # Extraer instancia exacta
                     instancia_item = inventario.items[indice][0]
-                    items_anadidos.append((instancia_item, unidades_requeridas))
                 
                 
                     # Ahora hay que quitar las unidades del inventario
                     item_quitar = (instancia_item, -unidades_requeridas)
                     anadir_item(item_quitar, inventario)
+
+                    # A la sesión ira la tupla del item a usar, unidades del item y el inventario del cual se toma
+                    items_anadidos.append((instancia_item, unidades_requeridas, inventario))
 
 
                 else:
