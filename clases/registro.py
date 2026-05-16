@@ -233,7 +233,8 @@ def escribir_sesion_empezada(sesion: Registro):
 
     for item in items:
 
-        cuerpo_mensaje += f'\t - {str(item[0])} | {item[1]} uds.'
+        cuerpo_mensaje += f'\t - {str(item[0])}\n\t\t({item[1]}) uds. \t| [{item[2].codigo}]'
+
 
     mensaje_inicial = f'\n[{fecha_inicio}] Sesión con código ({codigo}) comenzada\n'
 

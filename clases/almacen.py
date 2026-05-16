@@ -34,6 +34,26 @@ class Inventario():
             frase_items += f'\t- {str(item[0])}\n\t\t - Uds. disponibles: {item[1]}\n\n'
 
         return frase_inicial + frase_items
+    
+
+    def __eq__(self, other):
+
+        if isinstance(other, Inventario):
+
+            return self.codigo == other.codigo and self.items == other.items
+        
+        return False
+    
+
+    # Me servira a la hora de devolver items desde sesiones
+    def eq2(self, other):
+
+        if isinstance(other, Inventario):
+
+            return self.codigo == other.codigo
+        
+        return False
+
 
     @property
     def codigo(self) -> str:
