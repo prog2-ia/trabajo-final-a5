@@ -343,12 +343,14 @@ def eliminar_almacen(inventarios):
 
 def anadir_items_a_sesion(inventarios: list, sesiones: list):
 
-    
+    # Por si se cancela alguna operación, que no se pierdan items
+    inventarios_copia_seguridad = copy.deepcopy(inventarios)
+
     sesion = crear_sesion(sesiones)
 
     if sesion is None:
 
-        return None
+        return None, inventarios_copia_seguridad
     
 
     # Hay que pedir los items que se vayan a usar
@@ -356,6 +358,8 @@ def anadir_items_a_sesion(inventarios: list, sesiones: list):
     if not inventarios:
 
         return sesion
+
+
 
     items = []
 
@@ -368,6 +372,7 @@ def anadir_items_a_sesion(inventarios: list, sesiones: list):
 
             print(f'[{inventario.codigo}] con {len(inventario.items)}')
 
+
         print(f'\n\t[Código] - \tAcceder a un almacen\n'
             f'\t[1] - \tTerminar\n'
             f'\t[0] - \tCancelar sesión\n'
@@ -375,10 +380,11 @@ def anadir_items_a_sesion(inventarios: list, sesiones: list):
         
         instruccion = pedir_cadena_no_vacia('\nInstruccion: ')
 
+
         # El usuario cancela la operación
         if instruccion is None:
 
-            return None
+            return None, inventarios_copia_seguridad
         
 
         if instruccion == '1':
@@ -388,7 +394,9 @@ def anadir_items_a_sesion(inventarios: list, sesiones: list):
 
             sesion.items = items
 
-            return sesion
+            return sesion, None # Mantener la coherencia de devolver 2
+
+
 
         else:
 
@@ -411,6 +419,7 @@ def anadir_items_a_sesion(inventarios: list, sesiones: list):
                     # una lista, no se guardan los valores
 
                     inventarios[inventarios.index(inventario_antiguo)] = inventario
+
 
             if not codigo_valido:
 

@@ -388,11 +388,14 @@ if __name__ == '__main__':
 
                         case '1':   # Crear nueva sesión
 
-                            conclusion_operacion = anadir_items_a_sesion(inventarios, sesiones)
+                            conclusion_operacion, copia_seguridad = anadir_items_a_sesion(inventarios, sesiones)
 
                             if conclusion_operacion is None:
 
                                 print('Operación cancelada.\n')
+
+                                # Por si se cancela una sesión la cual tenía items ya añadidos
+                                inventarios = copia_seguridad
 
                             else:
 

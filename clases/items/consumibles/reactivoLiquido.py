@@ -12,7 +12,7 @@ class ReactivoLiquido(Consumible):
 
 
     def __str__(self) -> str:
-        return super().__str__() + f" | Vol: {self.volumen} ml"
+        return super().__str__() + f"\t | Vol: {self.volumen} ml"
     
 
     

@@ -12,7 +12,7 @@ class ReactivoSolido(Consumible):
 
 
     def __str__(self) -> str:
-        return super().__str__() + f" | Masa: {self.masa} g"
+        return super().__str__() + f" \t| Masa: {self.masa} g"
     
 
     def __eq__(self, other: Any) -> bool:
