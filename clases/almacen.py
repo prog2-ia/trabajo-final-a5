@@ -409,7 +409,7 @@ def anadir_items_a_sesion(inventarios: list, sesiones: list):
 
                     # Hay que modificarlo porque al pasar a la funcion anadir_item_desde_inventario una instancia y no
                     # una lista, no se guardan los valores
-                    
+
                     inventarios[inventarios.index(inventario_antiguo)] = inventario
 
             if not codigo_valido:
@@ -498,12 +498,6 @@ def anadir_item_desde_inventario(items_anadidos: list, inventario: Inventario):
 
                 print('Introduzca unidades válidas\n')
 
-        
-        
-
-def quitar_items():
-
-    pass
 
 
         
