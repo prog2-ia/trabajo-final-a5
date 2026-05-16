@@ -12,11 +12,23 @@ class Registro():
 
 
         self.inicio = datetime.now()
+
         self.abierta = True
 
 
         self.items = items # Paquete con los objetos usados durante la sesión
         self.cod = cod # Código de la sesión, para identificarla en el registro
+
+
+    def __str__(self):
+
+        if self.abierta:
+
+            return f'[{self.inicio:%Y-%m-%d %H:%M:%S}] | [{self.cod}] | ({len(self.items)}) items.'
+        
+        else:
+
+            return f'Sesión cerrada [{self.inicio:%Y-%m-%d %H:%M:%S}] - [{self.fin:%Y-%m-%d %H:%M:%S}] | [{self.cod}] ({len(self.items)}) items.'
 
 
     def cerrar_sesion(self):
@@ -93,6 +105,18 @@ def crear_sesion(sesiones:list):
         except ValueError as e:
 
             print(f'\n{e}\n')
+
+
+
+def ver_sesiones_abiertas(sesiones: list):
+
+    print()
+
+    for sesion in sesiones:
+        
+        if sesion.abierta:
+
+            print(sesion)
 
 
 ########################################################################

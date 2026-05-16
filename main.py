@@ -407,7 +407,7 @@ if __name__ == '__main__':
 
                         case '2':   # Ver sesiones
 
-                            pass
+                            ver_sesiones_abiertas(sesiones)
 
                         case '3':   # Finalizar sesión
 
