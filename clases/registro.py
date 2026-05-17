@@ -111,14 +111,14 @@ def ver_sesiones_abiertas(sesiones: list):
 
 
 # Aquí se pide que sesión va a ser cerrada
-def cerrar_sesion(sesiones: list):
+def cerrar_sesion_devolver(sesiones: list):
 
     while True:
 
         # Mostramos que sesiones están abiertas y se podrían cerrar
         ver_sesiones_abiertas(sesiones)
 
-        sesion_input = pedir_cadena_no_vacia('0 para cancelar | Introduzca el código de la sesión a cerrar: ')
+        sesion_input = pedir_cadena_no_vacia('\n0 para cancelar | Introduzca el código de la sesión a cerrar: ')
 
         if sesion_input is None:
 
@@ -129,7 +129,7 @@ def cerrar_sesion(sesiones: list):
 
         for sesion in sesiones:
 
-            if sesion_input == sesion.codigo and sesion.abierta:
+            if sesion_input == sesion.cod and sesion.abierta:
 
                 return sesion
             
@@ -284,3 +284,11 @@ def escribir_sesion_empezada(sesion: Registro):
 
         archivo.write(mensaje_inicial)
 
+
+def escribir_sesion_cerrada(sesion: Registro):
+
+    with open('logs/auditoria.txt', 'a') as archivo:
+
+        # Los items de la sesión ya se han mostrado anteriormente, solo se notifica enseñando la fecha en cuando cierra
+
+        archivo.write(str(sesion))

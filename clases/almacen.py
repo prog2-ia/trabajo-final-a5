@@ -5,7 +5,7 @@ from funciones import *
 from .items.consumible import Consumible
 from .items.equipo import Equipo, importar_equipamiento
 
-from .registro import Registro, crear_sesion, cerrar_sesion
+from .registro import Registro, crear_sesion, cerrar_sesion_devolver
 
 from typing import List, Tuple, Optional, Any
 from .item import Item
@@ -512,12 +512,15 @@ def anadir_item_desde_inventario(items_anadidos: list, inventario: Inventario):
 def devolver_items_de_sesion(inventarios: list, sesiones: list):
 
     # Tomamos la sesión que el usuario pida
-    sesion = cerrar_sesion(sesiones)
+    sesion = cerrar_sesion_devolver(sesiones)
 
     if sesion is None:
 
         return None
     
+    indice_sesion = sesiones.index(sesion)
+    
+
     items_devolver = sesion.items
 
     # Si son consumibles no se devolvean porque serán de un solo uso
@@ -537,7 +540,6 @@ def devolver_items_de_sesion(inventarios: list, sesiones: list):
 
             for inventario in inventarios:
 
-                #inventario_nuevo = copy.deepcopy(inventario)
 
                 # Extrar el índice para modificar inventarios
                 indice = inventarios.index(inventario)
@@ -545,26 +547,24 @@ def devolver_items_de_sesion(inventarios: list, sesiones: list):
                 if inventario.codigo == inventario_sesion.codigo:
 
                     # Ahora hay que ver que unidades de equipamiento se devuelven en mal estado
-                    print(f'\nDevolviendo {str(item)}\n')
+                    print(f'\nDevolviendo en [{inventario.codigo}] | {str(item)}\n')
 
                     unidades_mal_estado = unidades + 1
                     while unidades_mal_estado > unidades: # Uso el while para evitar que se introduzcan de más
 
                         unidades_mal_estado = pedir_unidades(f'\nIntroduzca las unidades en mal estado (0-{unidades}): ')
 
+                        if unidades_mal_estado is None: # Esto significa que el usuario ha introducido 0
 
-                    if unidades_mal_estado is None: # Esto significa que el usuario ha introducido 0
+                            unidades_mal_estado = 0
 
-                        inventario.anadir_item_al_inventario((item, unidades))
 
-                    else:
+                    # Hay que modificar los atributos y cambiar el valor de estado
+                    item_mal_estado = copy.deepcopy(item)
+                    item_mal_estado.estado = False
 
-                        # Hay que modificar los atributos y cambiar el valor de estado
-                        item_mal_estado = item
-                        item_mal_estado.estado = False
-
-                        inventario.anadir_item_al_inventario((item, unidades - unidades_mal_estado))
-                        inventario.anadir_item_al_inventario((item_mal_estado, unidades_mal_estado))
+                    inventario.anadir_item_al_inventario((item, unidades - unidades_mal_estado))
+                    inventario.anadir_item_al_inventario((item_mal_estado, unidades_mal_estado))
 
                     # Quitamos el inventario de antes y devolvemos el nuevo con el equipamiento devuelto
                     inventarios[indice] = inventario
@@ -578,9 +578,57 @@ def devolver_items_de_sesion(inventarios: list, sesiones: list):
 
                 while not codigo_valido:
 
+                    print(f'\n\nDevolviendo {str(item)}\n\n')
+
                     mostrar_almacenes(inventarios)
 
-                    print('\nIntroduzca el código')
+                    codigo = pedir_cadena_no_vacia('\nIntroduzca el código del inventario a devolver el equipamiento: ')
+
+                    # Cambiamos el tipo de dato de la variable para evitar errores
+                    if codigo is None:
+
+                        codigo = ''
+
+
+                    for inventario in inventarios:
+
+                        indice = inventarios.index(inventario)
+
+                        if inventario.codigo == codigo:
+
+                            # Ahora hay que ver que unidades de equipamiento se devuelven en mal estado
+
+                            unidades_mal_estado = unidades + 1
+                            while unidades_mal_estado > unidades: # Uso el while para evitar que se introduzcan de más
+
+                                unidades_mal_estado = pedir_unidades(f'\nIntroduzca las unidades en mal estado (0-{unidades}): ')
+
+                                if unidades_mal_estado is None: # Esto significa que el usuario ha introducido 0
+
+                                    unidades_mal_estado = 0
+
+
+                            # Hay que modificar los atributos y cambiar el valor de estado
+                            item_mal_estado = copy.deepcopy(item)
+                            item_mal_estado.estado = False
+
+                            inventario.anadir_item_al_inventario((item, unidades - unidades_mal_estado))
+                            inventario.anadir_item_al_inventario((item_mal_estado, unidades_mal_estado))
+
+                            # Quitamos el inventario de antes y devolvemos el nuevo con el equipamiento devuelto
+                            inventarios[indice] = inventario
+                            codigo_valido = True
+
+
+                    if not codigo_valido:
+
+                        print('Introduzca un código válido\n\n')
+
+    # A partir de aquí acaba el for de la sesión, se modifica y se devuelve para escribir en auditoria.txt
+    sesion.cerrar_sesion()
+    sesiones[indice_sesion] = sesion
+
+    return (sesion, inventarios, sesiones)
 
 
 

@@ -411,7 +411,19 @@ if __name__ == '__main__':
 
                         case '3':   # Finalizar sesión
 
-                            pass
+                            conclusion_operacion = devolver_items_de_sesion(inventarios, sesiones)
+
+                            if not conclusion_operacion is None:
+
+                                sesion_cerrada = conclusion_operacion[0]
+                                inventarios = conclusion_operacion[1]
+                                sesiones = conclusion_operacion[2]
+
+                                escribir_sesion_cerrada(sesion_cerrada)
+
+                            else:
+
+                                print('Operación cancelada.\n')
 
                         case '0':   # Volver al menu principal
 
