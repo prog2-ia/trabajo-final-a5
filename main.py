@@ -100,7 +100,21 @@ if __name__ == '__main__':
 
                         case '3':   # Juntar almacenes
 
-                            pass
+                            conclusion_operacion = juntar_almacenes(inventarios)
+
+                            if conclusion_operacion is None:
+
+                                print('Operación cancelada.\n')
+
+                            else:
+
+                                nuevo_inventario = conclusion_operacion[0]
+                                inventario_base = conclusion_operacion[1]
+                                inventario_suma = conclusion_operacion[2]
+
+                                inventarios = conclusion_operacion[3]
+
+                                escribir_juntado_almacenes(nuevo_inventario, inventario_base, inventario_suma)
 
 
 

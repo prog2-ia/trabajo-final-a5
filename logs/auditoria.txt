@@ -64,4 +64,17 @@ Item: centrifugadora_a | Estado: Buen estado | RPM Max: 5000
 	 - Item: etanol | Lote: 01-ABC | Vence: 2027-01-01 (En fecha) | Vol: 500.0 ml
 		(10) uds. 	| [AA123]
 
-Sesión cerrada [2026-05-16 18:26:36] - [2026-05-17 19:10:46] | [ABC11] (0) items.Sesión cerrada [2026-05-16 18:26:36] - [2026-05-17 19:13:21] | [ABC11] (0) items.Sesión cerrada [2026-05-16 18:28:51] - [2026-05-17 19:21:50] | [ABC12] (0) items.
+Sesión cerrada [2026-05-16 18:26:36] - [2026-05-17 19:10:46] | [ABC11] (0) items.Sesión cerrada [2026-05-16 18:26:36] - [2026-05-17 19:13:21] | [ABC11] (0) items.Sesión cerrada [2026-05-16 18:28:51] - [2026-05-17 19:21:50] | [ABC12] (0) items.[2026-05-17 20:43:34] - Inventario [AB123] juntado con [AA123]
+
+		 - Item: laser x02 | Estado: Buen estado | [3] uds.
+		 - Item: hilo de seda 10m | Estado: Buen estado | [5] uds.
+		 - Item: cgoldenwall | Estado: Buen estado | RPM Max: 4000 | [4] uds.
+		 - Item: amperimetro | Estado: Buen estado | Error: ±0.1 | [4] uds.
+		 - Item: nevera | Estado: Buen estado | Rango [-32.5 °C, 12.5 °C] | [2] uds.
+		 - Item: vaso de expansion 5l | Estado: Buen estado | [1] uds.
+		 - Item: gafas proteccion | Estado: Buen estado | [2] uds.
+		 - Item: pipeta 300 ml | Lote: 44-DFC | Vence: 2026-05-12 (CADUCADO) | [8] uds.
+		 - Item: ácido sulfúrico | Lote: 44-DFC | Vence: 2026-05-12 (CADUCADO)	 | Vol: 400.0 ml | [7] uds.
+		 - Item: ácido sulfúrico | Lote: 44-DFC | Vence: 2026-05-12 (CADUCADO)	 | Vol: 600.0 ml | [3] uds.
+		 - Item: ácido brómico | Lote: 44-DFC | Vence: 2026-05-12 (CADUCADO) 	| Masa: 200.0 g | [6] uds.
+		 - Item: ácido brómico 6 | Lote: 44-DFC | Vence: 2026-05-12 (CADUCADO) 	| Masa: 300.0 g | [1] uds.

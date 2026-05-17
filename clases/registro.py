@@ -192,7 +192,25 @@ def escribir_limpieza_inventarios(diccionario_limpieza: dict):
         archivo.write(mensaje_inicial) 
 
 
+def escribir_juntado_almacenes(inventario_nuevo, inventario_base, inventario_suma):
 
+    mensaje_inicial = f'[{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] - Inventario [{inventario_base.codigo}] juntado con [{inventario_suma.codigo}]\n\n'
+
+    items_nuevos = inventario_nuevo.items
+
+
+    cuerpo_mensaje = ''
+    for item in items_nuevos:
+
+        cuerpo_mensaje += f'\t\t - {str(item[0])} | [{item[1]}] uds.\n'
+
+
+    mensaje_inicial += cuerpo_mensaje
+
+    with open('logs/auditoria.txt', 'a') as archivo:
+
+        archivo.write(mensaje_inicial) 
+    
 
 
 ###################################
