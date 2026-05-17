@@ -520,6 +520,69 @@ def devolver_items_de_sesion(inventarios: list, sesiones: list):
     
     items_devolver = sesion.items
 
+    # Si son consumibles no se devolvean porque serán de un solo uso
+    # Si son equipamiento, se pregunta por el estado y se devolvera al inventario original
+    #       -> Si ese inventario original ya no existe, se pedira otro inventario
+
+    for item_unidades_inventario in items_devolver:
+
+        item = item_unidades_inventario[0]
+        unidades = item_unidades_inventario[1]
+        inventario_sesion = item_unidades_inventario[2]
+
+        # Solo se devuelve el equipamiento
+        if isinstance(item, Equipo):
+
+            inventario_existente = False
+
+            for inventario in inventarios:
+
+                #inventario_nuevo = copy.deepcopy(inventario)
+
+                # Extrar el índice para modificar inventarios
+                indice = inventarios.index(inventario)
+
+                if inventario.codigo == inventario_sesion.codigo:
+
+                    # Ahora hay que ver que unidades de equipamiento se devuelven en mal estado
+                    print(f'\nDevolviendo {str(item)}\n')
+
+                    unidades_mal_estado = unidades + 1
+                    while unidades_mal_estado > unidades: # Uso el while para evitar que se introduzcan de más
+
+                        unidades_mal_estado = pedir_unidades(f'\nIntroduzca las unidades en mal estado (0-{unidades}): ')
+
+
+                    if unidades_mal_estado is None: # Esto significa que el usuario ha introducido 0
+
+                        inventario.anadir_item_al_inventario((item, unidades))
+
+                    else:
+
+                        # Hay que modificar los atributos y cambiar el valor de estado
+                        item_mal_estado = item
+                        item_mal_estado.estado = False
+
+                        inventario.anadir_item_al_inventario((item, unidades - unidades_mal_estado))
+                        inventario.anadir_item_al_inventario((item_mal_estado, unidades_mal_estado))
+
+                    # Quitamos el inventario de antes y devolvemos el nuevo con el equipamiento devuelto
+                    inventarios[indice] = inventario
+                    inventario_existente = True
+
+
+            # Si el inventario del item usado ya no existe, hay que devolverlo a uno nuevo
+            if not inventario_existente:
+
+                codigo_valido = False
+
+                while not codigo_valido:
+
+                    mostrar_almacenes(inventarios)
+
+                    print('\nIntroduzca el código')
+
+
 
         
 ######################################################################################################
