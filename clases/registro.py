@@ -76,16 +76,7 @@ def crear_sesion(sesiones:list):
             if verificacion is None:
 
                 return None
-            
-            '''
-            if not codigo_input in sesiones:
 
-                return Registro(codigo_input, [])
-            
-            else:
-
-                print('Ya existe una sesión con ese código. Por favor use otro.')
-            '''
 
 
             for sesion in sesiones:
@@ -118,6 +109,32 @@ def ver_sesiones_abiertas(sesiones: list):
 
             print(sesion)
 
+
+# Aquí se pide que sesión va a ser cerrada
+def cerrar_sesion(sesiones: list):
+
+    while True:
+
+        # Mostramos que sesiones están abiertas y se podrían cerrar
+        ver_sesiones_abiertas(sesiones)
+
+        sesion_input = pedir_cadena_no_vacia('0 para cancelar | Introduzca el código de la sesión a cerrar: ')
+
+        if sesion_input is None:
+
+            return None
+
+        sesion_input = sesion_input.upper()
+
+
+        for sesion in sesiones:
+
+            if sesion_input == sesion.codigo and sesion.abierta:
+
+                return sesion
+            
+        print('Introduzca 0 o un código de sesión abierta.\n')
+    
 
 ########################################################################
 # A partir de aquí estarán las funciones de escritura en auditoria.txt #

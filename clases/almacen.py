@@ -5,7 +5,7 @@ from funciones import *
 from .items.consumible import Consumible
 from .items.equipo import Equipo, importar_equipamiento
 
-from .registro import Registro, crear_sesion
+from .registro import Registro, crear_sesion, cerrar_sesion
 
 from typing import List, Tuple, Optional, Any
 from .item import Item
@@ -507,6 +507,18 @@ def anadir_item_desde_inventario(items_anadidos: list, inventario: Inventario):
 
                 print('Introduzca unidades válidas\n')
 
+
+
+def devolver_items_de_sesion(inventarios: list, sesiones: list):
+
+    # Tomamos la sesión que el usuario pida
+    sesion = cerrar_sesion(sesiones)
+
+    if sesion is None:
+
+        return None
+    
+    items_devolver = sesion.items
 
 
         
