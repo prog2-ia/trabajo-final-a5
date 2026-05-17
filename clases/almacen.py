@@ -45,14 +45,17 @@ class Inventario():
         return False
     
 
-    # Me servira a la hora de devolver items desde sesiones
-    def eq2(self, other):
+    def __add__(self, other):
 
         if isinstance(other, Inventario):
 
-            return self.codigo == other.codigo
-        
-        return False
+            items_sumados = other.items
+
+            for item in items_sumados:
+
+                self.anadir_item_al_inventario(item)
+
+        return self
 
 
     @property
@@ -332,6 +335,80 @@ def eliminar_almacen(inventarios):
     else:
 
         print('No hay almacenes para eliminar.')
+
+
+
+def juntar_almacenes(inventarios: list):
+
+    if len(inventarios) < 2:
+
+        print('No hay suficientes inventarios para hacer la operación.')
+        return None
+    
+    # Primero se pide el inventario base, luego el inventario que se va a eliminar
+    # Hay que mantener el código del primero
+
+    inventario_base = None
+
+    while inventario_base is None:
+
+        mostrar_almacenes(inventarios)
+
+        codigo = pedir_cadena_no_vacia('0 para cancelar | Introduzca el código del inventario base: ')
+
+        if codigo is None:
+
+            return None
+
+
+        for inventario in inventarios:
+
+            if codigo == inventario.codigo:
+
+                # Guardamos el inventario al que irán los objetos
+                inventario_base = inventario
+                indice1 = inventarios.index(inventario)
+
+
+        if inventario_base is None:
+            print('Introduzca un código válido.\n')
+
+    
+    # Segundo, se pide el inventario del que se sumaran los items
+
+    inventario_suma = None
+
+    while inventario_suma is None:
+
+        mostrar_almacenes(inventarios)
+
+        codigo = pedir_cadena_no_vacia('0 para cancelar | Introduzca el código del inventario a sumar: ')
+
+        if codigo is None:
+
+            return None
+
+
+        for inventario in inventarios:
+
+            if codigo == inventario.codigo and not (codigo == inventario_base.codigo):
+
+                # Guardamos el inventario al que irán los objetos
+                inventario_suma = inventario
+                indice2 = inventarios.index(inventario)
+
+
+        if inventario_suma is None:
+            print('Introduzca un código válido.\n')
+
+    
+    # Ahora hay que modificar los inventarios
+    inventario_nuevo = inventario_base + inventario_suma
+
+    inventarios[indice1] = inventario_nuevo
+    inventarios.pop(indice2)
+
+    return (inventario_nuevo, inventario_base, inventario_suma, inventarios)
 
 
 
