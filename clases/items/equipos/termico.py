@@ -16,7 +16,7 @@ class EquipoTermico(Equipo):
         return super().__str__() + f" | Rango [{self.temp_min} °C, {self.temp_max} °C]"
     
     def __eq__(self, other: Any) -> bool:
-
+        # Verifica la igualdad basándose en el nombre (clase base) y los límites de temperatura
         if isinstance(other, EquipoTermico):
 
             return super().__eq__(other) and self.temp_max == other.temp_max and self.temp_min == other.temp_min
@@ -27,7 +27,7 @@ class EquipoTermico(Equipo):
 
 
 def verificar_rango_temperatura(temp_max: float, temp_min: float) -> None:
-
+    # Límite superior es mayor que el inferior
     if temp_max <= temp_min:
 
         raise ValueError("La temperatura máxima no puede ser menor que la mínima.")
@@ -54,7 +54,7 @@ def definir_equipo_termico(equipos: List[Any]) -> Optional[EquipoTermico]:
             print('Equipo anteriormente definido. Extrayendo copia...')
 
             return copy.deepcopy(equipo)
-
+    # Solicita el rango de temperaturas (mínima y máxima)
     rango = pedir_rango_temperatura()
 
     if rango is None:
@@ -66,7 +66,7 @@ def definir_equipo_termico(equipos: List[Any]) -> Optional[EquipoTermico]:
 
 
 def pedir_rango_temperatura() -> Optional[Tuple[float, float]]:
-
+    # Bucle de control para asegurar que ambas temperaturas formen un rango lógico y válido
     while True:
 
         temp_min = pedir_temperatura('Introduzca cualquier carácter para cancelar la operación | Introduzca la temperatura mínima (°C): ')
@@ -83,7 +83,7 @@ def pedir_rango_temperatura() -> Optional[Tuple[float, float]]:
             return None
         
         try:
-
+            # Invoca la validación del rango, si falla el flujo vuelve a empezar
             verificar_rango_temperatura(temp_max, temp_min)
 
             return temp_max, temp_min
@@ -117,5 +117,5 @@ def pedir_temperatura(frase: str) -> Optional[float]:
             return float(temperatura)
         
         except ValueError:
-
+            # Captura errores de entrada que no sean ni números válidos ni texto alfabético
             print('Introduzca una temperatura válida.')

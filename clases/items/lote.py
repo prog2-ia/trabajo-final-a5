@@ -34,10 +34,11 @@ class Lote():
         
 
     def esta_caducado(self) -> bool:
+        # Compara de forma directa la fecha del sistema con la del lote
         return date.today() > self.fecha_vencimiento
     
     def __eq__(self, other: Any) -> bool:
-
+        # Identicos si comparten id
         if isinstance(other, Lote):
 
             return self.id_lote == other.id_lote
@@ -68,7 +69,7 @@ def definir_lote(lotes: Dict[str, Any]) -> Optional[Lote]:
 
     introducir_id = ''
     id_valido = False
-
+    # Validación y registro del id único
     while not id_valido:
 
         entrada = input('(0 para cancelar | ID (00-ABC): ').strip().upper()
@@ -89,7 +90,7 @@ def definir_lote(lotes: Dict[str, Any]) -> Optional[Lote]:
         else:
 
             print('Introduzca un ID válido.\n')
-
+    # Entrada y validación de la fecha (no vencida)
     while True:
 
         fecha = pedir_fecha('(0) para cancelar | Fecha (DD/MM/AAAA): ')
@@ -188,7 +189,7 @@ def definir_lote_nuevo(lote: Optional[Lote]) -> Optional[List[Any]]:
                      # a un inventario
 
 
-
+    # Submenú dinámico para poblar el lote de reactivos o consumibles generales
     while not instruccion in ['4', '0']:
 
         instruccion = menu_consumibles()
@@ -231,7 +232,7 @@ def traer_lote_definido(lotes: dict):
 
         print('No hay lotes anteriormente definidos.\n')
         return None
-
+    # Muestra un inventario resumido de los lotes guardados en el histórico
     for lote in lotes:
 
         # Extraemos la lista del lote
@@ -279,7 +280,7 @@ def traer_lote_definido(lotes: dict):
     # Ahora a las instancias de consumible hay que cambiar el atributo lote
 
     consumibles_nuevos = []
-
+    # Actualiza las referencias de cada consumible hacia la nueva instancia de Lote
     for consumible, unidades in lotes[lote_pedido]:
 
         consumible.lote = lote_definido
@@ -305,6 +306,6 @@ def menu_consumibles() -> str:
 
     if not instruccion in ['1', '2', '3', '4', '0']:
 
-        return menu_consumibles()
+        return menu_consumibles() # Recursividad para forzar opción correcta
     
     return instruccion

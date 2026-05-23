@@ -15,7 +15,7 @@ class Centrifugadora(Equipo):
         return super().__str__() + f" | RPM Max: {self.rpm_max}"
     
     def __eq__(self, other: Any) -> bool:
-
+        # Compara usando la lógica de la clase base 'Equipo' y añade la validación de rpm_max
         if isinstance(other, Centrifugadora):
 
             return super().__eq__(other) and self.rpm_max == other.rpm_max
@@ -46,7 +46,7 @@ def definir_centrifugadora(equipos: List[Any]) -> Optional[Centrifugadora]:
 
             return copy.deepcopy(equipo)
         
-    
+    # Si es un equipo nuevo, se solicitan sus revoluciones máximas
     rpm_max = pedir_int_entre_valores('(-1) para cancelar la operación | Introduzca las RPM máximas: ', 1, 1000000)
 
     if rpm_max is None:

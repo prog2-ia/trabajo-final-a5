@@ -16,7 +16,7 @@ class ReactivoSolido(Consumible):
     
 
     def __eq__(self, other: Any) -> bool:
-
+        # Reutiliza la comparación de la clase base (Consumible) para nombre/lote y añade la comprobación de la masa
         if isinstance(other, ReactivoSolido):
 
             return super().__eq__(other) and self.masa == other.masa
@@ -29,7 +29,7 @@ def importar_reactivo_solido(consumibles: list[Any], lote: Any) -> None:
     # Esta función trabaja mediante referencia de lista, así que no hara falta return
 
 
-
+    # Entrada de datos con opción de cancelación (si devuelven None, se aborta la función)
     nombre_introducido = pedir_cadena_no_vacia('(0) para cancelar la importación | Introduzca el nombre del reactivo: ')
 
     if nombre_introducido is None:

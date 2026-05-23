@@ -17,7 +17,7 @@ class EquipoMedida(Equipo):
     
 
     def __eq__(self, other: Any) -> bool:
-
+        # Compara el nombre usando la clase base 'Equipo' y verifica que el error de medida sea idéntico
         if isinstance(other, EquipoMedida):
 
             return super().__eq__(other) and self.error_medida == other.error_medida
@@ -44,10 +44,10 @@ def definir_equipo_medida(equipos: List[Any]) -> Optional[EquipoMedida]:
         if equipo.nombre.lower() == nombre:
 
             print('Equipo anteriormente definido. Extrayendo copia...')
-
+            # Si existe extrae y devuelve una copa exacta
             return copy.deepcopy(equipo)
         
-    
+    # Si es nuevo, solicita el margen de error usando la función de validación local
     error_medida = pedir_error_medida('(-1) para cancelar la operación | Introduzca el error de medida (±): ')
 
     if error_medida is None:
@@ -58,7 +58,7 @@ def definir_equipo_medida(equipos: List[Any]) -> Optional[EquipoMedida]:
         
 
 def pedir_error_medida(frase: str) -> Optional[float]:
-
+    # Bucle de control para forzar una entrada numérica válida y positiva
     while True:
 
         print(frase, end='')
@@ -72,7 +72,7 @@ def pedir_error_medida(frase: str) -> Optional[float]:
         try:
 
             valor_final = float(valor_input)
-
+            # Validación secundaria: el margen de error debe ser un valor absoluto/positivo
             if valor_final < 0:
 
                 print('Error. Introduzca un valor positivo.')
@@ -82,5 +82,5 @@ def pedir_error_medida(frase: str) -> Optional[float]:
                 return valor_final
 
         except ValueError:
-
+            # Captura el error si el usuario introduce letras o caracteres no numéricos
             print('Error. Introduzca un valor numérico válido.')

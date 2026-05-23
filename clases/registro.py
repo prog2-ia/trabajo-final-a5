@@ -7,7 +7,8 @@ from funciones import *
 # Trateremos la clase Registro como una sesión
 class Registro():
 
-
+    # Modela una sesión científica. Guarda automáticamente la fecha/hora de inicio
+    # y mantiene un estado abierto/cerrado para controlar el flujo del material.
     def __init__(self, cod, items: list):
 
 
@@ -77,8 +78,7 @@ def crear_sesion(sesiones:list):
 
                 return None
 
-
-
+            # Valida que el código no esté duplicado en ninguna otra sesión del histórico.
             for sesion in sesiones:
 
                 codigo = sesion.cod
@@ -218,7 +218,7 @@ def escribir_juntado_almacenes(inventario_nuevo, inventario_base, inventario_sum
 ###################################
 
 def escribir_importar_equipo(equipo_cantidad_inventario: tuple):
-
+    # Desempaqueta la tupla compleja proveniente de main.py: ((objeto_equipo, cantidad), codigo_almacen).
     equipo   = equipo_cantidad_inventario[0][0] # Otra tupla de (equipo, cantidad)
     cantidad = equipo_cantidad_inventario[0][1]
     codigo   = equipo_cantidad_inventario[1]
@@ -249,7 +249,7 @@ def escribir_mover_equipo(equipo_cantidad: tuple, codigo_origen: str, codigo_des
 
 
 def escribir_nuevo_lote_definido(consumibles_inventario: tuple):
-
+    # Extrae el objeto Lote del primer consumible para recuperar el ID ('codigo') que se usará en el encabezado.
     consumibles = consumibles_inventario[0]
     inventario = consumibles_inventario[1]
 
@@ -281,7 +281,7 @@ def escribir_nuevo_lote_definido(consumibles_inventario: tuple):
 
 
 def escribir_sesion_empezada(sesion: Registro):
-
+    # Registra en el log qué ítems se retiraron, cuántas unidades y de qué almacén específico provienen.
     items   = sesion.items
     codigo  = sesion.cod
     fecha_inicio = sesion.inicio

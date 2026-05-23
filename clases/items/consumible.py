@@ -8,12 +8,12 @@ class Consumible(Item):
     def __init__(self, nombre: str, lote: Any):
 
         super().__init__(nombre)
-        self.__lote: Any = lote
+        self.__lote: Any = lote # Atributo encapsulado (privado)
 
 
     def __str__(self) -> str:
 
-
+        # Extrae la información directamente desde el objeto 'lote' asociado
         id_lote = self.lote.id_lote
         fecha = self.lote.fecha_vencimiento
 
@@ -28,19 +28,19 @@ class Consumible(Item):
     
 
     def __eq__(self, other: Any) -> bool:
-
+        # Dos consumibles son iguales si tienen el mismo nombre (clase base) y pertenecen al mismo lote
         if isinstance(other, Consumible):
 
             return super().__eq__(other) and self.lote == other.lote
 
         return False
     
-
+    # Getter para permitir el acceso controlado al lote privado
     @property
     def lote(self) -> Any:
 
         return self.__lote
-    
+    # Setter para permitir la modificación controlada del lote si fuera necesario
     @lote.setter
     def lote(self, lote):
 
@@ -55,7 +55,7 @@ def importar_consumible_generico(consumibles: list, lote):
     # Esta función trabaja mediante referencia de lista, así que no hara falta return
 
 
-
+    # Entrada de datos con opción de cancelación (si devuelven None, se aborta la función)
     nombre_introducido = pedir_cadena_no_vacia('(0) para cancelar la importación | Introduzca el nombre del consumible: ')
 
     if nombre_introducido is None:

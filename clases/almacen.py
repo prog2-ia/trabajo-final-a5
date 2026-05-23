@@ -76,7 +76,8 @@ class Inventario():
         items_eliminados = [] # Para mostrarlo en la auditoría
 
         items_validos = []    # Para guardar los que sobreviven
-
+        # Separa los elementos válidos de los descartados aplicando polimorfismo:
+        # evalúa la caducidad en consumibles y el estado de operatividad física en equipos.
         for item in self.items:
 
             objeto_item = item[0]
@@ -111,7 +112,8 @@ class Inventario():
     # Se puede usar también para reducir las unidades, poniendo en la cantidad un número negativo
     # Por eso, se saneará la lista después para eliminar los items con cantidad 0
     def anadir_item_al_inventario(self, item_cantidad: tuple):
-
+        # Busca coincidencias por equivalencia de objeto para consolidar existencias.
+        # Admite valores negativos en el segundo elemento de la tupla para realizar extracciones.
         terminado = False
 
         for indice, item in enumerate(self.items):
@@ -314,8 +316,9 @@ def eliminar_almacen(inventarios):
                     confirmacion = input(f'¿Estás seguro de que quieres eliminar el almacén [{inventario.codigo}] y todos sus items? Esta acción no se puede deshacer. (s para continuar): ')
 
                     if confirmacion.lower() == 's':
-
-                        inventario_eliminado = copy.deepcopy(inventario) # Para mostrarlo en la auditoría
+                        # Realiza una copia profunda del estado del almacén antes de desvincularlo de la lista
+                        # para asegurar que el registro de auditoría conserve la trazabilidad completa del contenido destruido.
+                        inventario_eliminado = copy.deepcopy(inventario)
 
                         inventarios.remove(inventario)
                         print(f'Almacén [{inventario.codigo}] eliminado.')
@@ -419,8 +422,8 @@ def juntar_almacenes(inventarios: list):
 
 
 def anadir_items_a_sesion(inventarios: list, sesiones: list):
-
-    # Por si se cancela alguna operación, que no se pierdan items
+    # Genera un punto de restauración global de los inventarios para neutralizar modificaciones
+    # parciales en las existencias si el científico aborta la configuración de la sesión a mitad del proceso.
     inventarios_copia_seguridad = copy.deepcopy(inventarios)
 
     sesion = crear_sesion(sesiones)

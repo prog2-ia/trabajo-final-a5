@@ -94,7 +94,7 @@ if __name__ == '__main__':
                             instruccion_acceso_almacen = ''
 
                             while instruccion_acceso_almacen != '0':
-
+                                # Subflujo para operar dentro de un almacén específico
                                 instruccion_acceso_almacen = acceso_almacen(inventarios)
 
 
@@ -172,7 +172,7 @@ if __name__ == '__main__':
 
                                 # Variable para guardar el objeto definido antes de importarlo
                                 item_definido = None
-
+                                # Asignación según el tipo específico de equipamiento
                                 match instruccion_nuevo_equipamiento:
 
                                     case '1':
@@ -188,7 +188,7 @@ if __name__ == '__main__':
                                         item_definido = definir_equipo_termico(equipos)
 
                                     case '5':
-                                        item_definido = traer_equipamiento_definido(equipos)
+                                        item_definido = traer_equipamiento_definido(equipos) # Reutilizar catálogo
 
                                     case '0':
                                         print('Volviendo al menu anterior...')
@@ -254,7 +254,7 @@ if __name__ == '__main__':
 
                                         print('Instrucción no válida, vuelva a intentarlo')
                                         """
-                                
+                                # Si el objeto fue configurado con éxito, se procede a su importación fisica
                                 if item_definido is not None:
 
                                     # 1. Lo importamos (esto devuelve la tupla para anadir_item)

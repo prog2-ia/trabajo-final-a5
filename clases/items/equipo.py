@@ -6,7 +6,7 @@ from funciones import *
 import copy
 
 class Equipo(Item):
-
+    # Diccionario de clase para transformar el booleano del estado en texto legible
     dicc_estados: Dict[bool,str] = {True: "Buen estado", False: "Defectuoso"}
 
     def __init__(self, nombre: str):
@@ -21,14 +21,14 @@ class Equipo(Item):
 
 
     def __str__(self) -> str:
-
+        # Recupera el texto de forma segura: si no existe, por defecto será 'Desconocido'
         txt_estado: str = type(self).dicc_estados.get(self.estado, "Desconocido") # Evitar errores
 
         return super().__str__() + f" | Estado: {txt_estado}"
     
 
     def __eq__(self, other: Any) -> bool:
-
+        # Dos equipos son iguales si coincide su nombre (clase base) y su estado actual
         if isinstance(other, Equipo):
 
             return super().__eq__(other) and self.estado == other.estado
@@ -71,7 +71,7 @@ def importar_equipamiento(equipo: Optional[Equipo]) -> Optional[Tuple[Equipo, in
 
         return None # Esto acabara el anadir_item, el cual mostrara el mensaje de cancelando operación
     
-
+    # Bucle para solicitar cuántas unidades/copias de este equipo se van a aañadir
     while True:
 
         copias = pedir_int_entre_valores('(-1) para cancelar la operación | Introduzca la cantidad: ', 1, 999)
@@ -81,19 +81,19 @@ def importar_equipamiento(equipo: Optional[Equipo]) -> Optional[Tuple[Equipo, in
             return None
         
         else:
-
-            return (equipo, copias) # Tupla para añadir al inventario
+            # Retorna el formato estándar de inventario: una tupla (objeto, cantidad)
+            return (equipo, copias)
         
 
 
 def traer_equipamiento_definido(equipos: List[Any]) -> Optional[Equipo]:
-
+    # Validación: si la lista histórica está vacía, no se puede importar nada
     if not equipos:
 
         print('No hay equipamiento anteriormente definido.')
         return None
     
-
+    # Imprime la lista de equipos definidos numerada del 1 en adelante
     for indice, equipo in enumerate(equipos, start=1):
 
         print(f'[{indice}]\t-\t{str(equipo)}')
@@ -104,5 +104,5 @@ def traer_equipamiento_definido(equipos: List[Any]) -> Optional[Equipo]:
     if equipamiento_elegido is None:
 
         return None
-    
+    # Retorna el objeto apuntado por el usuario (ajustando el desfase del start=1)
     return equipos[equipamiento_elegido - 1]

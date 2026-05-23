@@ -12,7 +12,7 @@ from typing import Optional, Dict, Any, List
 import pickle
 
 def cargar_laboratorio() -> Dict[str, Any]:
-
+    # Intenta abrir el archivo binario pickle para restaurar el estado del sistema
     try:
 
         with open('datos/laboratorio.pkl', 'rb') as archivo:
@@ -29,7 +29,7 @@ def cargar_laboratorio() -> Dict[str, Any]:
         }
 
 def guardar_laboratorio(datos_a_guardar):
-
+    # Serializa y vuelca el diccionario maestro de laboratorio en el archivo binario
     with open('datos/laboratorio.pkl', 'wb') as archivo:
 
         pickle.dump(datos_a_guardar, archivo)
@@ -37,7 +37,8 @@ def guardar_laboratorio(datos_a_guardar):
 # Está función modificara las listas de los archivos pickle
 
 def anadir_equipo_definido(equipo, equipos: list):
-
+    # NOTA: Al modificar la lista por referencia directa, los cambios persisten fuera de la función.
+    # Registra un clon del equipo en el catálogo histórico global si no fue guardado previamente.
     if not equipo in equipos:
 
         equipos.append(copy.deepcopy(equipo))
@@ -69,18 +70,18 @@ def pedir_num(frase: str) -> Optional[str]:
 
 
 def pedir_int(frase: str) -> Optional[int]:
-
+    # Obliga al usuario a meter un entero positivo
     while True:
 
         print(frase, end='')
         numero = input()
 
-        if numero == '-1':
+        if numero == '-1': # Cancelación
 
             return None
         
         try:
-
+            # Aseguramos que no sea un float camuflado (4.5) y que sea mayor que 0
             if int(numero) == float(numero) and int(numero) > 0:
 
                 return int(numero)
@@ -94,24 +95,24 @@ def pedir_int(frase: str) -> Optional[int]:
 
 
 def pedir_int_entre_valores(frase, valor_min, valor_max):
-
+    # Entero validado positivamente
     numero = pedir_int(frase)
 
     if numero is None:
 
         return None
-    
+    # Comprobación de límites operacionales
     if valor_min > numero or numero > valor_max:
 
         print(f'Introduzca un número válido [{valor_min}, {valor_max}]\n')
-        return pedir_int_entre_valores(frase, valor_min, valor_max)
+        return pedir_int_entre_valores(frase, valor_min, valor_max) # Reintento mediante recursividad
     
     return numero
     
 
 
 def pedir_float(frase):
-
+    # Captura valores decimales (negativos también)
     while True:
 
         print(frase, end='')
@@ -144,7 +145,7 @@ def pedir_fecha(frase: str) -> Optional[date]:
             return None
 
         try:
-            
+            # formato estricto DD/MM/AAAA
 
             fecha_parseada = datetime.strptime(fecha_str, "%d/%m/%Y")
             
@@ -163,13 +164,13 @@ def pedir_cadena_no_vacia(frase):
     while True:
 
         print(frase, end='')
-        cadena = input().strip()
+        cadena = input().strip() # Quita espacios delante y detrás
 
         if cadena == '0':
 
             return None
         
-        if cadena:
+        if cadena: # Si la cadena evalúa a True, no está vacía
         
             return cadena
         
@@ -180,7 +181,7 @@ def pedir_cadena_no_vacia(frase):
 ##################################################################################
 
 def pedir_unidades(frase):
-
+    # Validación de cantidades enteras para inventario
     while True:
 
         print(frase, end='')
@@ -207,7 +208,7 @@ def pedir_unidades(frase):
 
 def pedir_unidades_float(frase):
 
-
+    # Útil para ml o gramos
     while True:
 
         print(frase, end='')

@@ -17,7 +17,7 @@ class ReactivoLiquido(Consumible):
 
     
     def __eq__(self, other: Any) -> bool:
-
+        # Dos reactivos líquidos son iguales si conciden en nombre, lote y volumen
         if isinstance(other, ReactivoLiquido):
 
             return self.nombre.lower() == other.nombre.lower() and self.volumen == other.volumen \
@@ -32,7 +32,7 @@ def importar_reactivo_liquido(consumibles: list, lote):
     # Esta función trabaja mediante referencia de lista, así que no hara falta return
 
 
-
+    # Entrada de datos con opción de cancelación (si devuelven None, se aborta la función)
     nombre_introducido = pedir_cadena_no_vacia('(0) para cancelar la importación | Introduzca el nombre del reactivo: ')
 
     if nombre_introducido is None:
