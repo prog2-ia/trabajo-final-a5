@@ -295,17 +295,22 @@ def traer_lote_definido(lotes: dict):
 
 # Menu para que el usuario seleccione que consumible quiere añadir al lote
 def menu_consumibles() -> str:
+    menu = (
+        "\n\t╔" + "═"*40 + "╗\n"
+        "\t║" + " CARGANDO CONSUMIBLES AL LOTE ".center(40, "░") + "║\n"
+        "\t╠" + "═"*40 + "╣\n"
+        "\t║ [1] - Consumible genérico              ║\n"
+        "\t║ [2] - Reactivo líquido                 ║\n"
+        "\t║ [3] - Reactivo sólido                  ║\n"
+        "\t║                                        ║\n"
+        "\t║ [4] - Finalizar y guardar lote         ║\n"
+        "\t║ [0] - Cancelar lote completo           ║\n"
+        "\t╚" + "═"*40 + "╝"
+    )
+    print(menu)
 
-    print('\n\t[1] - Consumible genérico')
-    print('\t[2] - Reactivo líquido')
-    print('\t[3] - Reactivo solido')
-    print('\t[4] - Finalizar lote')
-    print('\t[0] - Cancelar lote')
-
-    instruccion = input('\nInstrucción: ')
-
-    if not instruccion in ['1', '2', '3', '4', '0']:
-
+    instruccion = input("\n\t Instrucción de carga: ").strip()
+    if instruccion not in ['1', '2', '3', '4', '0']:
+        print("\t⚠️ Opción no válida. Intente de nuevo.")
         return menu_consumibles() # Recursividad para forzar opción correcta
-    
     return instruccion

@@ -9,19 +9,22 @@ from funciones import *
 ########################
 
 
-def menu_principal():
-
-
-    print(
-        f'\n\t[1] -\tAlmacén\n'
-        f'\t[2] -\tEquipamiento\n'
-        f'\t[3] -\tConsumibles\n'
-        f'\t[4] -\tSesiones\n'
-        f'\t[0] -\tSalir programa\n'
+def menu_principal() -> str:
+    menu = (
+        "\n╔" + "═"*48 + "╗\n"
+        "║" + " PANEL DE CONTROL - GESTIÓN DE LABORATORIO ".center(48, "░") + "║\n"
+        "╠" + "═"*48 + "╣\n"
+        "║ [1] -> Gestión de Almacenes (Inventarios)      ║\n"
+        "║ [2] -> Control de Equipamiento Técnico         ║\n"
+        "║ [3] -> Entrada de Consumibles y Reactivos      ║\n"
+        "║ [4] -> Sesiones de Trabajo Activas             ║\n"
+        "║                                                ║\n"
+        "║ [0] -> Salir de la Aplicación                  ║\n"
+        "╚" + "═"*48 + "╝"
     )
-
-    # Pedir la instrucción
-    return pedir_num('\nAcceder a: ')
+    print(menu)
+    # Pide una opción
+    return pedir_num(" Seleccione una opción: ")
 
 
 ####################################################
@@ -29,63 +32,76 @@ def menu_principal():
 ####################################################
 
 
-def menu_almacen():
-
+def menu_almacen() -> str:
     # Se podrá crear nuevos almacenes, ver los existentes, juntarlos o eliminarlos
-
-    print(
-        f'\n\t[1] -\tCrear nuevo almacen\n'
-        f'\t[2] -\tVer y acceder a almacenes\n'
-        f'\t[3] - \tJuntar almacenes\n'
-        f'\t[4] -\tEliminar almacen\n'
-        f'\t[5] - \tLimpiar almacenes\n'
-        f'\t[0] -\tVolver al menu principal\n'
+    menu = (
+            "\n┌" + "─" * 44 + "┐\n"
+            f"│{'  SECCIÓN: GESTIÓN DE ALMACENES ':.^44}│\n"
+            "├" + "─" * 44 + "┤\n"
+            "│ [1] - Crear nuevo almacén                  │\n"
+            "│ [2] - Acceder y consultar existencias      │\n"
+            "│ [3] - Fusionar almacenes (Suma de ítems)   │\n"
+            "│ [4] - Eliminar almacén del sistema         │\n"
+            "│ [5] - Limpiar almacenes (Filtro caducados) │\n"
+            "│                                            │\n"
+            "│ [0] - Volver al Menú Principal             │\n"
+            "└" + "─" * 44 + "┘"
     )
-
+    print(menu)
     # Pedir la instrucción
-    return pedir_num('\nAcceder a: ')
+    return pedir_num(" Instrucción: ")
 
-
-def menu_equipamiento():
-
+def menu_equipamiento() -> str:
     # Se podrá traer nuevo equipamiento, moverlo o tirarlo
-
-    print(
-        f'\n\t[1] - \tTraer nuevo equipamiento\n'
-        f'\t[2] - \tMover equipamiento entre inventarios\n'
-        f'\t[0] - \tVolver al menu principal\n'
+    menu = (
+            "\n┌" + "─" * 44 + "┐\n"
+            f"│{'  SECCIÓN: CONTROL DE EQUIPOS ':.^44}│\n"
+            "├" + "─" * 44 + "┤\n"
+            "│ [1] - Registrar e importar nuevo equipo    │\n"
+            "│ [2] - Transferir equipo entre almacenes    │\n"
+            "│                                            │\n"
+            "│ [0] - Volver al Menú Principal             │\n"
+            "└" + "─" * 44 + "┘"
     )
-
+    print(menu)
     # Pedir la instrucción
-    return pedir_num('\nAcceder a: ')
-
+    return pedir_num(" Instrucción: ")
 
 def menu_consumibles():
 
     # Los consumibles van por lotes, por lo que si tiramos un consumible de un lote A,
     # también se tiran los demás consumibles del lote A.
 
-    print(
-        f'\n\t[1] - \tDefinir nuevo lote\n'
-        f'\t[2] - \tTraer lote anteriormente definido\n'
-        f'\t[0] - \tVolver atras\n'
+    menu = (
+        "\n┌" + "─"*44 + "┐\n"
+        f"│{'  SECCIÓN: GESTIÓN DE CONSUMIBLES ':.^44}│\n"
+        "├" + "─"*44 + "┤\n"
+        "│ [1] - Definir un nuevo lote de reactivos   │\n"
+        "│ [2] - Reimportar lote histórico definido   │\n"
+        "│                                            │\n"
+        "│ [0] - Volver atrás / Menú Principal        │\n"
+        "└" + "─"*44 + "┘"
     )
+    print(menu)
 
     # Pedir la instrucción
     return pedir_num('\nAcceder a: ')
 
 
-def menu_sesiones():
-
-    print(
-        f'\n\t[1] - \tCrear nueva sesión\n'
-        f'\t[2] - \tVer sesiones\n'
-        f'\t[3] - \tFinalizar sesión\n'
-        f'\t[0] - \tVolver al menu principal\n'
+def menu_sesiones() -> str:
+    menu = (
+        "\n┌" + "─"*44 + "┐\n"
+        f"│{'  SECCIÓN: SESIONES DE LABORATORIO ':.^44}│\n"
+        "├" + "─"*44 + "┤\n"
+        "│ [1] - Abrir nueva sesión de trabajo        │\n"
+        "│ [2] - Consultar sesiones abiertas          │\n"
+        "│ [3] - Finalizar sesión y evaluar retorno   │\n"
+        "│                                            │\n"
+        "│ [0] - Volver al Menú Principal             │\n"
+        "└" + "─"*44 + "┘"
     )
-
-    # Pedir la instrucción
-    return pedir_num('\nAcceder a: ')
+    print(menu)
+    return pedir_num(" Instrucción: ")
 
 
 ####################################################
@@ -93,16 +109,19 @@ def menu_sesiones():
 ####################################################
 
 
-def menu_traer_equipamiento():
-
-    print(
-        f'\n\t[1] - \tDefinir equipamiento genérico\n'
-        f'\t[2] - \tDefinir centrifugadora\n'
-        f'\t[3] - \tDefinir equipamiento de medida\n'
-        f'\t[4] - \tDefinir equipamiento térmico\n'
-        f'\t[5] - \tTraer equipamiento anteriormente definido\n'
-        f'\t[0] - \tVolver atras\n'
+def menu_traer_equipamiento() -> str:
+    menu = (
+        "\n\t┌" + "─"*40 + "┐\n"
+        "\t│" + " ¿Qué tipo de equipo desea registrar? ".center(40, "░") + "│\n"
+        "\t├" + "─"*40 + "┤\n"
+        "\t│ [1] -> Equipo Genérico                 │\n"
+        "\t│ [2] -> Centrifugadora                  │\n"
+        "\t│ [3] -> Equipo de Medida                │\n"
+        "\t│ [4] -> Equipo Térmico                  │\n"
+        "\t│ [5] -> Reutilizar del Catálogo Base    │\n"
+        "\t│                                        │\n"
+        "\t│ [0] -> Volver al menú anterior         │\n"
+        "\t└" + "─"*40 + "┘"
     )
-
-    # Pedir la instrucción
-    return pedir_num('\nAcceder a: ')
+    print(menu)
+    return pedir_num("\t Selección: ")

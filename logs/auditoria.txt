@@ -78,3 +78,5 @@ Sesión cerrada [2026-05-16 18:26:36] - [2026-05-17 19:10:46] | [ABC11] (0) items
 		 - Item: ácido sulfúrico | Lote: 44-DFC | Vence: 2026-05-12 (CADUCADO)	 | Vol: 600.0 ml | [3] uds.
 		 - Item: ácido brómico | Lote: 44-DFC | Vence: 2026-05-12 (CADUCADO) 	| Masa: 200.0 g | [6] uds.
 		 - Item: ácido brómico 6 | Lote: 44-DFC | Vence: 2026-05-12 (CADUCADO) 	| Masa: 300.0 g | [1] uds.
+[2026-05-24 12:33:50] - Limpieza de almacenes
+
