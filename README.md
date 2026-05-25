@@ -38,11 +38,13 @@ El objetivo principal es digitalizar la administración de un laboratorio para r
    - Los reactivos se agrupan bajo este lote para una retirada masiva en caso de vencimiento.
 
 ##  Requisitos e Instalación
-* **Python 3.10** o superior.
-* No requiere librerías externas (Standard Library).
-* Clonar el repositorio y ejecutar:
-  ```bash
-  git clone [https://github.com/prog2-ia/trabajo-final-a5.git](https://github.com/prog2-ia/trabajo-final-a5.git)
-  python main.py
 
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/09uckVan)
+Este proyecto está preparado tanto para usuarios finales (mediante ejecutable) como para desarrolladores.
+
+### Para Usuarios Finales (Sin instalación de Python)
+Si solo deseas usar la aplicación sin tocar el código, puedes descargar la versión compilada:
+1. Descarga el ejecutable desde la carpeta `dist/` (o desde la sección de Releases si está disponible).
+2. Abre tu terminal.
+3. Navega hasta la carpeta donde descargaste el archivo y ejecútalo:
+   ```bash
+   ./main
