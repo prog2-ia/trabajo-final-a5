@@ -149,14 +149,14 @@ def escribir_creado_almacen(codigo):
     # datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     # Lo pasa al formato de fecha necesitado
 
-    with open('logs/auditoria.txt', 'a') as archivo:
+    with open('logs/auditoria.txt', 'a', encoding='utf-8') as archivo:
 
         archivo.write(f'[{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] - Creado nuevo almacen con codigo [{codigo}]\n')
 
 
 def escribir_eliminado_almacen(inventario):
 
-    with open('logs/auditoria.txt', 'a') as archivo:
+    with open('logs/auditoria.txt', 'a', encoding='utf-8') as archivo:
 
         mensaje_inicial = f'[{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] - Almacén eliminado:\n'
 
@@ -187,7 +187,7 @@ def escribir_limpieza_inventarios(diccionario_limpieza: dict):
     mensaje_final = mensaje_inicial + cuerpo_mensaje + '\n'
 
 
-    with open('logs/auditoria.txt', 'a') as archivo:
+    with open('logs/auditoria.txt', 'a', encoding='utf-8') as archivo:
 
         archivo.write(mensaje_inicial) 
 
@@ -207,7 +207,7 @@ def escribir_juntado_almacenes(inventario_nuevo, inventario_base, inventario_sum
 
     mensaje_inicial += cuerpo_mensaje
 
-    with open('logs/auditoria.txt', 'a') as archivo:
+    with open('logs/auditoria.txt', 'a', encoding='utf-8') as archivo:
 
         archivo.write(mensaje_inicial) 
     
@@ -223,7 +223,7 @@ def escribir_importar_equipo(equipo_cantidad_inventario: tuple):
     cantidad = equipo_cantidad_inventario[0][1]
     codigo   = equipo_cantidad_inventario[1]
 
-    with open('logs/auditoria.txt', 'a') as archivo:
+    with open('logs/auditoria.txt', 'a', encoding='utf-8') as archivo:
 
         mensaje_inicial = f'[{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] - Equipo ({cantidad} uds.) añadido al inventario [{codigo}]:\n'
 
@@ -235,7 +235,7 @@ def escribir_mover_equipo(equipo_cantidad: tuple, codigo_origen: str, codigo_des
     equipo   = equipo_cantidad[0] # El equipo es el primer elemento de la tupla
     cantidad = equipo_cantidad[1] # La cantidad es el segundo elemento de la tupla
 
-    with open('logs/auditoria.txt', 'a') as archivo:
+    with open('logs/auditoria.txt', 'a', encoding='utf-8') as archivo:
 
         mensaje = f'[{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] - {str(equipo)} ({cantidad} uds.) movido del inventario [{codigo_origen}] al inventario [{codigo_destino}]\n'
 
@@ -269,7 +269,7 @@ def escribir_nuevo_lote_definido(consumibles_inventario: tuple):
     mensaje_inicial = f'\n[{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}] - Lote ({codigo}) ({unidades} uds.) añadido a {inventario.codigo}.\n'
 
 
-    with open('logs/auditoria.txt', 'a') as archivo:
+    with open('logs/auditoria.txt', 'a', encoding='utf-8') as archivo:
 
         archivo.write(mensaje_inicial + mensaje_cuerpo)
 
@@ -298,14 +298,14 @@ def escribir_sesion_empezada(sesion: Registro):
 
     mensaje_inicial += cuerpo_mensaje
 
-    with open('logs/auditoria.txt', 'a') as archivo:
+    with open('logs/auditoria.txt', 'a', encoding='utf-8') as archivo:
 
         archivo.write(mensaje_inicial)
 
 
 def escribir_sesion_cerrada(sesion: Registro):
 
-    with open('logs/auditoria.txt', 'a') as archivo:
+    with open('logs/auditoria.txt', 'a', encoding='utf-8') as archivo:
 
         # Los items de la sesión ya se han mostrado anteriormente, solo se notifica enseñando la fecha en cuando cierra
 

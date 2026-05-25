@@ -80,3 +80,49 @@ Sesi�n cerrada [2026-05-16 18:26:36] - [2026-05-17 19:10:46] | [ABC11] (0) items
 		 - Item: �cido br�mico 6 | Lote: 44-DFC | Vence: 2026-05-12 (CADUCADO) 	| Masa: 300.0 g | [1] uds.
 [2026-05-24 12:33:50] - Limpieza de almacenes
 
+[2026-05-25 19:00:59] - Creado nuevo almacen con codigo [AB456]
+[2026-05-25 19:01:32] - Inventario [TD345] juntado con [DC789]
+
+		 - Item: vaso de expansion 5l | Estado: Buen estado | [2] uds.
+		 - Item: gafas proteccion | Estado: Buen estado | [3] uds.
+		 - Item: gafas de proteccion | Estado: Buen estado | [3] uds.
+		 - Item: centrifugadora_x | Estado: Buen estado | RPM Max: 3000 | [2] uds.
+		 - Item: pipeta 300 ml | Lote: 44-DFC | Vence: 2026-05-12 (CADUCADO) | [8] uds.
+		 - Item: ácido sulfúrico | Lote: 44-DFC | Vence: 2026-05-12 (CADUCADO)	 | Vol: 400.0 ml | [7] uds.
+		 - Item: ácido sulfúrico | Lote: 44-DFC | Vence: 2026-05-12 (CADUCADO)	 | Vol: 600.0 ml | [3] uds.
+		 - Item: ácido brómico | Lote: 44-DFC | Vence: 2026-05-12 (CADUCADO) 	| Masa: 200.0 g | [9] uds.
+		 - Item: ácido brómico 6 | Lote: 44-DFC | Vence: 2026-05-12 (CADUCADO) 	| Masa: 300.0 g | [3] uds.
+[2026-05-25 19:02:05] - Almacén eliminado:
+
+[TD345] con 9 items
+
+	- Item: vaso de expansion 5l | Estado: Buen estado
+		 - Uds. disponibles: 2
+
+	- Item: gafas proteccion | Estado: Buen estado
+		 - Uds. disponibles: 3
+
+	- Item: gafas de proteccion | Estado: Buen estado
+		 - Uds. disponibles: 3
+
+	- Item: centrifugadora_x | Estado: Buen estado | RPM Max: 3000
+		 - Uds. disponibles: 2
+
+	- Item: pipeta 300 ml | Lote: 44-DFC | Vence: 2026-05-12 (CADUCADO)
+		 - Uds. disponibles: 8
+
+	- Item: ácido sulfúrico | Lote: 44-DFC | Vence: 2026-05-12 (CADUCADO)	 | Vol: 400.0 ml
+		 - Uds. disponibles: 7
+
+	- Item: ácido sulfúrico | Lote: 44-DFC | Vence: 2026-05-12 (CADUCADO)	 | Vol: 600.0 ml
+		 - Uds. disponibles: 3
+
+	- Item: ácido brómico | Lote: 44-DFC | Vence: 2026-05-12 (CADUCADO) 	| Masa: 200.0 g
+		 - Uds. disponibles: 9
+
+	- Item: ácido brómico 6 | Lote: 44-DFC | Vence: 2026-05-12 (CADUCADO) 	| Masa: 300.0 g
+		 - Uds. disponibles: 3
+
+
+[2026-05-25 19:02:12] - Limpieza de almacenes
+
