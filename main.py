@@ -200,64 +200,8 @@ if __name__ == '__main__':
                                     case _:
                                             print('Instrucción no válida, vuelva a intentarlo')
 
-                                """
-                                    case '1':   # Definir equipamiento genérico
+                                
 
-                                        conclusion_operacion = anadir_item(importar_equipamiento(definir_equipamiento(equipos)), inventarios)
-
-                                        if type(conclusion_operacion) == tuple:
-
-                                            escribir_importar_equipo(conclusion_operacion)
-                                            anadir_equipo_definido(conclusion_operacion[0][0], equipos)
-
-
-                                    case '2':   # Definir centrifugadora
-
-                                        conclusion_operacion = anadir_item(importar_equipamiento(definir_centrifugadora(equipos)), inventarios)
-
-                                        if type(conclusion_operacion) == tuple:
-
-                                            escribir_importar_equipo(conclusion_operacion)
-                                            anadir_equipo_definido(conclusion_operacion[0][0], equipos)
-
-
-                                    case '3':   # Definir equipamiento de medida
-
-                                        conclusion_operacion = anadir_item(importar_equipamiento(definir_equipo_medida(equipos)), inventarios)
-
-                                        if type(conclusion_operacion) == tuple:
-
-                                            escribir_importar_equipo(conclusion_operacion)
-                                            anadir_equipo_definido(conclusion_operacion[0][0], equipos)
-
-
-                                    case '4':   # Definir equipamiento térmico
-
-                                        conclusion_operacion = anadir_item(importar_equipamiento(definir_equipo_termico(equipos)), inventarios)
-
-                                        if type(conclusion_operacion) == tuple:
-
-                                            escribir_importar_equipo(conclusion_operacion)
-                                            anadir_equipo_definido(conclusion_operacion[0][0], equipos)
-
-
-                                    case '5':   # Traer equipamiento anteriormente definido
-
-                                        conclusion_operacion = anadir_item(importar_equipamiento(traer_equipamiento_definido(equipos)), inventarios)
-
-                                        if type(conclusion_operacion) == tuple:
-
-                                            escribir_importar_equipo(conclusion_operacion)
-
-
-                                    case '0':   # Volver al menu anterior
-
-                                        print('Volviendo al menu anterior...')
-
-                                    case _:
-
-                                        print('Instrucción no válida, vuelva a intentarlo')
-                                        """
                                 # Si el objeto fue configurado con éxito, se procede a su importación fisica
                                 if item_definido is not None:
 
@@ -319,22 +263,7 @@ if __name__ == '__main__':
                             # definir_lote_nuevo -> Se deciden que consumibles se ponen en el lote
                             # definir_lote -> Se pone la fecha de caducidad y el ID
 
-                            '''
-                            conclusion_operacion = anadir_lote(definir_lote_nuevo(definir_lote(lotes)), inventarios)
-
-                            if type(conclusion_operacion) == tuple:
-
-                                escribir_nuevo_lote_definido(conclusion_operacion)
-
-                                # Hay que guardar el nuevo lote en el diccionario de lotes
-                                consumibles = conclusion_operacion[0]
-                                consumible = consumibles[0][0]
-
-                                lote = consumible.lote
-
-                                # Guardamos en el diccionaro de lotes anteriormente definidos
-                                lotes[lote.id_lote] = consumibles
-                            '''
+                           
                                         
                             lote_datos = definir_lote(lotes)
 
