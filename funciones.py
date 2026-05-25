@@ -10,6 +10,21 @@ from typing import Optional, Dict, Any, List
 ######################################################################
 
 import pickle
+import os
+
+def crear_auditoria():
+
+    if not os.path.isdir('logs'):
+
+        os.mkdir('logs')
+
+    if not os.path.exists('logs/auditoria.txt'):
+
+        with open('logs/auditoria.txt', 'x', encoding='utf-8') as fichero:
+
+            fichero.write('Comienzo del registro del laboratorio.\n')
+            fichero.close()
+
 
 def cargar_laboratorio() -> Dict[str, Any]:
     # Intenta abrir el archivo binario pickle para restaurar el estado del sistema
@@ -21,12 +36,18 @@ def cargar_laboratorio() -> Dict[str, Any]:
         
     except (FileNotFoundError, EOFError):
         # Si no hay archivo, creamos la estructura base vacía
+
+        if not os.path.isdir('datos'):
+
+            os.mkdir('datos')
+
         return {
             "lista_inventarios": [],
             "lista_sesiones": [],
             "equipos": [],
             "lotes": {}
         }
+
 
 def guardar_laboratorio(datos_a_guardar):
     # Serializa y vuelca el diccionario maestro de laboratorio en el archivo binario

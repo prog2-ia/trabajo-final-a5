@@ -13,6 +13,10 @@ from clases import *
 
 if __name__ == '__main__':
 
+    # Comprobar que exista el archivo de escritura
+
+    crear_auditoria()
+
     laboratorio = cargar_laboratorio()  # Diccionario con los almacenes y sesiones guardadas en listas
 
     #"lista_inventarios": [],   # Lista con las diferentes instancias de las clases
