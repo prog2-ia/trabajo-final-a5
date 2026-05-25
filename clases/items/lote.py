@@ -103,76 +103,7 @@ def definir_lote(lotes: Dict[str, Any]) -> Optional[Lote]:
             
         else:
             return Lote(introducir_id, fecha)
-    '''
-    id_comprobado = False
 
-    # Pasamos la lista de los lotes anteriormente definidos
-    # Hara falta para ver que no hayan IDs repetidos
-
-    while not id_comprobado:   # Este bucle se parara con un return o si el id introducido es válido
-
-
-        introducir_id = input('(0) para cancelar la operación | Introduzca el ID (00-ABC) del nuevo lote: ').upper()
-
-        if introducir_id == '0':
-
-            return None
-        
-
-        
-        if comprobar_id_lote(introducir_id):
-
-
-            # Comprobamos que no exista tal id en lotes anteriormente definidos
-            for lote in lotes.keys():
-
-
-                if lote == introducir_id:
-
-                    print('Ya existe un lote con ese ID.\n')
-                    return None
-                
-            
-            id_comprobado = True
-            
-
-        if not id_comprobado:
-
-            print('Introduzca un ID válido o (0) para cancelar la operación.\n')
-
-
-    # A partir de aquí se pide la fecha
-    while True:
-
-        fecha_caducidad = pedir_fecha('(0) para cancelar la operación | Introduzca la fecha de caducidad (DD/MM/AAAA): ')
-        if fecha_caducidad is None:
-            return None
-        if fecha_caducidad < date.today():
-            print('Fecha no válida. No puedes importar lotes ya caducados.\n')
-        else:
-            return Lote(introducir_id, fecha_caducidad)
-    return None
-    
-        while id_comprobado:
-
-
-            fecha_caducidad = pedir_fecha('(0) para cancelar la operación | Introduzca la fecha de caducidad (DD/MM/AAAA): ')
-
-
-            if fecha_caducidad is None:
-
-                return None
-
-
-            # Comprobar que sea válida.
-            if fecha_caducidad < date.today():
-
-                print('Fecha no válida. No puedes importar lotes ya caducados.\n')
-
-            else:
-
-                return Lote(introducir_id, fecha_caducidad)
-                '''
 
 
 # Ahora hay que añadir consumibles al lote definido
